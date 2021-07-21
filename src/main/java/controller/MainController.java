@@ -1,15 +1,12 @@
-package cittadino.controller;
+package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class MainController {
@@ -18,17 +15,24 @@ public class MainController {
     @FXML
     private Button login;
 
+    public MainController(){
+       String user = LoginController.client;
+    }
     public void visualizzaInfoCentri(MouseEvent mouseEvent) {
         Parent root;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/registraCentroLayout.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("../view/cercaVisualizzaLayout.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 400, 400);
             Stage stage = new Stage();
             stage.setTitle("Registra Centro Vaccinale");
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
+
+            Node source = (Node) mouseEvent.getSource();
+            Stage thisStage = (Stage) source.getScene().getWindow();
+            thisStage.close();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -39,13 +43,17 @@ public class MainController {
         Parent root;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/registraCittadinoLayout.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 500, 400);
+            fxmlLoader.setLocation(getClass().getResource("../view/loginLayout.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 500, 300);
             Stage stage = new Stage();
-            stage.setTitle("Registra Cittadino");
+            stage.setTitle("Login");
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
+
+            Node source = (Node) mouseEvent.getSource();
+            Stage thisStage = (Stage) source.getScene().getWindow();
+            thisStage.close();
         }
         catch (IOException e) {
             e.printStackTrace();

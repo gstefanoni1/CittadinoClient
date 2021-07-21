@@ -1,13 +1,10 @@
-package cittadino;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
-
+public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("view/mainLayout.fxml"));
@@ -17,7 +14,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public Main(){}
+    public MainApp(){}
 
     public static void main(String[] args) {
         launch(args);

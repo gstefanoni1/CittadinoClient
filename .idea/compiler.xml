@@ -23,4 +23,9 @@
       <module name="StefanoniTornaghiCittadinoClient" target="16" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="StefanoniTornaghiCittadinoClient" options="--add-modules java.base" />
+    </option>
+  </component>
 </project>
