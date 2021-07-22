@@ -23,7 +23,7 @@ public class LoginController {
     private Label labelIndietro;
 
 
-    public static String client;
+    public static String client = "";
 
     public void loginRequest(MouseEvent mouseEvent) {
         if(!verificaCampi()) return;
@@ -39,7 +39,7 @@ public class LoginController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("../view/registrazioneLayout.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 400, 400);
+            Scene scene = new Scene(fxmlLoader.load(), 500, 450);
             Stage stage = new Stage();
             stage.setTitle("Registra Centro Vaccinale");
             stage.setScene(scene);
@@ -62,7 +62,7 @@ public class LoginController {
             fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 500, 300);
             Stage stage = new Stage();
-            stage.setTitle("Registra Cittadino");
+            stage.setTitle("Vaccinazioni Cittadini");
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
