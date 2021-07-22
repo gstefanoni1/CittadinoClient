@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InserimentoEAController">
+   <children>
+      <Label alignment="CENTER" layoutX="236.0" layoutY="43.0" text="Inserimento evento avverso" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="tipoEA" layoutX="175.0" layoutY="56.0" prefWidth="150.0" value="Mal di testa" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Mal di testa" />
+                  <String fx:value="Febbre" />
+                  <String fx:value="Dolori muscolari e articolari" />
+                  <String fx:value="Linfoadenopatia" />
+                  <String fx:value="Tachicardia" />
+                  <String fx:value="Crisi ipertensiva " />
+              </FXCollections>
+          </items>
+      </ChoiceBox>
+      <Label layoutX="26.0" layoutY="54.0" text="Selezionare tipo di evento avverso" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="54.0" />
+      <Label layoutX="14.0" layoutY="91.0" text="Note:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="108.0" />
+      <TextArea fx:id="note" layoutX="110.0" layoutY="106.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="130.0" />
+      <ButtonBar layoutX="286.0" layoutY="238.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="7.0">
+        <buttons>
+          <Button fx:id="annulla" mnemonicParsing="false" onMouseClicked="#indietro" text="Annulla" />
+            <Button fx:id="inserisci" mnemonicParsing="false" onMouseClicked="#inserisciEA" text="Inserisci" />
+        </buttons>
+      </ButtonBar>
+      <Label layoutX="11.0" layoutY="76.0" text="Severità" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="81.0" />
+      <ChoiceBox fx:id="severita" layoutX="76.0" layoutY="77.0" prefWidth="150.0" value="1" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="77.0">
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="1" />
+                  <String fx:value="2" />
+                  <String fx:value="3" />
+                  <String fx:value="4" />
+                  <String fx:value="5" />
+              </FXCollections>
+          </items>
+      </ChoiceBox>
+   </children>
+</AnchorPane>

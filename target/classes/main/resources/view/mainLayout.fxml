@@ -21,8 +21,9 @@
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                     <children>
-                        <Button fx:id="visualizzaCentri" layoutX="151.0" layoutY="41.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#visualizzaInfoCentri" text="Visualizza Informazioni Centri vaccinali" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0" />
-                        <Button fx:id="login" layoutX="151.0" layoutY="102.0" mnemonicParsing="false" onMouseClicked="#loginDisconnect" prefHeight="26.0" prefWidth="52.0" text="Login" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
+                        <Button fx:id="visualizzaCentri" layoutX="151.0" layoutY="41.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#visualizzaInfoCentri" text="Visualizza Informazioni Centri vaccinali" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
+                        <Button fx:id="login" layoutX="151.0" layoutY="102.0" mnemonicParsing="false" onMouseClicked="#loginDisconnect" prefHeight="26.0" prefWidth="52.0" text="Login" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="140.0" />
+                        <Button fx:id="eventoAvverso" layoutX="223.0" layoutY="62.0" mnemonicParsing="false" onMouseClicked="#inserisciEA" text="Inserisci evento avverso" visible="false" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0" />
                     </children>
                 </AnchorPane>
             </items>
