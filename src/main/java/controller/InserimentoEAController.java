@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
@@ -14,12 +15,45 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class InserimentoEAController {
+    //region Variabili FX
     @FXML
-    private ChoiceBox<String> tipoEA;
+    private CheckBox checkMalDiTesta;
     @FXML
-    private ChoiceBox<String> severita;
+    private CheckBox checkFebbre;
     @FXML
-    private TextArea note;
+    private CheckBox checkDMA;
+    @FXML
+    private CheckBox checkLinfo;
+    @FXML
+    private CheckBox checkTachicardia;
+    @FXML
+    private CheckBox checkCrisiIper;
+    @FXML
+    private ChoiceBox<String> severitaMalDiTesta;
+    @FXML
+    private ChoiceBox<String> severitaFebbre;
+    @FXML
+    private ChoiceBox<String> severitaDMA;
+    @FXML
+    private ChoiceBox<String> severitaLinfo;
+    @FXML
+    private ChoiceBox<String> severitaTachicardia;
+    @FXML
+    private ChoiceBox<String> severitaCrisiIper;
+    @FXML
+    private TextArea noteMalDiTesta;
+    @FXML
+    private TextArea noteFebbre;
+    @FXML
+    private TextArea noteDMA;
+    @FXML
+    private TextArea noteLinfo;
+    @FXML
+    private TextArea noteTachicardia;
+    @FXML
+    private TextArea noteCrisiIper;
+    //endregion
+
     public void indietro(MouseEvent mouseEvent) {
         Parent root;
         try {
@@ -60,6 +94,66 @@ public class InserimentoEAController {
         }
         catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void checkedMalDiTesta(MouseEvent mouseEvent) {
+        if(checkMalDiTesta.isSelected()){
+            severitaMalDiTesta.setDisable(false);
+            noteMalDiTesta.setDisable(false);
+        }else{
+            severitaMalDiTesta.setDisable(true);
+            noteMalDiTesta.setDisable(true);
+        }
+    }
+
+    public void checkedFebbre(MouseEvent mouseEvent) {
+        if(checkFebbre.isSelected()){
+            severitaFebbre.setDisable(false);
+            noteFebbre.setDisable(false);
+        }else{
+            severitaFebbre.setDisable(true);
+            noteFebbre.setDisable(true);
+        }
+    }
+
+    public void checkedDMA(MouseEvent mouseEvent) {
+        if(checkDMA.isSelected()){
+            severitaDMA.setDisable(false);
+            noteDMA.setDisable(false);
+        }else{
+            severitaDMA.setDisable(true);
+            noteDMA.setDisable(true);
+        }
+    }
+
+    public void checkedLinfo(MouseEvent mouseEvent) {
+        if(checkLinfo.isSelected()){
+            severitaLinfo.setDisable(false);
+            noteLinfo.setDisable(false);
+        }else{
+            severitaLinfo.setDisable(true);
+            noteLinfo.setDisable(true);
+        }
+    }
+
+    public void checkedTachicardia(MouseEvent mouseEvent) {
+        if(checkTachicardia.isSelected()){
+            severitaTachicardia.setDisable(false);
+            noteTachicardia.setDisable(false);
+        }else{
+            severitaTachicardia.setDisable(true);
+            noteTachicardia.setDisable(true);
+        }
+    }
+
+    public void checkedCrisiIper(MouseEvent mouseEvent) {
+        if(checkCrisiIper.isSelected()){
+            severitaCrisiIper.setDisable(false);
+            noteCrisiIper.setDisable(false);
+        }else{
+            severitaCrisiIper.setDisable(true);
+            noteCrisiIper.setDisable(true);
         }
     }
 }
