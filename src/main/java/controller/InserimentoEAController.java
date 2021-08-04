@@ -77,24 +77,7 @@ public class InserimentoEAController {
 
     public void inserisciEA(MouseEvent mouseEvent) {
         //Salvo a DB le info
-        Parent root;
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 500, 300);
-            Stage stage = new Stage();
-            stage.setTitle("Vaccinazioni Cittadini");
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
-
-            Node source = (Node) mouseEvent.getSource();
-            Stage thisStage = (Stage) source.getScene().getWindow();
-            thisStage.close();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+       indietro(mouseEvent);
     }
 
     public void checkedMalDiTesta(MouseEvent mouseEvent) {

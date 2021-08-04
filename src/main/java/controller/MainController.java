@@ -34,8 +34,8 @@ public class MainController implements Initializable {
         Parent root;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/cercaVisualizzaLayout.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 400, 400);
+            fxmlLoader.setLocation(getClass().getResource("../view/ricercaCentroLayout.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             Stage stage = new Stage();
             stage.setTitle("Visualizza Centro Vaccinale");
             stage.setScene(scene);
