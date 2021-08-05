@@ -1,5 +1,10 @@
-.searchBut{
-    -fx-background-color: #e6e6e6;
+.but{
+    -fx-background-color: #00802b;
+    -fx-text-fill: #ffffff;
+}
+
+.but:hover{
+    -fx-background-color: #004d1a
 }
 
 .deleteBut{
