@@ -28,7 +28,7 @@
       </Button>
       <Button fx:id="ricerca" layoutY="73.0" mnemonicParsing="false" onMouseClicked="#ricerca" styleClass="but" stylesheets="@Style.css" text="Ricerca" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="77.0" />
       <ListView layoutX="176.0" layoutY="138.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="111.0" />
-      <ChoiceBox fx:id="typeSearch" layoutX="350.0" layoutY="77.0" prefWidth="135.0" AnchorPane.rightAnchor="10.0">
+      <ChoiceBox fx:id="typeSearch" layoutX="350.0" layoutY="77.0" prefWidth="135.0" AnchorPane.rightAnchor="10.0" value="Nome centro">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Nome centro" />
@@ -36,7 +36,7 @@
             </FXCollections>
          </items>
       </ChoiceBox>
-      <ChoiceBox fx:id="tipologia" disable="true" layoutX="290.0" layoutY="77.0" prefWidth="150.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="77.0">
+      <ChoiceBox fx:id="tipologia" disable="true" layoutX="290.0" layoutY="77.0" prefWidth="150.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="77.0" value="Ospedaliero">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Nome centro" />

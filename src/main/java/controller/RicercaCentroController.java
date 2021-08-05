@@ -11,10 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -111,18 +108,31 @@ public class RicercaCentroController implements Initializable {
         @Override
         protected void updateItem(CentroVaccinale item, boolean empty) {
             super.updateItem(item, empty);
+            if (empty) {
+                setGraphic(null);
+            } else {
+                customListCellController.setCentro(item);
+                setGraphic(view);
+            }
         }
 
     }
 
     private class CustomListCellController {
+        @FXML
+        private Label nomeCentro;
+        @FXML
+        private Label tipoCentro;
+        @FXML
+        private Label comuneCentro;
+
         private AnchorPane anchorPane;
 
         public CustomListCellController(){
             try {
                 // assumes FXML file is in same package as this controller
                 // (also make sure name of FXML resource is correct)
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomListCell.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/customListCell.fxml"));
                 loader.setController(this);
                 anchorPane = loader.load();
             } catch (IOException exc) {
@@ -133,6 +143,12 @@ public class RicercaCentroController implements Initializable {
 
         public Node getView() {
             return anchorPane ;
+        }
+
+        public void setCentro(CentroVaccinale centro) {
+            nomeCentro.setText(centro.getNome());
+            tipoCentro.setText(centro.getTipologia());
+            comuneCentro.setText(centro.getComune());
         }
     }
 }
