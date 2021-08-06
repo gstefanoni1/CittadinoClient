@@ -5,6 +5,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,6 +32,8 @@ public class RicercaCentroController implements Initializable {
     private TextField textFilter;
     @FXML
     private ListView<CentroVaccinale> CentriList;
+
+    public static CentroVaccinale centoVis;
 
 
     public void indietro(MouseEvent mouseEvent) {
@@ -126,17 +129,23 @@ public class RicercaCentroController implements Initializable {
         @FXML
         private Label comuneCentro;
 
+        private CentroVaccinale centro;
+
         private AnchorPane anchorPane;
 
         public CustomListCellController(){
             try {
-                // assumes FXML file is in same package as this controller
-                // (also make sure name of FXML resource is correct)
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/customListCell.fxml"));
                 loader.setController(this);
                 anchorPane = loader.load();
+                anchorPane.addEventHandler(MouseEvent.MOUSE_PRESSED,
+                        new EventHandler<MouseEvent>(){
+
+                    public void handle(MouseEvent e) {
+                        centoVis = centro;
+                    }
+                });
             } catch (IOException exc) {
-                // pretty much fatal here...
                 throw new UncheckedIOException(exc);
             }
         }
@@ -146,6 +155,7 @@ public class RicercaCentroController implements Initializable {
         }
 
         public void setCentro(CentroVaccinale centro) {
+            this.centro = centro;
             nomeCentro.setText(centro.getNome());
             tipoCentro.setText(centro.getTipologia());
             comuneCentro.setText(centro.getComune());
