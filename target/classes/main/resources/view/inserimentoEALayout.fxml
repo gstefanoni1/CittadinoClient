@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InserimentoEAController">
+<AnchorPane prefHeight="300.0" prefWidth="500.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InserimentoEAController">
    <children>
       <Label alignment="CENTER" layoutX="236.0" layoutY="43.0" text="Inserimento evento avverso" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
@@ -24,8 +24,8 @@
       </Label>
       <ButtonBar layoutX="286.0" layoutY="238.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="7.0">
         <buttons>
-          <Button fx:id="annulla" mnemonicParsing="false" onMouseClicked="#indietro" text="Annulla" />
-            <Button fx:id="inserisci" mnemonicParsing="false" onMouseClicked="#inserisciEA" text="Inserisci" />
+          <Button fx:id="annulla" mnemonicParsing="false" onMouseClicked="#indietro" styleClass="but" text="Annulla" />
+            <Button fx:id="inserisci" mnemonicParsing="false" onMouseClicked="#inserisciEA" styleClass="but" text="Inserisci" />
         </buttons>
       </ButtonBar>
       <GridPane layoutX="150.0" layoutY="105.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
@@ -141,12 +141,12 @@
                     </FXCollections>
                 </items>
             </ChoiceBox>
-            <TextArea fx:id="noteMalDiTesta" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="254.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <TextArea fx:id="noteFebbre" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="254.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextArea fx:id="noteDMA" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="254.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <TextArea fx:id="noteLinfo" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="254.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <TextArea fx:id="noteTachicardia" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="254.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <TextArea fx:id="noteCrisiIper" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="254.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <TextArea fx:id="noteMalDiTesta" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="254.0" styleClass="text-field" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextArea fx:id="noteFebbre" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="254.0" styleClass="text-field" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextArea fx:id="noteDMA" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="254.0" styleClass="text-field" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <TextArea fx:id="noteLinfo" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="254.0" styleClass="text-field" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <TextArea fx:id="noteTachicardia" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="254.0" styleClass="text-field" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <TextArea fx:id="noteCrisiIper" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="254.0" styleClass="text-field" GridPane.columnIndex="2" GridPane.rowIndex="6" />
          </children>
          <padding>
             <Insets bottom="1.0" top="1.0" />

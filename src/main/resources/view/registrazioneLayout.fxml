@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrazioneController">
+<AnchorPane prefHeight="450.0" prefWidth="500.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrazioneController">
    <children>
       <SplitPane dividerPositions="0.1388443017656501" layoutX="259.0" layoutY="90.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -18,7 +18,7 @@
                <children>
                   <Label alignment="CENTER" layoutX="286.0" layoutY="30.0" text="Registrazione" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="Segoe UI Light" size="25.0" />
                      </font>
                   </Label>
                </children>
@@ -29,7 +29,7 @@
                      <children>
                         <Label text="Inserire ID vaccinazione" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="13.0" />
                         <TextField fx:id="id" promptText="ID" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="10.0" />
-                        <Button layoutX="335.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#verificaId" text="Verifica" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                        <Button layoutX="335.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#verificaId" styleClass="but" text="Verifica" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                      </children>
                   </AnchorPane>
                   <Separator layoutX="200.0" layoutY="62.0" prefWidth="200.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="50.0" />
@@ -52,8 +52,8 @@
                         <PasswordField fx:id="confPassword" layoutX="135.0" layoutY="182.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="185.0" />
                         <ButtonBar layoutX="292.0" layoutY="294.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0">
                           <buttons>
-                            <Button id="annulla" mnemonicParsing="false" onMouseClicked="#indietro" text="Annulla" />
-                              <Button id="crea" mnemonicParsing="false" onMouseClicked="#registraCittadino" text="Crea" />
+                            <Button id="annulla" mnemonicParsing="false" onMouseClicked="#indietro" styleClass="but" text="Annulla" />
+                              <Button id="crea" mnemonicParsing="false" onMouseClicked="#registraCittadino" styleClass="but" text="Crea" />
                           </buttons>
                         </ButtonBar>
                       </children>

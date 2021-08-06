@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Control;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -81,12 +82,40 @@ public class RegistrazioneController {
     }
 
     private boolean verificaCampi() {
-        if(username.getText().equals("") || password.getText().equals("") || nome.getText().equals("")
-                || cognome.getText().equals("") || codFiscale.getText().equals("") || email.getText().equals("")
-                || confPassword.getText().equals("")){
-            return false;
-        }
+        boolean verified = true;
+        if (username.getText().equals(""))
+            verified = setColorBorder(username, "red");
+        else setColorBorder(username, "transparent");
 
-        return true;
+        if (password.getText().equals(""))
+            verified = setColorBorder(password, "red");
+        else setColorBorder(password, "transparent");
+
+        if (nome.getText().equals(""))
+            verified = setColorBorder(nome, "red");
+        else setColorBorder(nome, "transparent");
+
+        if (cognome.getText().equals(""))
+            verified = setColorBorder(cognome, "red");
+        else setColorBorder(cognome, "transparent");
+
+        if (codFiscale.getText().equals("")) {
+            verified = setColorBorder(codFiscale, "red");
+        }else setColorBorder(codFiscale, "transparent");
+
+        if (email.getText().equals("")) {
+            verified = setColorBorder(email, "red");
+        }else setColorBorder(email, "transparent");
+
+        if(confPassword.getText().equals("")) {
+            verified = setColorBorder(confPassword, "red");
+        }else setColorBorder(confPassword, "transparent");
+
+        return verified;
+    }
+
+    private boolean setColorBorder(Control component, String color){
+        component.setStyle("-fx-border-color: " + color + ";");
+        return false;
     }
 }

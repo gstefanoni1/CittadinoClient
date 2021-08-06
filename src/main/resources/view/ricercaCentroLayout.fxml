@@ -9,6 +9,8 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -17,7 +19,7 @@
       <Separator layoutX="192.0" layoutY="95.0" prefWidth="200.0" AnchorPane.bottomAnchor="326.8" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="70.0" />
       <Label alignment="CENTER" layoutX="214.0" layoutY="14.0" text="Ricerca centro vaccinale" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
-            <Font size="18.0" />
+            <Font name="Segoe UI Light" size="30.0" />
          </font>
       </Label>
       <TextField fx:id="textFilter" layoutX="62.0" layoutY="73.0" styleClass="text-field" AnchorPane.bottomAnchor="297.4" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="310.0" AnchorPane.topAnchor="77.0" />
@@ -44,5 +46,15 @@
             </FXCollections>
          </items>
       </ChoiceBox>
+      <ImageView id="indietro" accessibleText="Indietro" fitHeight="26.0" fitWidth="20.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#indietro" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="8.0">
+         <image>
+            <Image url="@../../../../img/indietro.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="labelIndietro" layoutX="54.0" layoutY="22.0" onMouseClicked="#indietro" text="Indietro" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="8.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

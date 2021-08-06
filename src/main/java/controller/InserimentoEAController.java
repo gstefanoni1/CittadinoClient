@@ -87,6 +87,7 @@ public class InserimentoEAController {
         }else{
             severitaMalDiTesta.setDisable(true);
             noteMalDiTesta.setDisable(true);
+            noteMalDiTesta.setText("");
         }
     }
 
@@ -97,6 +98,7 @@ public class InserimentoEAController {
         }else{
             severitaFebbre.setDisable(true);
             noteFebbre.setDisable(true);
+            noteFebbre.setText("");
         }
     }
 
@@ -107,6 +109,7 @@ public class InserimentoEAController {
         }else{
             severitaDMA.setDisable(true);
             noteDMA.setDisable(true);
+            noteDMA.setText("");
         }
     }
 
@@ -117,6 +120,7 @@ public class InserimentoEAController {
         }else{
             severitaLinfo.setDisable(true);
             noteLinfo.setDisable(true);
+            noteLinfo.setText("");
         }
     }
 
@@ -127,6 +131,7 @@ public class InserimentoEAController {
         }else{
             severitaTachicardia.setDisable(true);
             noteTachicardia.setDisable(true);
+            noteTachicardia.setText("");
         }
     }
 
@@ -137,6 +142,7 @@ public class InserimentoEAController {
         }else{
             severitaCrisiIper.setDisable(true);
             noteCrisiIper.setDisable(true);
+            noteCrisiIper.setText("");
         }
     }
 }
