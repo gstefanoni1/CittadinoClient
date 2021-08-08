@@ -26,10 +26,10 @@ public class VisualizzaCentroController implements Initializable {
         Parent root;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+            fxmlLoader.setLocation(getClass().getResource("../view/ricercaCentroLayout.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             Stage stage = new Stage();
-            stage.setTitle("Vaccinazioni Cittadini");
+            stage.setTitle("Visualizza Centro Vaccinale");
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();

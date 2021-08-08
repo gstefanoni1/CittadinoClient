@@ -64,15 +64,21 @@ public class RicercaCentroController implements Initializable {
                 .addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue)
                         -> choiceEnable(newValue) );
 
-        //Recuperare info
+        //TODO Recuperare info
         ObservableList<CentroVaccinale> data = FXCollections.observableArrayList();
-        CentriList = new ListView<CentroVaccinale>(data);
-        CentriList.setCellFactory(new Callback<ListView<CentroVaccinale>, ListCell<CentroVaccinale>>() {
-            @Override
-            public ListCell<CentroVaccinale> call(ListView<CentroVaccinale> listView) {
-                return new CustomListCell();
-            }
-        });
+        for(int i = 0; i < 5; i++){
+            data.add(new CentroVaccinale());
+            data.get(i).setId(i);
+            data.get(i).setNome("Centro" + i);
+            data.get(i).setTipologia("Ospedaliero");
+            data.get(i).setComune("Comune" + i);
+        }
+        for(CentroVaccinale centro : data) {
+            System.out.println(centro.toString());
+        }
+        CentriList.setItems(data);
+
+        CentriList.setCellFactory(studentListView -> new CustomListCell());
     }
 
     private void choiceEnable(String value){
@@ -102,63 +108,65 @@ public class RicercaCentroController implements Initializable {
     }
 
     private class CustomListCell extends ListCell<CentroVaccinale> {
-        private final CustomListCellController customListCellController = new CustomListCellController();
-        private final Node view = customListCellController.getView();
-        public CustomListCell() {
-            super();
-        }
 
-        @Override
-        protected void updateItem(CentroVaccinale item, boolean empty) {
-            super.updateItem(item, empty);
-            if (empty) {
-                setGraphic(null);
-            } else {
-                customListCellController.setCentro(item);
-                setGraphic(view);
-            }
-        }
-
-    }
-
-    private class CustomListCellController {
         @FXML
         private Label nomeCentro;
         @FXML
         private Label tipoCentro;
         @FXML
         private Label comuneCentro;
-
-        private CentroVaccinale centro;
-
+        @FXML
         private AnchorPane anchorPane;
 
-        public CustomListCellController(){
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/customListCell.fxml"));
-                loader.setController(this);
-                anchorPane = loader.load();
-                anchorPane.addEventHandler(MouseEvent.MOUSE_PRESSED,
-                        new EventHandler<MouseEvent>(){
+        @Override
+        protected void updateItem(CentroVaccinale item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty) {
+                setText(null);
+                setGraphic(null);
+            } else {
 
-                    public void handle(MouseEvent e) {
-                        centoVis = centro;
-                    }
-                });
-            } catch (IOException exc) {
-                throw new UncheckedIOException(exc);
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/customListCell.fxml"));
+                    loader.setController(this);
+                    loader.load();
+                } catch (IOException exc) {
+                    throw new UncheckedIOException(exc);
+                }
+
+                anchorPane.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>(){
+                            public void handle(MouseEvent e) {
+                                RicercaCentroController.centoVis = item;
+                                try {
+                                    FXMLLoader fxmlLoader = new FXMLLoader();
+                                    fxmlLoader.setLocation(getClass().getResource("../view/visualizzaCentroLayout.fxml"));
+                                    Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+                                    Stage stage = new Stage();
+                                    stage.setTitle("Info " + item.getId());
+                                    stage.setScene(scene);
+                                    stage.setResizable(false);
+                                    stage.show();
+
+                                    Node source = (Node) e.getSource();
+                                    Stage thisStage = (Stage) source.getScene().getWindow();
+                                    thisStage.close();
+                                }
+                                catch (IOException err) {
+                                    err.printStackTrace();
+                                }
+                            }
+
+                        });
+
+                nomeCentro.setText(item.getNome());
+                tipoCentro.setText(item.getTipologia());
+                comuneCentro.setText(item.getComune());
+                setText(null);
+                setGraphic(anchorPane);
             }
         }
 
-        public Node getView() {
-            return anchorPane ;
-        }
-
-        public void setCentro(CentroVaccinale centro) {
-            this.centro = centro;
-            nomeCentro.setText(centro.getNome());
-            tipoCentro.setText(centro.getTipologia());
-            comuneCentro.setText(centro.getComune());
-        }
     }
+
+
 }

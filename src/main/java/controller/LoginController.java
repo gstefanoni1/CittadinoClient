@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -76,10 +77,25 @@ public class LoginController {
         }
     }
     private boolean verificaCampi() {
-        if(username.getText().equals("") || password.getText().equals("")){
-            return false;
-        }
+        boolean verified = true;
+        if(username.getText().equals(""))
+            verified = setColorBorder(username, "red");
+        else
+            setColorBorder(username, "transparent");
 
-        return true;
+        if(password.getText().equals(""))
+            verified = setColorBorder(password, "red");
+        else
+            setColorBorder(password, "transparent");
+
+        //TODO Verificare corrispondenza user/pass a DB
+
+
+        return verified;
+    }
+
+    private boolean setColorBorder(Control component, String color){
+        component.setStyle("-fx-border-color: " + color + ";");
+        return false;
     }
 }

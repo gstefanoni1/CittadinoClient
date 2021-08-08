@@ -83,16 +83,22 @@ public class RegistrazioneController {
 
     public void verificaId(MouseEvent mouseEvent) {
         if(!(id.getText().equals(""))){
+            //TODO Verificare ID a DB
+            setColorBorder(id, "transparent");
             bottomPane.setDisable(false);
             topPane.setDisable(true);
-        }
+        }else
+            setColorBorder(id, "red");
     }
 
     private boolean verificaCampi() {
         boolean verified = true;
         if (username.getText().equals(""))
             verified = setColorBorder(username, "red");
-        else setColorBorder(username, "transparent");
+        else {
+            if (verificaUsername(username.getText())) setColorBorder(username, "transparent");
+        }
+
 
         if (password.getText().equals(""))
             verified = setColorBorder(password, "red");
@@ -157,6 +163,11 @@ public class RegistrazioneController {
 
 
         return verified;
+    }
+
+    //TODO Verifica username su DB
+    private boolean verificaUsername(String text) {
+        return true;
     }
 
     private boolean verificaEmail(String email) {

@@ -41,8 +41,9 @@
       <ChoiceBox fx:id="tipologia" disable="true" layoutX="290.0" layoutY="77.0" prefWidth="150.0" value="Ospedaliero" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="77.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
-               <String fx:value="Nome centro" />
-               <String fx:value="Comune e Tipologia" />
+               <String fx:value="Ospedaliero" />
+               <String fx:value="Aziendale" />
+               <String fx:value="Hub" />
             </FXCollections>
          </items>
       </ChoiceBox>
