@@ -14,6 +14,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegistrazioneController {
 
@@ -37,6 +39,11 @@ public class RegistrazioneController {
     private AnchorPane topPane;
     @FXML
     private AnchorPane bottomPane;
+
+    private static final String EMAIL_REGEX = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
+    private static final String COD_FISCALE_REGEX = "^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$";
+    private static Pattern pattern;
+    private Matcher matcher;
 
 
     public void indietro(MouseEvent mouseEvent) {
@@ -68,7 +75,7 @@ public class RegistrazioneController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informazioni cittadino: " + codFiscale.getText());
         alert.setHeaderText(null);
-        alert.setContentText("ID vaccinazione: " + id + ". Registrazione completata");
+        alert.setContentText("ID vaccinazione: " + id.getText() + ". Registrazione completata");
         alert.showAndWait();
 
         indietro(mouseEvent);
@@ -89,7 +96,24 @@ public class RegistrazioneController {
 
         if (password.getText().equals(""))
             verified = setColorBorder(password, "red");
-        else setColorBorder(password, "transparent");
+        else {
+            setColorBorder(password, "transparent");
+            if(confPassword.getText().equals(""))
+                verified = setColorBorder(confPassword, "red");
+            else {
+                if (confPassword.getText().equals(password.getText())){
+                    setColorBorder(confPassword, "transparent");
+                }else {
+                    verified = setColorBorder(confPassword, "red");
+                    Alert alertPassword = new Alert(Alert.AlertType.ERROR);
+                    alertPassword.setTitle("");
+                    alertPassword.setHeaderText("Errore nella compilazione dei campi");
+                    alertPassword.setContentText("Le password non corrispondono");
+
+                    alertPassword.showAndWait();
+                }
+            }
+        }
 
         if (nome.getText().equals(""))
             verified = setColorBorder(nome, "red");
@@ -99,19 +123,52 @@ public class RegistrazioneController {
             verified = setColorBorder(cognome, "red");
         else setColorBorder(cognome, "transparent");
 
-        if (codFiscale.getText().equals("")) {
+        if (codFiscale.getText().equals(""))
             verified = setColorBorder(codFiscale, "red");
-        }else setColorBorder(codFiscale, "transparent");
+        else {
+            if(verificaCodFiscale(codFiscale.getText()))
+                setColorBorder(codFiscale, "transparent");
+            else{
+                verified = setColorBorder(codFiscale, "red");
+                Alert alertCod = new Alert(Alert.AlertType.ERROR);
+                alertCod.setTitle("");
+                alertCod.setHeaderText("Errore nella compilazione dei campi");
+                alertCod.setContentText("Codice fiscale non valido");
 
-        if (email.getText().equals("")) {
+                alertCod.showAndWait();
+            }
+        }
+
+        if (email.getText().equals(""))
             verified = setColorBorder(email, "red");
-        }else setColorBorder(email, "transparent");
+        else {
+            if (verificaEmail(email.getText()))
+                setColorBorder(email, "transparent");
+            else {
+                verified = setColorBorder(email, "red");
+                Alert alertEmail = new Alert(Alert.AlertType.ERROR);
+                alertEmail.setTitle("");
+                alertEmail.setHeaderText("Errore nella compilazione dei campi");
+                alertEmail.setContentText("Email non valida");
 
-        if(confPassword.getText().equals("")) {
-            verified = setColorBorder(confPassword, "red");
-        }else setColorBorder(confPassword, "transparent");
+                alertEmail.showAndWait();
+            }
+        }
+
 
         return verified;
+    }
+
+    private boolean verificaEmail(String email) {
+        pattern = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean verificaCodFiscale(String codFiscale) {
+        pattern = Pattern.compile(COD_FISCALE_REGEX, Pattern.CASE_INSENSITIVE);
+        matcher = pattern.matcher(codFiscale);
+        return matcher.matches();
     }
 
     private boolean setColorBorder(Control component, String color){
