@@ -13,6 +13,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -70,7 +72,12 @@ public class RicercaCentroController implements Initializable {
             data.add(new CentroVaccinale());
             data.get(i).setId(i);
             data.get(i).setNome("Centro" + i);
-            data.get(i).setTipologia("Ospedaliero");
+            if(i == 0)
+                data.get(i).setTipologia("Hub");
+            else if((i%2)==0)
+                data.get(i).setTipologia("Ospedaliero");
+            else
+                data.get(i).setTipologia("Aziendale");
             data.get(i).setComune("Comune" + i);
         }
         for(CentroVaccinale centro : data) {
@@ -116,6 +123,8 @@ public class RicercaCentroController implements Initializable {
         @FXML
         private Label comuneCentro;
         @FXML
+        private ImageView icon;
+        @FXML
         private AnchorPane anchorPane;
 
         @Override
@@ -160,7 +169,17 @@ public class RicercaCentroController implements Initializable {
 
                 nomeCentro.setText(item.getNome());
                 tipoCentro.setText(item.getTipologia());
-                comuneCentro.setText(item.getComune());
+                switch (item.getTipologia()) {
+                    case "Ospedaliero" -> icon.setImage(new Image(String.valueOf(getClass().getResource("../img/ospedale.png"))));
+                    case "Aziendale" -> icon.setImage(new Image(String.valueOf(getClass().getResource("../img/azienda.png"))));
+                    case "Hub" -> icon.setImage(new Image(String.valueOf(getClass().getResource("../img/hub.png"))));
+                }
+                comuneCentro.setText(
+                        item.getQualificatore() + " " +
+                        item.getNomeIndirizzo() + ", " +
+                        item.getNumero() + ", " +
+                        item.getComune() + " (" +
+                        item.getSiglaProvincia() + ")");
                 setText(null);
                 setGraphic(anchorPane);
             }

@@ -49,7 +49,7 @@
       </ChoiceBox>
       <ImageView id="indietro" accessibleText="Indietro" fitHeight="26.0" fitWidth="20.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#indietro" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="8.0">
          <image>
-            <Image url="@../../../../img/indietro.png" />
+            <Image url="@../img/indietro.png" />
          </image>
       </ImageView>
       <Label fx:id="labelIndietro" layoutX="54.0" layoutY="22.0" onMouseClicked="#indietro" text="Indietro" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="8.0">

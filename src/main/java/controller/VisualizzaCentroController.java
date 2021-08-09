@@ -55,8 +55,8 @@ public class VisualizzaCentroController implements Initializable {
                 RicercaCentroController.centoVis.getQualificatore() + " " +
                 RicercaCentroController.centoVis.getNomeIndirizzo() + ", " +
                 RicercaCentroController.centoVis.getNumero() + ", " +
-                RicercaCentroController.centoVis.getComune() + ", " +
-                RicercaCentroController.centoVis.getCap() + ", " +
-                RicercaCentroController.centoVis.getSiglaProvincia());
+                RicercaCentroController.centoVis.getComune() + " (" +
+                RicercaCentroController.centoVis.getSiglaProvincia() + "), " +
+                RicercaCentroController.centoVis.getCap());
     }
 }

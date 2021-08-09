@@ -11,7 +11,7 @@
     <children>
         <ImageView id="indietro" accessibleText="Indietro" fitHeight="26.0" fitWidth="20.0" onMouseClicked="#indietro" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="480.0" AnchorPane.topAnchor="8.0">
             <image>
-            <Image url="@../../../../img/indietro.png" />
+            <Image url="@../img/indietro.png" />
             </image>
         </ImageView>
         <Label fx:id="labelIndietro" layoutX="44.0" layoutY="12.0" onMouseClicked="#indietro" text="Indietro" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="8.0">
