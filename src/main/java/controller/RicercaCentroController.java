@@ -35,6 +35,8 @@ public class RicercaCentroController implements Initializable {
     @FXML
     private ListView<CentroVaccinale> CentriList;
 
+    private ObservableList<CentroVaccinale> data;
+
     public static CentroVaccinale centoVis;
 
 
@@ -67,7 +69,7 @@ public class RicercaCentroController implements Initializable {
                         -> choiceEnable(newValue) );
 
         //TODO Recuperare info
-        ObservableList<CentroVaccinale> data = FXCollections.observableArrayList();
+        data = FXCollections.observableArrayList();
         for(int i = 0; i < 5; i++){
             data.add(new CentroVaccinale());
             data.get(i).setId(i);
@@ -107,11 +109,31 @@ public class RicercaCentroController implements Initializable {
     }
 
     public void ricercaPerNome(){
+        ObservableList<CentroVaccinale> dataFiltered = FXCollections.observableArrayList();
+        for(CentroVaccinale centro : data) {
+            if (centro.getNome().contains(textFilter.getText())){
+                dataFiltered.add(centro);
+            }
+        }
+        CentriList.setItems(dataFiltered);
 
+        CentriList.setCellFactory(studentListView -> new CustomListCell());
+        CentriList.refresh();
+        System.out.println(dataFiltered.toString());
     }
 
     public void ricercaPerComuneTipo(){
+        ObservableList<CentroVaccinale> dataFiltered = FXCollections.observableArrayList();
+        for(CentroVaccinale centro : data) {
+            if (centro.getComune().contains(textFilter.getText()) && centro.getTipologia().equals(tipologia.getValue())){
+                dataFiltered.add(centro);
+            }
+        }
+        CentriList.setItems(dataFiltered);
 
+        CentriList.setCellFactory(studentListView -> new CustomListCell());
+        CentriList.refresh();
+        System.out.println(dataFiltered.toString());
     }
 
     private class CustomListCell extends ListCell<CentroVaccinale> {
