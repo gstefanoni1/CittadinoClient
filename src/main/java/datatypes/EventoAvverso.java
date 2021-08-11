@@ -2,13 +2,17 @@ package datatypes;
 
 import java.io.Serializable;
 
+/**
+ * Classe model per salvare i dati del db in memoria
+ * @author Tornaghi Omar
+ * @version 1.0
+ */
 public class EventoAvverso implements Serializable {
     private static final long serialVersionUID = 1844985672063253560L;
     private int id;
     private int severita;
     private String note;
     private CentroVaccinale centroVaccinale;
-    private Vaccino vaccino;
     private TipologiaEventoAvverso tipologia;
 
     public int getId() {
@@ -41,14 +45,6 @@ public class EventoAvverso implements Serializable {
 
     public void setCentroVaccinale(CentroVaccinale centroVaccinale) {
         this.centroVaccinale = centroVaccinale;
-    }
-
-    public Vaccino getVaccino() {
-        return vaccino;
-    }
-
-    public void setVaccino(Vaccino vaccino) {
-        this.vaccino = vaccino;
     }
 
     public TipologiaEventoAvverso getTipologia() {

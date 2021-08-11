@@ -7,14 +7,14 @@ import datatypes.CentroVaccinale;
  * @author Tornaghi Omar
  * @version 1.0
  */
-public class RegistrationCVRequest extends Packet{
-    private static final long serialVersionUID = -3065993917158343758L;
+public class GetReportRequest extends Packet{
+    private static final long serialVersionUID = -2836363273338011219L;
     private CentroVaccinale cv;
 
-    public RegistrationCVRequest() {
+    public GetReportRequest() {
     }
 
-    public RegistrationCVRequest(CentroVaccinale cv) {
+    public GetReportRequest(CentroVaccinale cv) {
         this.cv = cv;
     }
 
