@@ -98,85 +98,19 @@ public class VisualizzaCentroController implements Initializable {
 
     private void popolaGrafico() {
         //TODO prendere eventi avversi da DB
-        ArrayList<EventoAvverso> eventiAvversi = new ArrayList<EventoAvverso>();
+        ArrayList<String> eventiAvversi = new ArrayList<String>();
         //Variabili per il conteggio e la media di tutti gli eventi avversi
         //MalDiTesta 0, Febbre 1, DMA 2, Linfo 3, Tachicardia 4, CrisiIper 5
-        int[] contEventi = new int[6];
-        float[] mediaSeverita = new float[6];
 
-        //Popolazione fittizzia
-        for(int i = 0; i < 6; i++){
-            eventiAvversi.add(new EventoAvverso());
-            eventiAvversi.get(i).setSeverita(i);
-            if((i%2)==0){
-                eventiAvversi.get(i).setTipologia(new TipologiaEventoAvverso("Febbre"));
-            }else{
-                eventiAvversi.get(i).setTipologia(new TipologiaEventoAvverso("Mal di testa"));
-            }
+
+        for(int i = 0; i < eventiAvversi.size();){
+            inserisciColonna(eventiAvversi.get(i++), Integer.parseInt(eventiAvversi.get(i++)),
+                    Math.round(Float.parseFloat(eventiAvversi.get(i++))));
         }
 
-        //Codice popolazione grafico
-        //Incremento i cont
-        for(EventoAvverso evento: eventiAvversi){
-            switch (evento.getTipologia().getNome()){
-                case "Febbre":
-                    contEventi[0]++;
-                    mediaSeverita[0] += evento.getSeverita();
-                    break;
-
-                case "Mal di testa":
-                    contEventi[1]++;
-                    mediaSeverita[1] += evento.getSeverita();
-                    break;
-
-                case "Dolori muscolari e articolari":
-                    contEventi[2]++;
-                    mediaSeverita[2] += evento.getSeverita();
-                    break;
-
-                case "Linfoadenopatia":
-                    contEventi[3]++;
-                    mediaSeverita[3] += evento.getSeverita();
-                    break;
-
-                case "Tachicardia":
-                    contEventi[4]++;
-                    mediaSeverita[4] += evento.getSeverita();
-                    break;
-
-                case "Crisi ipertensiva":
-                    contEventi[5]++;
-                    mediaSeverita[5] += evento.getSeverita();
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
-        //Calcolo le medie
-        for (int i = 0; i < 6; i++){
-            if(contEventi[i] > 0)
-                mediaSeverita[i] = mediaSeverita[i]/contEventi[i];
-        }
-
-        //Inserisco i dati nel grafico in base alla severità
-
-        for (int i = 0; i < 6; i++){
-            switch (i){
-                case 0 -> inserisciColonna("Febbre", contEventi[i], Math.round(mediaSeverita[i]));
-                case 1 -> inserisciColonna("Mal di Testa", contEventi[i], Math.round(mediaSeverita[i]));
-                case 2 -> inserisciColonna("Dolori musc...", contEventi[i], Math.round(mediaSeverita[i]));
-                case 3 -> inserisciColonna("Linfoadeno...", contEventi[i], Math.round(mediaSeverita[i]));
-                case 4 -> inserisciColonna("Tachicardia", contEventi[i], Math.round(mediaSeverita[i]));
-                case 5 -> inserisciColonna("Crisi iperte...", contEventi[i], Math.round(mediaSeverita[i]));
-            }
-        }
     }
 
     private void inserisciColonna(String nome, int cont, int severita){
-
-
 
         switch (severita){
             case 0 -> series0.getData().add(new XYChart.Data(nome, cont));
