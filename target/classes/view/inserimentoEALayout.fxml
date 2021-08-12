@@ -19,7 +19,7 @@
    <children>
       <Label alignment="CENTER" layoutX="236.0" layoutY="43.0" text="Inserimento evento avverso" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
-            <Font size="18.0" />
+            <Font name="Segoe UI Light" size="18.0" />
          </font>
       </Label>
       <ButtonBar layoutX="286.0" layoutY="238.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="7.0">
@@ -44,13 +44,24 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" text="Evento avverso" />
-            <Label alignment="CENTER" prefHeight="18.0" prefWidth="56.0" text="Severità" GridPane.columnIndex="1" />
-            <Label prefHeight="18.0" prefWidth="182.0" text="Note opzionali" GridPane.columnIndex="2">
+            <AnchorPane>
+               <children>
+                  <Label prefHeight="30.4" prefWidth="170.4" text="Evento avverso" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane GridPane.columnIndex="1">
+               <children>
+                  <Label prefHeight="30.4" prefWidth="56.8" text="Severità" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
-            </Label>
+               <children>
+                  <Label prefHeight="30.4" prefWidth="243.2" text="Note opzionali" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
             <CheckBox fx:id="checkMalDiTesta" mnemonicParsing="false" onMouseClicked="#checkedMalDiTesta" text="Mal di testa" GridPane.rowIndex="1" />
             <CheckBox fx:id="checkFebbre" mnemonicParsing="false" onMouseClicked="#checkedFebbre" text="Febbre" GridPane.rowIndex="2" />
             <CheckBox fx:id="checkDMA" mnemonicParsing="false" onMouseClicked="#checkedDMA" text="Dolori muscolari e articolari" GridPane.rowIndex="3" />

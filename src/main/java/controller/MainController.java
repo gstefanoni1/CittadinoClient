@@ -40,6 +40,8 @@ public class MainController implements Initializable {
             Stage stage = new Stage();
             stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
             stage.setTitle("Ricerca Centro Vaccinale");
+            stage.setMinHeight(400);
+            stage.setMinWidth(610);
             stage.setScene(scene);
             //stage.setResizable(false);
             stage.show();
@@ -93,8 +95,10 @@ public class MainController implements Initializable {
             Stage stage = new Stage();
             stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
             stage.setTitle("Inserimento evento avverso");
+            stage.setMinHeight(300);
+            stage.setMinWidth(500);
             stage.setScene(scene);
-            stage.setResizable(false);
+            //stage.setResizable(false);
             stage.show();
 
             Node source = (Node) mouseEvent.getSource();
