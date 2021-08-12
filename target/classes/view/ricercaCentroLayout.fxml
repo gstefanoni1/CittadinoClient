@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -25,7 +26,10 @@
             <Font name="Segoe UI Light" size="30.0" />
          </font>
       </Label>
-      <ListView fx:id="CentriList" layoutX="176.0" layoutY="138.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="111.0" />
+      <ListView fx:id="CentriList" focusTraversable="false" layoutX="176.0" layoutY="138.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="111.0">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></ListView>
       <ImageView id="indietro" accessibleText="Indietro" fitHeight="26.0" fitWidth="20.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#indietro" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="8.0">
          <image>
             <Image url="@../img/indietro.png" />

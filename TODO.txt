@@ -1,2 +1,0 @@
-Eventualmente layout estendibile per report eventi avversi
-item in form ricerca centro vaccinale(inserire button visualizza)

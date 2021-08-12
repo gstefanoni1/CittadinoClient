@@ -27,3 +27,8 @@
     -fx-border-color: #d6d6d6;
     -fx-border-radius: 5px;
 }
+.list-view-cell:hover{
+    -fx-border-color: #d6d6d6;
+    -fx-border-radius: 5px;
+    -fx-background-color:#d4d4d4;
+}
