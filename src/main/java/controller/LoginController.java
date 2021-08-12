@@ -9,6 +9,7 @@ import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -42,6 +43,7 @@ public class LoginController {
             fxmlLoader.setLocation(getClass().getResource("../view/registrazioneLayout.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 500, 450);
             Stage stage = new Stage();
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
             stage.setTitle("Registra Centro Vaccinale");
             stage.setScene(scene);
             stage.setResizable(false);
@@ -63,6 +65,7 @@ public class LoginController {
             fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 500, 300);
             Stage stage = new Stage();
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
             stage.setTitle("Vaccinazioni Cittadini");
             stage.setScene(scene);
             stage.setResizable(false);

@@ -47,6 +47,7 @@ public class RicercaCentroController implements Initializable {
             fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 500, 300);
             Stage stage = new Stage();
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
             stage.setTitle("Vaccinazioni Cittadini");
             stage.setScene(scene);
             stage.setResizable(false);
@@ -173,6 +174,7 @@ public class RicercaCentroController implements Initializable {
                                     fxmlLoader.setLocation(getClass().getResource("../view/visualizzaCentroLayout.fxml"));
                                     Scene scene = new Scene(fxmlLoader.load(), 600, 400);
                                     Stage stage = new Stage();
+                                    stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
                                     stage.setTitle("Info " + item.getId());
                                     stage.setScene(scene);
                                     stage.setResizable(false);

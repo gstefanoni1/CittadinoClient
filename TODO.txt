@@ -1,5 +1,4 @@
 Icona programma
 Eventualmente layout estendibile per view ricerca e report eventi avversi
 Form registrazione sistemare scritte
-Form registrazione button annulla per tornare a schermata login
 item in form ricerca centro vaccinale(inserire button visualizza)

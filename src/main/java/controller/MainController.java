@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -37,6 +38,7 @@ public class MainController implements Initializable {
             fxmlLoader.setLocation(getClass().getResource("../view/ricercaCentroLayout.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             Stage stage = new Stage();
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
             stage.setTitle("Visualizza Centro Vaccinale");
             stage.setScene(scene);
             stage.setResizable(false);
@@ -60,6 +62,7 @@ public class MainController implements Initializable {
                 fxmlLoader.setLocation(getClass().getResource("../view/loginLayout.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 500, 300);
                 Stage stage = new Stage();
+                stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
                 stage.setTitle("Login");
                 stage.setScene(scene);
                 stage.setResizable(false);
@@ -88,6 +91,7 @@ public class MainController implements Initializable {
             fxmlLoader.setLocation(getClass().getResource("../view/inserimentoEALayout.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 500, 300);
             Stage stage = new Stage();
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
             stage.setTitle("Inserimento evento avverso");
             stage.setScene(scene);
             stage.setResizable(false);

@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Control;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -54,6 +55,7 @@ public class RegistrazioneController {
             Scene scene = new Scene(fxmlLoader.load(), 500, 300);
             Stage stage = new Stage();
             stage.setTitle("Login");
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();

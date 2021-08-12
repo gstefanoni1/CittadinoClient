@@ -49,6 +49,7 @@ public class VisualizzaCentroController implements Initializable {
             fxmlLoader.setLocation(getClass().getResource("../view/ricercaCentroLayout.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             Stage stage = new Stage();
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
             stage.setTitle("Visualizza Centro Vaccinale");
             stage.setScene(scene);
             stage.setResizable(false);

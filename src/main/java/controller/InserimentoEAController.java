@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -61,6 +62,7 @@ public class InserimentoEAController {
             fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 500, 300);
             Stage stage = new Stage();
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
             stage.setTitle("Vaccinazioni Cittadini");
             stage.setScene(scene);
             stage.setResizable(false);
