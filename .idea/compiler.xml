@@ -20,12 +20,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="StefanoniTornaghiCittadinoClient" target="16" />
+      <module name="StefanoniTornaghiCittadinoClient" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="StefanoniTornaghiCittadinoClient" options="--add-modules java.base" />
+      <module name="StefanoniTornaghiCittadinoClient" options="" />
     </option>
   </component>
 </project>

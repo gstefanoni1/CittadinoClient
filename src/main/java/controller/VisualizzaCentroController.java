@@ -80,9 +80,9 @@ public class VisualizzaCentroController implements Initializable {
                 RicercaCentroController.centoVis.getCap());
 
         switch (RicercaCentroController.centoVis.getTipologia()) {
-            case "Ospedaliero" -> icon.setImage(new Image(String.valueOf(getClass().getResource("../img/ospedale.png"))));
-            case "Aziendale" -> icon.setImage(new Image(String.valueOf(getClass().getResource("../img/azienda.png"))));
-            case "Hub" -> icon.setImage(new Image(String.valueOf(getClass().getResource("../img/hub.png"))));
+            case "Ospedaliero": icon.setImage(new Image(String.valueOf(getClass().getResource("../img/ospedale.png")))); break;
+            case "Aziendale": icon.setImage(new Image(String.valueOf(getClass().getResource("../img/azienda.png")))); break;
+            case "Hub": icon.setImage(new Image(String.valueOf(getClass().getResource("../img/hub.png")))); break;
         }
 
         series0.setName("0");
@@ -113,12 +113,12 @@ public class VisualizzaCentroController implements Initializable {
     private void inserisciColonna(String nome, int cont, int severita){
 
         switch (severita){
-            case 0 -> series0.getData().add(new XYChart.Data(nome, cont));
-            case 1 -> series1.getData().add(new XYChart.Data(nome, cont));
-            case 2 -> series2.getData().add(new XYChart.Data(nome, cont));
-            case 3 -> series3.getData().add(new XYChart.Data(nome, cont));
-            case 4 -> series4.getData().add(new XYChart.Data(nome, cont));
-            case 5 -> series5.getData().add(new XYChart.Data(nome, cont));
+            case 0:series0.getData().add(new XYChart.Data(nome, cont)); break;
+            case 1:series1.getData().add(new XYChart.Data(nome, cont)); break;
+            case 2:series2.getData().add(new XYChart.Data(nome, cont)); break;
+            case 3:series3.getData().add(new XYChart.Data(nome, cont)); break;
+            case 4:series4.getData().add(new XYChart.Data(nome, cont)); break;
+            case 5:series5.getData().add(new XYChart.Data(nome, cont)); break;
         }
     }
 }

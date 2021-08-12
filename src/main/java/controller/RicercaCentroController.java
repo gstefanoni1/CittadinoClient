@@ -192,9 +192,9 @@ public class RicercaCentroController implements Initializable {
                 nomeCentro.setText(item.getNome());
                 tipoCentro.setText(item.getTipologia());
                 switch (item.getTipologia()) {
-                    case "Ospedaliero" -> icon.setImage(new Image(String.valueOf(getClass().getResource("../img/ospedale.png"))));
-                    case "Aziendale" -> icon.setImage(new Image(String.valueOf(getClass().getResource("../img/azienda.png"))));
-                    case "Hub" -> icon.setImage(new Image(String.valueOf(getClass().getResource("../img/hub.png"))));
+                    case "Ospedaliero":icon.setImage(new Image(String.valueOf(getClass().getResource("../img/ospedale.png")))); break;
+                    case "Aziendale":icon.setImage(new Image(String.valueOf(getClass().getResource("../img/azienda.png")))); break;
+                    case "Hub":icon.setImage(new Image(String.valueOf(getClass().getResource("../img/hub.png")))); break;
                 }
                 comuneCentro.setText(
                         item.getQualificatore() + " " +
