@@ -1,3 +1,2 @@
-Eventualmente layout estendibile per view ricerca e report eventi avversi
-Form registrazione sistemare scritte
+Eventualmente layout estendibile per report eventi avversi
 item in form ricerca centro vaccinale(inserire button visualizza)

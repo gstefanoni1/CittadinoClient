@@ -12,41 +12,20 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RicercaCentroController">
    <children>
       <Separator layoutX="192.0" layoutY="95.0" prefWidth="200.0" AnchorPane.bottomAnchor="326.8" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="70.0" />
-      <Label alignment="CENTER" layoutX="214.0" layoutY="14.0" text="Ricerca centro vaccinale" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Label alignment="CENTER" layoutX="214.0" layoutY="14.0" text="Ricerca centro vaccinale" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
          <font>
             <Font name="Segoe UI Light" size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="textFilter" layoutX="62.0" layoutY="73.0" styleClass="text-field" AnchorPane.bottomAnchor="297.4" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="310.0" AnchorPane.topAnchor="77.0" />
-      <Button fx:id="deleteButton" layoutX="350.0" layoutY="73.0" mnemonicParsing="false" onMouseClicked="#cancella" styleClass="deleteBut" stylesheets="@Style.css" text="x" AnchorPane.rightAnchor="310.0" AnchorPane.topAnchor="77.0">
-         <padding>
-            <Insets bottom="3.0" left="7.0" right="7.0" top="3.0" />
-         </padding>
-      </Button>
-      <Button fx:id="ricerca" layoutY="73.0" mnemonicParsing="false" onMouseClicked="#ricerca" styleClass="but" stylesheets="@Style.css" text="Ricerca" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="77.0" />
       <ListView fx:id="CentriList" layoutX="176.0" layoutY="138.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="111.0" />
-      <ChoiceBox fx:id="typeSearch" layoutX="350.0" layoutY="77.0" prefWidth="135.0" value="Nome centro" AnchorPane.rightAnchor="10.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:value="Nome centro" />
-               <String fx:value="Comune e Tipologia" />
-            </FXCollections>
-         </items>
-      </ChoiceBox>
-      <ChoiceBox fx:id="tipologia" disable="true" layoutX="290.0" layoutY="77.0" prefWidth="150.0" value="Ospedaliero" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="77.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:value="Ospedaliero" />
-               <String fx:value="Aziendale" />
-               <String fx:value="Hub" />
-            </FXCollections>
-         </items>
-      </ChoiceBox>
       <ImageView id="indietro" accessibleText="Indietro" fitHeight="26.0" fitWidth="20.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#indietro" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="8.0">
          <image>
             <Image url="@../img/indietro.png" />
@@ -57,5 +36,77 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <GridPane layoutY="124.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="26.6" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="77.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.39998779296874" minWidth="-Infinity" prefWidth="70.39998779296874" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="224.80001220703124" minWidth="-Infinity" prefWidth="224.80001220703124" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="148.79998779296875" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="8.0" />
+               </GridPane.margin>
+               <children>
+                  <Button fx:id="ricerca" mnemonicParsing="false" onMouseClicked="#ricerca" prefHeight="29.6" prefWidth="57.6" styleClass="but" stylesheets="@Style.css" text="Ricerca" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane prefHeight="30.0" prefWidth="145.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <ChoiceBox fx:id="tipologia" disable="true" prefHeight="30.4" prefWidth="152.8" value="Ospedaliero" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Ospedaliero" />
+                           <String fx:value="Aziendale" />
+                           <String fx:value="Hub" />
+                        </FXCollections>
+                     </items>
+                  </ChoiceBox>
+               </children>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <children>
+                  <ChoiceBox fx:id="typeSearch" prefHeight="30.4" prefWidth="152.0" value="Nome centro" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Nome centro" />
+                           <String fx:value="Comune e Tipologia" />
+                        </FXCollections>
+                     </items>
+                  </ChoiceBox>
+               </children>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+               <children>
+                  <TextField fx:id="textFilter" prefHeight="30.4" prefWidth="227.2" styleClass="text-field" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Button fx:id="deleteButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onMouseClicked="#cancella" styleClass="deleteBut" stylesheets="@Style.css" text="x" textAlignment="RIGHT" AnchorPane.rightAnchor="0.0">
+                     <padding>
+                        <Insets bottom="3.0" left="7.0" right="7.0" top="3.0" />
+                     </padding>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </AnchorPane>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
