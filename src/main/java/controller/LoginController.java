@@ -76,9 +76,6 @@ public class LoginController implements Initializable, PacketReceivedListener {
         else
             setColorBorder(password, "transparent");
 
-        //TODO Verificare corrispondenza user/pass a DB
-
-
         return verified;
     }
 

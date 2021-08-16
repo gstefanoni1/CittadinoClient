@@ -127,7 +127,6 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
     }
 
     private void popolaGrafico(List<String> eventiAvversi) {
-        //TODO prendere eventi avversi da DB
         //Variabili per il conteggio e la media di tutti gli eventi avversi
         //MalDiTesta 0, Febbre 1, DMA 2, Linfo 3, Tachicardia 4, CrisiIper 5
 
