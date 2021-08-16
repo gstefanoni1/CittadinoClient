@@ -1,6 +1,10 @@
 package controller;
 
+import client.ClientHandler;
+import client.PacketReceivedListener;
 import datatypes.CentroVaccinale;
+import datatypes.protocolmessages.GetCVResponse;
+import datatypes.protocolmessages.Packet;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -23,9 +27,10 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class RicercaCentroController implements Initializable {
+public class RicercaCentroController implements Initializable, PacketReceivedListener {
     @FXML
     private ChoiceBox<String> typeSearch;
     @FXML
@@ -38,6 +43,8 @@ public class RicercaCentroController implements Initializable {
     private ObservableList<CentroVaccinale> data;
 
     public static CentroVaccinale centoVis;
+
+    private ClientHandler client;
 
 
     public void indietro(MouseEvent mouseEvent) {
@@ -64,31 +71,13 @@ public class RicercaCentroController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        client = ClientHandler.getInstance();
+        this.client.addListener(GetCVResponse.class.toString(), this);
+        client.getAllCV();
         typeSearch.getSelectionModel()
                 .selectedItemProperty()
                 .addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue)
                         -> choiceEnable(newValue) );
-
-        //TODO Recuperare info
-        data = FXCollections.observableArrayList();
-        for(int i = 0; i < 5; i++){
-            data.add(new CentroVaccinale());
-            data.get(i).setId(i);
-            data.get(i).setNome("Centro" + i);
-            if(i == 0)
-                data.get(i).setTipologia("Hub");
-            else if((i%2)==0)
-                data.get(i).setTipologia("Ospedaliero");
-            else
-                data.get(i).setTipologia("Aziendale");
-            data.get(i).setComune("Comune" + i);
-        }
-        for(CentroVaccinale centro : data) {
-            System.out.println(centro.toString());
-        }
-        CentriList.setItems(data);
-
-        CentriList.setCellFactory(studentListView -> new CustomListCell());
     }
 
     private void choiceEnable(String value){
@@ -135,6 +124,22 @@ public class RicercaCentroController implements Initializable {
         CentriList.setCellFactory(studentListView -> new CustomListCell());
         CentriList.refresh();
         System.out.println(dataFiltered.toString());
+    }
+
+    @Override
+    public void onPacketReceived(Packet packet) {
+        if(packet instanceof GetCVResponse){
+            GetCVResponse res = (GetCVResponse) packet;
+            List<CentroVaccinale> list = res.getCvList();
+            for(CentroVaccinale cv : list){
+                System.out.println(cv);
+            }
+            if (res.isEsito()) {
+                data.addAll(list);
+                CentriList.setItems(data);
+                CentriList.setCellFactory(studentListView -> new CustomListCell());
+            }
+        }
     }
 
     private class CustomListCell extends ListCell<CentroVaccinale> {
