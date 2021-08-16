@@ -1,7 +1,15 @@
 package controller;
 
+import client.ClientHandler;
+import client.PacketReceivedListener;
+import datatypes.CentroVaccinale;
+import datatypes.EventoAvverso;
+import datatypes.TipologiaEventoAvverso;
+import datatypes.protocolmessages.Packet;
+import datatypes.protocolmessages.UserLoginResponse;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,8 +22,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class InserimentoEAController {
+public class InserimentoEAController implements Initializable, PacketReceivedListener {
     //region Variabili FX
     @FXML
     private CheckBox checkMalDiTesta;
@@ -55,6 +67,9 @@ public class InserimentoEAController {
     private TextArea noteCrisiIper;
     //endregion
 
+    private ClientHandler client;
+    private CentroVaccinale centro;
+
     public void indietro(MouseEvent mouseEvent) {
         Parent root;
         try {
@@ -78,8 +93,46 @@ public class InserimentoEAController {
     }
 
     public void inserisciEA(MouseEvent mouseEvent) {
-        //Salvo a DB le info
+        int i = 0;
+        if (checkMalDiTesta.isSelected()){
+           setEvento("Mal di testa", Integer.parseInt(severitaMalDiTesta.getValue()),
+                   noteMalDiTesta.getText());
+        }
+
+        if (checkFebbre.isSelected()){
+            setEvento("Febbre", Integer.parseInt(severitaFebbre.getValue()),
+                    noteFebbre.getText());
+        }
+
+        if (checkDMA.isSelected()){
+            setEvento("Dolori muscolari e articolari", Integer.parseInt(severitaDMA.getValue()),
+                    noteDMA.getText());
+        }
+
+        if (checkLinfo.isSelected()){
+            setEvento("Linfoadenopatia", Integer.parseInt(severitaLinfo.getValue()),
+                    noteLinfo.getText());
+        }
+
+        if (checkTachicardia.isSelected()){
+            setEvento("Tachicardia", Integer.parseInt(severitaTachicardia.getValue()),
+                    noteTachicardia.getText());
+        }
+
+        if (checkCrisiIper.isSelected()){
+            setEvento("Crisi ipertensiva", Integer.parseInt(severitaCrisiIper.getValue()),
+                    noteCrisiIper.getText());
+        }
+
        indietro(mouseEvent);
+    }
+
+    private void setEvento(String tipo, int severita, String note){
+        EventoAvverso evento = new EventoAvverso();
+        evento.setTipologia(new TipologiaEventoAvverso(tipo));
+        evento.setSeverita(severita);
+        evento.setNote(note);
+        client.insertEV(evento);
     }
 
     public void checkedMalDiTesta(MouseEvent mouseEvent) {
@@ -146,5 +199,15 @@ public class InserimentoEAController {
             noteCrisiIper.setDisable(true);
             noteCrisiIper.setText("");
         }
+    }
+
+    @Override
+    public void onPacketReceived(Packet packet) {
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        client = ClientHandler.getInstance();
     }
 }

@@ -50,7 +50,7 @@ public class ClientHandler {
      */
     private final Map<String, PacketReceivedListener> listeners;
 
-    private ClientHandler(){
+    public ClientHandler(){
         listeners = new ConcurrentHashMap<>();
     }
 

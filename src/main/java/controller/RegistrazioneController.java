@@ -1,7 +1,13 @@
 package controller;
 
+import client.ClientHandler;
+import client.PacketReceivedListener;
+import datatypes.Vaccinato;
+import datatypes.Vaccinazione;
+import datatypes.protocolmessages.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,10 +21,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegistrazioneController {
+public class RegistrazioneController implements Initializable, PacketReceivedListener {
 
     @FXML
     private TextField id;
@@ -45,52 +53,47 @@ public class RegistrazioneController {
     private static final String COD_FISCALE_REGEX = "^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$";
     private static Pattern pattern;
     private Matcher matcher;
+    private ClientHandler client;
+    private boolean verificaEmailDB = false, verificaUser = false, verficaIDVac = false;
 
 
     public void indietro(MouseEvent mouseEvent) {
-        Parent root;
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/loginLayout.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 500, 300);
-            Stage stage = new Stage();
-            stage.setTitle("Login");
-            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
-
-            Node source = (Node) mouseEvent.getSource();
-            Stage thisStage = (Stage) source.getScene().getWindow();
-            thisStage.close();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        chiudi();
     }
 
     public void registraCittadino(MouseEvent mouseEvent) {
+        client.requestUserIdCheck(username.getText());
+        client.requestEmailCheck(email.getText());
         if(!verificaCampi()){
             return;
         }
-        //Alert con id da dare al cittadino
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Informazioni cittadino: " + codFiscale.getText());
-        alert.setHeaderText(null);
-        alert.setContentText("ID vaccinazione: " + id.getText() + ". Registrazione completata");
-        alert.showAndWait();
-
-        indietro(mouseEvent);
+        Vaccinato v = new Vaccinato();
+        v.setCognome(cognome.getText());
+        v.setNome(nome.getText());
+        v.setCodiceFiscale(codFiscale.getText());
+        v.setEmail(email.getText());
+        v.setPassword(password.getText());
+        v.setUserId(username.getText());
+        client.requestUserRegistration(v, id.getText());
     }
 
     public void verificaId(MouseEvent mouseEvent) {
-        if(!(id.getText().equals(""))){
-            //TODO Verificare ID a DB
+        client.getVaccinationByKey(id.getText());
+    }
+
+    private void accediRegistrazione(GetVaccinationByKeyResponse res){
+        if(res.isEsito()){
             setColorBorder(id, "transparent");
             bottomPane.setDisable(false);
             topPane.setDisable(true);
-        }else
+        }else{
             setColorBorder(id, "red");
+            Alert alertLogin = new Alert(Alert.AlertType.ERROR);
+            alertLogin.setTitle("");
+            alertLogin.setHeaderText("ID non trovato");
+            alertLogin.showAndWait();
+            id.setText("");
+        }
     }
 
     private boolean verificaCampi() {
@@ -98,7 +101,7 @@ public class RegistrazioneController {
         if (username.getText().equals(""))
             verified = setColorBorder(username, "red");
         else {
-            if (verificaUsername(username.getText())) setColorBorder(username, "transparent");
+            if (verificaUser) setColorBorder(username, "transparent");
         }
 
 
@@ -150,7 +153,7 @@ public class RegistrazioneController {
         if (email.getText().equals(""))
             verified = setColorBorder(email, "red");
         else {
-            if (verificaEmail(email.getText()))
+            if (verificaEmail(email.getText()) && verificaEmailDB)
                 setColorBorder(email, "transparent");
             else {
                 verified = setColorBorder(email, "red");
@@ -167,10 +170,6 @@ public class RegistrazioneController {
         return verified;
     }
 
-    //TODO Verifica username su DB
-    private boolean verificaUsername(String text) {
-        return true;
-    }
 
     private boolean verificaEmail(String email) {
         pattern = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
@@ -187,5 +186,78 @@ public class RegistrazioneController {
     private boolean setColorBorder(Control component, String color){
         component.setStyle("-fx-border-color: " + color + ";");
         return false;
+    }
+
+    private void risultatoRegistrazione(UserRegistrationResponse res){
+        Alert alert;
+        if (res.isEsito()) {
+            //Alert con id da dare al cittadino
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informazioni cittadino: " + codFiscale.getText());
+            alert.setHeaderText(null);
+            alert.setContentText("ID vaccinazione: " + id.getText() + ". Registrazione completata");
+            alert.showAndWait();
+
+            chiudi();
+        }else{
+            //Alert con id da dare al cittadino
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Informazioni cittadino: " + codFiscale.getText());
+            alert.setHeaderText(null);
+            alert.setContentText("Registrazione fallita, riprovare");
+            alert.showAndWait();
+        }
+    }
+
+    private void chiudi() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("../view/loginLayout.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+            Stage stage = new Stage();
+            stage.setTitle("Login");
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+
+            Stage thisStage = (Stage) username.getScene().getWindow();
+            thisStage.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onPacketReceived(Packet packet) {
+        if(packet instanceof UserRegistrationResponse){
+            UserRegistrationResponse res = (UserRegistrationResponse) packet;
+            System.out.println("Registrazione: " + res.isEsito());
+            risultatoRegistrazione(res);
+
+        }
+        if(packet instanceof GetVaccinationByKeyResponse){
+            GetVaccinationByKeyResponse res = (GetVaccinationByKeyResponse) packet;
+            accediRegistrazione(res);
+        }
+        if(packet instanceof CheckUserIdResponse){
+            System.out.println("Esiste userId? " + ((CheckUserIdResponse)packet).isEsito());
+            verificaUser = ((CheckUserIdResponse)packet).isEsito();
+        }
+        if(packet instanceof CheckEmailResponse){
+            System.out.println("Esiste email? " + ((CheckEmailResponse)packet).isEsito());
+            verificaEmailDB = ((CheckEmailResponse)packet).isEsito();
+        }
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        client = ClientHandler.getInstance();
+        this.client.addListener(UserRegistrationResponse.class.toString(), this);
+        this.client.addListener(CheckUserIdResponse.class.toString(), this);
+        this.client.addListener(CheckEmailResponse.class.toString(), this);
+        this.client.addListener(GetVaccinationByKeyResponse.class.toString(), this);
     }
 }

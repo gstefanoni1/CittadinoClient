@@ -28,7 +28,7 @@
       </Label>
       <ListView fx:id="CentriList" focusTraversable="false" layoutX="176.0" layoutY="138.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="111.0">
          <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
+            <Cursor fx:constant="HAND" />
          </cursor></ListView>
       <ImageView id="indietro" accessibleText="Indietro" fitHeight="26.0" fitWidth="20.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#indietro" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="8.0">
          <image>
