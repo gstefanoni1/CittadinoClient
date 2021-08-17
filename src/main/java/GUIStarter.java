@@ -11,7 +11,7 @@ public class GUIStarter extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("view/mainLayout.fxml"));
         primaryStage.getIcons().add(new Image(String.valueOf(getClass().getResource("img/icon.png"))));
         primaryStage.setTitle("Vaccinazioni Cittadini");
-        primaryStage.setScene(new Scene(root, 500, 300));
+        primaryStage.setScene(new Scene(root, 700, 500));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

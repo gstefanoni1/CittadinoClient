@@ -212,10 +212,10 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
     private void chiudi() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/loginLayout.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+            fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 700, 500);
             Stage stage = new Stage();
-            stage.setTitle("Login");
+            stage.setTitle("Vaccinazioni Cittadini");
             stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
             stage.setScene(scene);
             stage.setResizable(false);

@@ -52,7 +52,7 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+            Scene scene = new Scene(fxmlLoader.load(), 700, 500);
             Stage stage = new Stage();
             stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
             stage.setTitle("Vaccinazioni Cittadini");
