@@ -20,7 +20,16 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * Classe per controllare finestra Menu principale con login
+ * @author Stefanoni Gianluca
+ * @version 1.0
+ */
 public class MainController implements Initializable, PacketReceivedListener {
+    /**
+     * Variabili per i componenti dell'interfaccia grafica
+     */
+    //region Variabili FX
     @FXML
     private Button visualizzaCentri;
     @FXML
@@ -31,15 +40,25 @@ public class MainController implements Initializable, PacketReceivedListener {
     private TextField username;
     @FXML
     private PasswordField password;
-
+    //endregion
+    /**
+     * client è l'istanza del client connesso al server
+     */
     private static ClientHandler client;
+    /**
+     * Variabile utilizzata per riconoscere l'utente dopo la login
+     */
     private static Vaccinato user;
-
+    /**
+     * Metodo invocato durante l'inizializzazione della finestra per: settare il client e gestire la visualizzazione del
+     * form di login
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         client = new ClientHandler();
         user = null;
-        client.addListener(UserLoginResponse.class.toString(), this);
         try {
             client.connect();
         } catch (Exception e) {
@@ -53,7 +72,13 @@ public class MainController implements Initializable, PacketReceivedListener {
             loginPane.setVisible(true);
             disconnetti.setVisible(false);
         }
+        client.addListener(UserLoginResponse.class.toString(), this);
     }
+
+    /**
+     * Metodo che apre la finestra di ricerca dei centri vaccinali
+     * @param mouseEvent
+     */
     public void visualizzaInfoCentri(MouseEvent mouseEvent) {
         Parent root;
         try {
@@ -78,14 +103,20 @@ public class MainController implements Initializable, PacketReceivedListener {
         }
     }
 
+    /**
+     * Metodo che disconnette l'utente corrente
+     * @param mouseEvent
+     */
     public void disconnect(MouseEvent mouseEvent) {
             //Disconnetti
-            client.disconnect();
             user = null;
             loginPane.setVisible(true);
             disconnetti.setVisible(false);
     }
-
+    /**
+     * Metodo per gestire la ricezione del pacchetto UserLoginResponse
+     * @param packet Pacchetto ricevuto
+     */
     @Override
     public void onPacketReceived(Packet packet) {
         if(packet instanceof UserLoginResponse){
@@ -113,6 +144,11 @@ public class MainController implements Initializable, PacketReceivedListener {
         user = v;
     }
 
+    /**
+     * Metodo per chiedere al server se c'è la corrispondenza di username e password, in caso affermaivo l'utente viene
+     * loggato sul client
+     * @param mouseEvent
+     */
     public void loginRequest(MouseEvent mouseEvent) {
         if(!verificaCampi()) return;
 
@@ -120,6 +156,10 @@ public class MainController implements Initializable, PacketReceivedListener {
 
     }
 
+    /**
+     * Metodo per aprire la finstra di registrazione
+     * @param mouseEvent
+     */
     public void registrazione(MouseEvent mouseEvent) {
         Parent root;
         try {
@@ -141,6 +181,11 @@ public class MainController implements Initializable, PacketReceivedListener {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Metodo che verifica se i campi di form di login sono compilati correttamente
+     * @return
+     */
     private boolean verificaCampi() {
         boolean verified = true;
         if(username.getText().equals(""))
@@ -155,7 +200,12 @@ public class MainController implements Initializable, PacketReceivedListener {
 
         return verified;
     }
-
+    /**
+     * Metodo per impostare il colore del bordo nei componenti grafici
+     * @param component Componente da modificare
+     * @param color Colore del bordo da impostare
+     * @return
+     */
     private boolean setColorBorder(Control component, String color){
         component.setStyle("-fx-border-color: " + color + ";");
         return false;

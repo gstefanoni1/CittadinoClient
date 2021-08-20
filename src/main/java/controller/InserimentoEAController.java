@@ -6,17 +6,16 @@ import datatypes.CentroVaccinale;
 import datatypes.EventoAvverso;
 import datatypes.TipologiaEventoAvverso;
 import datatypes.protocolmessages.Packet;
+import datatypes.protocolmessages.RegistrationEVResponse;
 import datatypes.protocolmessages.UserLoginResponse;
+import datatypes.protocolmessages.UserRegistrationResponse;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -26,8 +25,15 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
+/**
+ * Classe per controllare finestra di Inserimento evento avverso
+ * @author Stefanoni Gianluca
+ * @version 1.0
+ */
 public class InserimentoEAController implements Initializable, PacketReceivedListener {
+    /**
+     * Variabili per i componenti dell'interfaccia grafica
+     */
     //region Variabili FX
     @FXML
     private CheckBox checkMalDiTesta;
@@ -66,32 +72,27 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
     @FXML
     private TextArea noteCrisiIper;
     //endregion
-
+    /**
+     * client è l'istanza del client connesso al server
+     */
     private ClientHandler client;
+    /**
+     * centro è il centro di riferimento a cui si vuole aggiungere gli eventi avversi
+     */
     private CentroVaccinale centro;
 
+    /**
+     * Metodo invocato per tornare alla schermata di visualizazione delle info
+     * @param mouseEvent
+     */
     public void indietro(MouseEvent mouseEvent) {
-        Parent root;
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 500, 300);
-            Stage stage = new Stage();
-            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
-            stage.setTitle("Vaccinazioni Cittadini");
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
-
-            Node source = (Node) mouseEvent.getSource();
-            Stage thisStage = (Stage) source.getScene().getWindow();
-            thisStage.close();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        chiudi();
     }
 
+    /**
+     * Metodo che controlla i campi e invia le informazioni al server
+     * @param mouseEvent
+     */
     public void inserisciEA(MouseEvent mouseEvent) {
         int i = 0;
         if (checkMalDiTesta.isSelected()){
@@ -127,6 +128,12 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
        indietro(mouseEvent);
     }
 
+    /**
+     * Crea il singolo evento avverso e lo manda a server
+     * @param tipo Tipologia di evento
+     * @param severita Severità dell'evento
+     * @param note Note opzionali aggiuntive riguardo l'evento
+     */
     private void setEvento(String tipo, int severita, String note){
         EventoAvverso evento = new EventoAvverso();
         evento.setTipologia(new TipologiaEventoAvverso(tipo));
@@ -135,6 +142,12 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
         client.insertEV(evento);
     }
 
+    //region Metodi per abilitazione e disabilitazione dei campi di sevreirà e note opzionali dei singoli eventi avversi
+    /**
+     * Metodi per gestire l'abilitazione e la disabilitazione dei campi di severita e note opzionali della tipologia
+     * Mal di testa
+     * @param mouseEvent
+     */
     public void checkedMalDiTesta(MouseEvent mouseEvent) {
         if(checkMalDiTesta.isSelected()){
             severitaMalDiTesta.setDisable(false);
@@ -145,7 +158,11 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
             noteMalDiTesta.setText("");
         }
     }
-
+    /**
+     * Metodi per gestire l'abilitazione e la disabilitazione dei campi di severita e note opzionali della tipologia
+     * Mal di testa
+     * @param mouseEvent
+     */
     public void checkedFebbre(MouseEvent mouseEvent) {
         if(checkFebbre.isSelected()){
             severitaFebbre.setDisable(false);
@@ -156,7 +173,11 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
             noteFebbre.setText("");
         }
     }
-
+    /**
+     * Metodi per gestire l'abilitazione e la disabilitazione dei campi di severita e note opzionali della tipologia
+     * Febbre
+     * @param mouseEvent
+     */
     public void checkedDMA(MouseEvent mouseEvent) {
         if(checkDMA.isSelected()){
             severitaDMA.setDisable(false);
@@ -167,7 +188,11 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
             noteDMA.setText("");
         }
     }
-
+    /**
+     * Metodi per gestire l'abilitazione e la disabilitazione dei campi di severita e note opzionali della tipologia
+     * Dolori muscolari e articolari
+     * @param mouseEvent
+     */
     public void checkedLinfo(MouseEvent mouseEvent) {
         if(checkLinfo.isSelected()){
             severitaLinfo.setDisable(false);
@@ -178,7 +203,11 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
             noteLinfo.setText("");
         }
     }
-
+    /**
+     * Metodi per gestire l'abilitazione e la disabilitazione dei campi di severita e note opzionali della tipologia
+     * Linfoadenopatia
+     * @param mouseEvent
+     */
     public void checkedTachicardia(MouseEvent mouseEvent) {
         if(checkTachicardia.isSelected()){
             severitaTachicardia.setDisable(false);
@@ -189,7 +218,11 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
             noteTachicardia.setText("");
         }
     }
-
+    /**
+     * Metodi per gestire l'abilitazione e la disabilitazione dei campi di severita e note opzionali della tipologia
+     * Tachicardia
+     * @param mouseEvent
+     */
     public void checkedCrisiIper(MouseEvent mouseEvent) {
         if(checkCrisiIper.isSelected()){
             severitaCrisiIper.setDisable(false);
@@ -200,14 +233,64 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
             noteCrisiIper.setText("");
         }
     }
-
+    //endregion
+    /**
+     * Metodo per gestire la ricezione del pacchetto RegistrationEVResponse
+     * @param packet Pacchetto ricevuto
+     */
     @Override
     public void onPacketReceived(Packet packet) {
+        if (packet instanceof RegistrationEVResponse){
+            RegistrationEVResponse res = (RegistrationEVResponse) packet;
+            Alert alert;
+            if (res.isEsito()) {
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Informazioni registrate");
+                alert.setHeaderText(null);
+                alert.setContentText("Registrazione completata");
+                alert.showAndWait();
+
+                chiudi();
+            }else{
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Errore registrazione");
+                alert.setHeaderText(null);
+                alert.setContentText("Registrazione fallita, riprovare");
+                alert.showAndWait();
+            }
+        }
+    }
+    /**
+     * Metodo invocato per tornare alla schermata di visualizazione delle info
+     */
+    private void chiudi() {Parent root;
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+            Stage stage = new Stage();
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
+            stage.setTitle("Vaccinazioni Cittadini");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+
+            Stage thisStage = (Stage) checkMalDiTesta.getScene().getWindow();
+            thisStage.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
-
+    /**
+     * Metodo invocato durante l'inizializzazione della finestra per: settare il client
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         client = ClientHandler.getInstance();
+        this.client.addListener(RegistrationEVResponse.class.toString(), this);
     }
 }

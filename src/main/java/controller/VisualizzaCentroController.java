@@ -33,7 +33,16 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * Classe per controllare gli eventi e visualizzazione info nella finestra Visualizza centro vaccinale
+ * @author Stefanoni Gianluca
+ * @version 1.0
+ */
 public class VisualizzaCentroController implements Initializable, PacketReceivedListener {
+    /**
+     * Variabili per i componenti dell'interfaccia grafica
+     */
+    //region Variabili FXML
     @FXML
     private Label nomeCentro;
     @FXML
@@ -44,13 +53,17 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
     private ImageView icon;
     @FXML
     private BarChart barChart;
-
     @FXML
     private Button eventoAvverso;
-
+    //endregion
+    /**
+     * client è l'istanza del client connesso al server
+     */
     private ClientHandler client;
 
-    //Creo le diverse colonne
+    /**
+     * Variabili per la creaione delle colonne del grafico
+     */
     private XYChart.Series series0 = new XYChart.Series();
     private XYChart.Series series1 = new XYChart.Series();
     private XYChart.Series series2 = new XYChart.Series();
@@ -58,6 +71,10 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
     private XYChart.Series series4 = new XYChart.Series();
     private XYChart.Series series5 = new XYChart.Series();
 
+    /**
+     * Metodo invocato per tornare alla schermata di ricerca centri
+     * @param mouseEvent
+     */
     public void indietro(MouseEvent mouseEvent) {
         Parent root;
         try {
@@ -81,7 +98,12 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
             e.printStackTrace();
         }
     }
-
+    /**
+     * Metodo invocato durante l'inizializzazione della finestra, per: settare il client, visualizzare le info del
+     * centro selzionato e richiedere dati per centro per comporre il grafico barchart con gli eventi avversi
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -119,6 +141,9 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
 
     }
 
+    /**
+     * Metodo invocato dal initialize, per mostrare il bottone di inserimento evento avverso
+     */
     private void visualizzaBottoneEventiAvversi() {
         //TODO getCentro da username oppure inserire variabile in vaccinato
         if(Objects.isNull(MainController.getUser()) ){
@@ -126,20 +151,24 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
         }
     }
 
+    /**
+     * Metodo per inserire i dati nel grafico
+     * @param eventiAvversi Lista contenente i dati ricevuti dal server
+     */
     private void popolaGrafico(List<String> eventiAvversi) {
-        //Variabili per il conteggio e la media di tutti gli eventi avversi
-        //MalDiTesta 0, Febbre 1, DMA 2, Linfo 3, Tachicardia 4, CrisiIper 5
-
-
         for(int i = 0; i < eventiAvversi.size();){
             inserisciColonna(eventiAvversi.get(i++), Integer.parseInt(eventiAvversi.get(i++)),
                     Math.round(Float.parseFloat(eventiAvversi.get(i++))));
         }
 
         barChart.getData().addAll(series0, series1, series2, series3, series4, series5);
-
     }
-
+    /**
+     * Metodo per l'inserimento delle singole colonne in base alla severità del singolo evento
+     * @param nome Nome da dare alla colonna
+     * @param cont Numero di eventi segnalati per quella tipologia
+     * @param severita Severità media arrotondata
+     */
     private void inserisciColonna(String nome, int cont, int severita){
 
         switch (severita){
@@ -152,6 +181,10 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
         }
     }
 
+    /**
+     * Metodo invocato dal bottone @eventoAvverso per aprire la finestra di inserimento
+     * @param mouseEvent
+     */
     public void inserisciEA(MouseEvent mouseEvent) {
         Parent root;
         try {
@@ -175,7 +208,10 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
             e.printStackTrace();
         }
     }
-
+    /**
+     * Metodo per gestire la ricezione del pacchetto GetReportResponse e inserire i dati del report
+     * @param packet Pacchetto ricevuto
+     */
     @Override
     public void onPacketReceived(Packet packet) {
         if(packet instanceof GetReportResponse){

@@ -25,10 +25,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/**
+ * Classe per controllare finestra di Registrazione dell'utente
+ * @author Stefanoni Gianluca
+ * @version 1.0
+ */
 public class RegistrazioneController implements Initializable, PacketReceivedListener {
-
-    @FXML
+    /**
+     * Variabili per i componenti dell'interfaccia grafica
+     */
+    //region Variabili FXML
     private TextField id;
     @FXML
     private TextField nome;
@@ -48,19 +54,34 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
     private AnchorPane topPane;
     @FXML
     private AnchorPane bottomPane;
-
+    //endregion
+    /**
+     * Variabili per verificare la validità di Codice fiscale e Email
+     */
     private static final String EMAIL_REGEX = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
     private static final String COD_FISCALE_REGEX = "^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$";
     private static Pattern pattern;
     private Matcher matcher;
+    /**
+     * client è l'istanza del client connesso al server
+     */
     private ClientHandler client;
+    /**
+     * Variabili per memorizzare se il controllo è andato a buon fine
+     */
     private boolean verificaEmailDB = false, verificaUser = false, verficaIDVac = false;
 
-
+    /**
+     * Metodo invocato per tornare alla schermata principale dell'applicazione
+     * @param mouseEvent
+     */
     public void indietro(MouseEvent mouseEvent) {
         chiudi();
     }
-
+    /**
+     * Metodo che invoca la verifica dei capi e invia le informazioni al server
+     * @param mouseEvent
+     */
     public void registraCittadino(MouseEvent mouseEvent) {
         client.requestUserIdCheck(username.getText());
         client.requestEmailCheck(email.getText());
@@ -76,11 +97,18 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
         v.setUserId(username.getText());
         client.requestUserRegistration(v, id.getText());
     }
-
+    /**
+     * Metodo che chiede al server di verificare se l'id della vaccinazione è registrato a DB
+     * @param mouseEvent
+     */
     public void verificaId(MouseEvent mouseEvent) {
         client.getVaccinationByKey(id.getText());
     }
-
+    /**
+     * Metodo invocato dopo aver ricevuto la risposta dal server per la verifica dell'id della vaccinazione, in caso
+     * affermativo consebte di procedere con la registrazione
+     * @param res Esito della chiamata al server
+     */
     private void accediRegistrazione(GetVaccinationByKeyResponse res){
         if(res.isEsito()){
             setColorBorder(id, "transparent");
@@ -95,7 +123,10 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
             id.setText("");
         }
     }
-
+    /**
+     * Verifica di tutti i campi di registrazione
+     * @return
+     */
     private boolean verificaCampi() {
         boolean verified = true;
         if (username.getText().equals(""))
@@ -169,25 +200,41 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
 
         return verified;
     }
-
-
+    /**
+     * Verifica con regex dell'email
+     * @param email Email da verificare
+     * @return
+     */
     private boolean verificaEmail(String email) {
         pattern = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
         matcher = pattern.matcher(email);
         return matcher.matches();
     }
-
+    /**
+     * Verifica con regex del codice fiscale
+     * @param codFiscale Codice fiscale da verificare
+     * @return
+     */
     private boolean verificaCodFiscale(String codFiscale) {
         pattern = Pattern.compile(COD_FISCALE_REGEX, Pattern.CASE_INSENSITIVE);
         matcher = pattern.matcher(codFiscale);
         return matcher.matches();
     }
-
+    /**
+     * Metodo per impostare il colore del bordo nei componenti grafici
+     * @param component Componente da modificare
+     * @param color Colore del bordo da impostare
+     * @return
+     */
     private boolean setColorBorder(Control component, String color){
         component.setStyle("-fx-border-color: " + color + ";");
         return false;
     }
-
+    /**
+     * Metodo invocato dopo aver riceuto la risposta dal server riguardo la registrazione dell'utente, viene comunicato
+     * l'esito anche all'utente
+     * @param res
+     */
     private void risultatoRegistrazione(UserRegistrationResponse res){
         Alert alert;
         if (res.isEsito()) {
@@ -208,7 +255,9 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
             alert.showAndWait();
         }
     }
-
+    /**
+     * Metodo invocato per chiudere la finestra e aprire il Menu principale
+     */
     private void chiudi() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -228,7 +277,11 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
             e.printStackTrace();
         }
     }
-
+    /**
+     * Metodo per gestire la ricezione dei pacchetti: UserRegistrationResponse, GetVaccinationByKeyResponse,
+     * CheckUserIdResponse e CheckEmailResponse
+     * @param packet Pacchetto ricevuto
+     */
     @Override
     public void onPacketReceived(Packet packet) {
         if(packet instanceof UserRegistrationResponse){
@@ -251,7 +304,11 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
         }
 
     }
-
+    /**
+     * Metodo invocato durante l'inizializzazione della finestra per: settare il client
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         client = ClientHandler.getInstance();
