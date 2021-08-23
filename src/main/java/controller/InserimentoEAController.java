@@ -272,7 +272,7 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
             stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
             stage.setTitle("Vaccinazioni Cittadini");
             stage.setScene(scene);
-            stage.setResizable(false);
+            //stage.setResizable(false);
             stage.show();
 
             Stage thisStage = (Stage) checkMalDiTesta.getScene().getWindow();

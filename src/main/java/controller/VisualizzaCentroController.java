@@ -16,6 +16,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,10 +30,7 @@ import javax.swing.event.CaretListener;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Classe per controllare gli eventi e visualizzazione info nella finestra Visualizza centro vaccinale
@@ -64,12 +63,11 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
     /**
      * Variabili per la creaione delle colonne del grafico
      */
-    private XYChart.Series series0 = new XYChart.Series();
-    private XYChart.Series series1 = new XYChart.Series();
-    private XYChart.Series series2 = new XYChart.Series();
-    private XYChart.Series series3 = new XYChart.Series();
-    private XYChart.Series series4 = new XYChart.Series();
     private XYChart.Series series5 = new XYChart.Series();
+    private XYChart.Series series4 = new XYChart.Series();
+    private XYChart.Series series3 = new XYChart.Series();
+    private XYChart.Series series2 = new XYChart.Series();
+    private XYChart.Series series1 = new XYChart.Series();
 
     /**
      * Metodo invocato per tornare alla schermata di ricerca centri
@@ -131,12 +129,11 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
             case "Hub": icon.setImage(new Image(String.valueOf(getClass().getResource("../img/hub.png")))); break;
         }
 
-        series0.setName("0");
-        series1.setName("1");
-        series2.setName("2");
-        series3.setName("3");
-        series4.setName("4");
         series5.setName("5");
+        series4.setName("4");
+        series3.setName("3");
+        series2.setName("2");
+        series1.setName("1");
 
 
     }
@@ -161,7 +158,12 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
                     Math.round(Float.parseFloat(eventiAvversi.get(i++))));
         }
 
-        barChart.getData().addAll(series0, series1, series2, series3, series4, series5);
+        barChart.getData().addAll(series5, series4, series3, series2, series1);
+        System.out.println(series1.getData().toString());
+        System.out.println(series2.getData().toString());
+        System.out.println(series3.getData().toString());
+        System.out.println(series4.getData().toString());
+        System.out.println(series5.getData().toString());
     }
     /**
      * Metodo per l'inserimento delle singole colonne in base alla severità del singolo evento
@@ -172,7 +174,6 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
     private void inserisciColonna(String nome, int cont, int severita){
 
         switch (severita){
-            case 0:series0.getData().add(new XYChart.Data(nome, cont)); break;
             case 1:series1.getData().add(new XYChart.Data(nome, cont)); break;
             case 2:series2.getData().add(new XYChart.Data(nome, cont)); break;
             case 3:series3.getData().add(new XYChart.Data(nome, cont)); break;
