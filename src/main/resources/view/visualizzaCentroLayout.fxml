@@ -28,7 +28,7 @@
             <Font name="Microsoft Sans Serif" size="24.0" />
          </font></Label>
       <Label fx:id="indirizzo" layoutX="14.0" layoutY="93.0" maxHeight="50.0" maxWidth="290.0" text="Indirizzo" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="212.0" />
-      <Label fx:id="tipologia" layoutX="129.0" layoutY="60.0" maxWidth="290.0" text="Tipologia" textFill="#890202" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="60.0">
+      <Label fx:id="tipologia" layoutX="129.0" layoutY="60.0" maxWidth="290.0" text="Tipologia" textFill="#890202" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="62.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
