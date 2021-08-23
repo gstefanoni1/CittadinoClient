@@ -102,14 +102,6 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
                 .selectedItemProperty()
                 .addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue)
                         -> choiceEnable(newValue) );
-        data = FXCollections.observableArrayList();
-        CentroVaccinale test = new CentroVaccinale();
-        test.setNome("test");
-        test.setTipologia("tipo");
-        test.setComune("Com");
-        data.add(test);
-        CentriList.setItems(data);
-        CentriList.setCellFactory(CentriListView -> new CustomListCell());
     }
     /**
      * Metodo per cambiare il tipo di ricerca (nome centro || comune + tipologia)

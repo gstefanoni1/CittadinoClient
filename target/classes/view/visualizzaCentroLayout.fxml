@@ -23,23 +23,21 @@
                 <Font size="14.0" />
             </font>
         </Label>
-      <Label fx:id="nomeCentro" layoutX="15.0" layoutY="104.0" maxHeight="100.0" maxWidth="290.0" text="Nome Centro" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="80.0">
+      <Label fx:id="nomeCentro" layoutX="15.0" layoutY="104.0" maxHeight="100.0" maxWidth="290.0" text="Nome Centro" textFill="#002647" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="110.0">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="Microsoft Sans Serif" size="24.0" />
          </font></Label>
-      <Label fx:id="indirizzo" layoutX="14.0" layoutY="93.0" maxHeight="50.0" maxWidth="290.0" text="Indirizzo" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="160.0">
+      <Label fx:id="indirizzo" layoutX="14.0" layoutY="93.0" maxHeight="50.0" maxWidth="290.0" text="Indirizzo" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="212.0" />
+      <Label fx:id="tipologia" layoutX="129.0" layoutY="60.0" maxWidth="290.0" text="Tipologia" textFill="#890202" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="60.0">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="tipologia" layoutX="14.0" layoutY="203.0" maxWidth="290.0" text="Tipologia" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="220.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Separator layoutX="150.0" layoutY="111.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="290.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="150.0" />
-      <Separator layoutX="124.0" layoutY="200.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="290.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="210.0" />
-      <ImageView fx:id="icon" fitHeight="50.0" fitWidth="100.0" layoutX="8.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" />
+      <Separator layoutX="150.0" layoutY="111.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="290.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="180.0" />
+      <ImageView fx:id="icon" fitHeight="80.0" fitWidth="100.0" layoutX="8.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="30.0">
+         <image>
+            <Image url="@../img/ospedale.png" />
+         </image></ImageView>
       <BarChart fx:id="barChart" barGap="2.0" categoryGap="3.0" layoutX="250.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="240.0" title="Report eventi avversi" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <xAxis>
           <CategoryAxis label="Severità Media" side="BOTTOM" />
@@ -48,6 +46,16 @@
           <NumberAxis label="Numero casi" side="LEFT" />
         </yAxis>
       </BarChart>
-      <Button fx:id="eventoAvverso" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#inserisciEA" prefHeight="30.0" prefWidth="290.0" styleClass="but" text="Inserisci evento avverso" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
+      <Button fx:id="eventoAvverso" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#inserisciEA" prefHeight="30.0" prefWidth="290.0" styleClass="but" text="Inserisci evento avverso" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="260.0" />
+      <Label layoutX="20.0" layoutY="191.0" text="Indirizzo:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="190.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="-85.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="193.0">
+         <image>
+            <Image url="@../img/maps.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
