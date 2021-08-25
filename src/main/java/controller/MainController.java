@@ -91,6 +91,10 @@ public class MainController implements Initializable, PacketReceivedListener {
         }
     }
 
+    /**
+     * Metodo per ritentare la connesione dopo che è fallita
+     * @param mouseEvent
+     */
     public void retryConnect(MouseEvent mouseEvent) {
         serverError.setDisable(true);
         try {
