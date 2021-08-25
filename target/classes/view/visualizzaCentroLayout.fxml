@@ -28,7 +28,7 @@
             <Font name="Microsoft Sans Serif" size="24.0" />
          </font></Label>
       <Label fx:id="indirizzo" layoutX="14.0" layoutY="93.0" maxHeight="50.0" maxWidth="290.0" text="Indirizzo" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="212.0" />
-      <Label fx:id="tipologia" layoutX="129.0" layoutY="60.0" maxWidth="290.0" text="Tipologia" textFill="#890202" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="60.0">
+      <Label fx:id="tipologia" layoutX="129.0" layoutY="60.0" maxWidth="290.0" text="Tipologia" textFill="#890202" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="62.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -47,12 +47,12 @@
         </yAxis>
       </BarChart>
       <Button fx:id="eventoAvverso" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#inserisciEA" prefHeight="30.0" prefWidth="290.0" styleClass="but" text="Inserisci evento avverso" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="260.0" />
-      <Label layoutX="20.0" layoutY="191.0" text="Indirizzo:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="190.0">
+      <Label layoutX="20.0" layoutY="191.0" text="Indirizzo:" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="190.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="-85.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="193.0">
+      <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="-85.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="190.0">
          <image>
             <Image url="@../img/maps.png" />
          </image>

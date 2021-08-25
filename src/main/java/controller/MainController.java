@@ -57,10 +57,15 @@ public class MainController implements Initializable, PacketReceivedListener {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        client = new ClientHandler();
+        /*TODO ERRORE LA CONNECT VA FATTA UNA VOLTA SOLA
+          IN QUESTO MODO VIENE FATTA OGNI VOLTA CHE SI AVVIA IL CONTROLLER*/
+        client = ClientHandler.getInstance();
         user = null;
         try {
             client.connect();
+            /*TODO LA CONNECT RESTITUISCE TRUE SE LA CONNESSIONE E' ANDATA A BUON FINE
+              QUINDI GESTISCI COSA FARE QUANDO NON VA A BUON FINE, AD ESEMPIO UN ALERT DIALOG
+              E POI RIPROVI A FARE LA CONNESSIONE*/
         } catch (Exception e) {
             e.printStackTrace();
         }
