@@ -125,6 +125,14 @@ public class ClientHandler {
     }
 
     /**
+     * Verifica stato della connessione
+     * @return true se il client è connesso, false altrimenti
+     */
+    public boolean isConnected(){
+        return session != null && session.isConnected();
+    }
+
+    /**
      * Aggiunge un listener che verrà informato all'arrivo di un pacchetto
      * @param event pacchetto da ricevere
      * @param ipr ricevente

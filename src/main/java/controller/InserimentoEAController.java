@@ -5,14 +5,13 @@ import client.PacketReceivedListener;
 import datatypes.CentroVaccinale;
 import datatypes.EventoAvverso;
 import datatypes.TipologiaEventoAvverso;
+import datatypes.protocolmessages.GetEvTypologiesResponse;
 import datatypes.protocolmessages.Packet;
 import datatypes.protocolmessages.RegistrationEVResponse;
-import datatypes.protocolmessages.UserLoginResponse;
-import datatypes.protocolmessages.UserRegistrationResponse;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -22,8 +21,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 /**
  * Classe per controllare finestra di Inserimento evento avverso
@@ -81,6 +78,8 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
      */
     private CentroVaccinale centro;
 
+    private ObservableList<TipologiaEventoAvverso> tipoeventi;
+
     /**
      * Metodo invocato per tornare alla schermata di visualizazione delle info
      * @param mouseEvent
@@ -96,32 +95,32 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
     public void inserisciEA(MouseEvent mouseEvent) {
         int i = 0;
         if (checkMalDiTesta.isSelected()){
-           setEvento("Mal di testa", Integer.parseInt(severitaMalDiTesta.getValue()),
+           setEvento(tipoeventi.get(0).getNome(), Integer.parseInt(severitaMalDiTesta.getValue()),
                    noteMalDiTesta.getText());
         }
 
         if (checkFebbre.isSelected()){
-            setEvento("Febbre", Integer.parseInt(severitaFebbre.getValue()),
+            setEvento(tipoeventi.get(1).getNome(), Integer.parseInt(severitaFebbre.getValue()),
                     noteFebbre.getText());
         }
 
         if (checkDMA.isSelected()){
-            setEvento("Dolori muscolari e articolari", Integer.parseInt(severitaDMA.getValue()),
+            setEvento(tipoeventi.get(2).getNome(), Integer.parseInt(severitaDMA.getValue()),
                     noteDMA.getText());
         }
 
         if (checkLinfo.isSelected()){
-            setEvento("Linfoadenopatia", Integer.parseInt(severitaLinfo.getValue()),
+            setEvento(tipoeventi.get(3).getNome(), Integer.parseInt(severitaLinfo.getValue()),
                     noteLinfo.getText());
         }
 
         if (checkTachicardia.isSelected()){
-            setEvento("Tachicardia", Integer.parseInt(severitaTachicardia.getValue()),
+            setEvento(tipoeventi.get(4).getNome(), Integer.parseInt(severitaTachicardia.getValue()),
                     noteTachicardia.getText());
         }
 
         if (checkCrisiIper.isSelected()){
-            setEvento("Crisi ipertensiva", Integer.parseInt(severitaCrisiIper.getValue()),
+            setEvento(tipoeventi.get(5).getNome(), Integer.parseInt(severitaCrisiIper.getValue()),
                     noteCrisiIper.getText());
         }
 
@@ -259,6 +258,20 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
                 alert.showAndWait();
             }
         }
+
+        if(packet instanceof GetEvTypologiesResponse){
+            GetEvTypologiesResponse res = (GetEvTypologiesResponse) packet;
+            if (res.isEsito()){
+               tipoeventi.addAll(res.getTypologies());
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Errore");
+                alert.setHeaderText(null);
+                alert.setContentText("Impossibile recuperare tiopologia Eventi");
+                alert.showAndWait();
+                chiudi();
+            }
+        }
     }
     /**
      * Metodo invocato per tornare alla schermata di visualizazione delle info
@@ -266,13 +279,12 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
     private void chiudi() {Parent root;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+            fxmlLoader.setLocation(getClass().getResource("../view/visualizzaCentroLayout.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             Stage stage = new Stage();
             stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
-            stage.setTitle("Vaccinazioni Cittadini");
+            stage.setTitle("Info " + RicercaCentroController.centoVis.getId());
             stage.setScene(scene);
-            //stage.setResizable(false);
             stage.show();
 
             Stage thisStage = (Stage) checkMalDiTesta.getScene().getWindow();
@@ -291,6 +303,7 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         client = ClientHandler.getInstance();
+        this.client.addListener(GetEvTypologiesResponse.class.toString(), this);
         this.client.addListener(RegistrationEVResponse.class.toString(), this);
     }
 }

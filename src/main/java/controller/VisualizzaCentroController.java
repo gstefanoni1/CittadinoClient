@@ -3,9 +3,7 @@ package controller;
 import client.ClientHandler;
 import client.PacketReceivedListener;
 import datatypes.CentroVaccinale;
-import datatypes.EventoAvverso;
 import datatypes.ReportCV;
-import datatypes.TipologiaEventoAvverso;
 import datatypes.protocolmessages.GetCVResponse;
 import datatypes.protocolmessages.GetReportResponse;
 import datatypes.protocolmessages.Packet;
@@ -16,8 +14,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,9 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import javax.swing.event.CaretListener;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.*;
 

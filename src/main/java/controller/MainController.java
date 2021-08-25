@@ -67,17 +67,19 @@ public class MainController implements Initializable, PacketReceivedListener {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         client = ClientHandler.getInstance();
         user = null;
-        try {
-            if (client.connect()) {
-                serverError.setVisible(false);
-                client.addListener(UserLoginResponse.class.toString(), this);
-            } else {
-                serverError.setVisible(true);
-                ricercaImg.setOpacity(0.5);
-                homePane.setDisable(true);
+        if(!client.isConnected()){
+            try {
+                if (client.connect()) {
+                    serverError.setVisible(false);
+                    client.addListener(UserLoginResponse.class.toString(), this);
+                } else {
+                    serverError.setVisible(true);
+                    ricercaImg.setOpacity(0.5);
+                    homePane.setDisable(true);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
         if (!(Objects.isNull(user))) {
             loginPane.setVisible(false);

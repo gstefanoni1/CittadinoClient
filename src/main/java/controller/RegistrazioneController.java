@@ -35,6 +35,7 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
      * Variabili per i componenti dell'interfaccia grafica
      */
     //region Variabili FXML
+    @FXML
     private TextField id;
     @FXML
     private TextField nome;
