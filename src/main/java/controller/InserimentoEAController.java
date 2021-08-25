@@ -305,5 +305,6 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
         client = ClientHandler.getInstance();
         this.client.addListener(GetEvTypologiesResponse.class.toString(), this);
         this.client.addListener(RegistrationEVResponse.class.toString(), this);
+        client.getEvTypologies();
     }
 }
