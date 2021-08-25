@@ -24,7 +24,7 @@
                 </font>
             </Label>
       <Separator layoutX="150.0" layoutY="69.0" prefWidth="200.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="70.0" />
-      <GridPane layoutX="250.0" layoutY="153.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+      <GridPane fx:id="homePane" layoutX="250.0" layoutY="153.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -71,7 +71,7 @@
                <center>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="ricerca" BorderPane.alignment="CENTER">
                      <center>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_CENTER">
+                        <ImageView fx:id="ricercaImg" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_CENTER">
                            <image>
                               <Image url="@../img/location(1).png" />
                            </image>
@@ -101,5 +101,15 @@
             </BorderPane>
          </children>
       </GridPane>
+      <AnchorPane fx:id="serverError" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" layoutX="336.0" layoutY="118.0" styleClass="label-server" text="Connessione al server fallita" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="324.0" layoutY="278.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#retryConnect" prefWidth="100.0" styleClass="but" text="Riprova" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" />
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

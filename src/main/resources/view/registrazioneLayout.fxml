@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,65 +13,61 @@
 
 <AnchorPane prefHeight="450.0" prefWidth="500.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrazioneController">
    <children>
-      <SplitPane dividerPositions="0.1388443017656501" layoutX="259.0" layoutY="90.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+             <ImageView id="indietro" accessibleText="Indietro" fitHeight="26.0" fitWidth="20.0" onMouseClicked="#indietro" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="480.0" AnchorPane.topAnchor="8.0">
+                 <image>
+                  <Image url="@../img/indietro.png" />
+                 </image>
+             </ImageView>
+             <Label fx:id="labelIndietro" layoutX="44.0" layoutY="12.0" onMouseClicked="#indietro" text="Indietro" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="8.0">
+                 <font>
+                     <Font size="14.0" />
+                 </font>
+             </Label>
+             <Label alignment="CENTER" layoutX="286.0" layoutY="30.0" text="Registrazione" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="Segoe UI Light" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+         <children>
+            <AnchorPane fx:id="topPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="333.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                   <ImageView id="indietro" accessibleText="Indietro" fitHeight="26.0" fitWidth="20.0" onMouseClicked="#indietro" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="480.0" AnchorPane.topAnchor="8.0">
-                       <image>
-                        <Image url="@../img/indietro.png" />
-                       </image>
-                   </ImageView>
-                   <Label fx:id="labelIndietro" layoutX="44.0" layoutY="12.0" onMouseClicked="#indietro" text="Indietro" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="8.0">
-                       <font>
-                           <Font size="14.0" />
-                       </font>
-                   </Label>
-                   <Label alignment="CENTER" layoutX="286.0" layoutY="30.0" text="Registrazione" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
-                     <font>
-                        <Font name="Segoe UI Light" size="25.0" />
-                     </font>
-                  </Label>
+                  <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" text="Inserire ID vaccinazione" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="13.0" />
+                  <TextField fx:id="id" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="170.0" promptText="ID" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="10.0" />
+                  <Button layoutX="335.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#verificaId" prefWidth="160.0" styleClass="but" text="Verifica" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <AnchorPane fx:id="topPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="333.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" text="Inserire ID vaccinazione" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="13.0" />
-                        <TextField fx:id="id" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="170.0" promptText="ID" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="10.0" />
-                        <Button layoutX="335.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#verificaId" prefWidth="160.0" styleClass="but" text="Verifica" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                     </children>
-                  </AnchorPane>
-                  <Separator layoutX="200.0" layoutY="62.0" prefWidth="200.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="50.0" />
-                  <AnchorPane fx:id="bottomPane" disable="true" layoutX="178.0" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-                      <children>
-                          <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="84.0" text="Nome" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="13.0" />
-                          <TextField fx:id="nome" layoutX="66.0" layoutY="77.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="10.0" />
-                          <Label layoutX="235.0" layoutY="83.0" text="Cognome" AnchorPane.leftAnchor="240.0" AnchorPane.topAnchor="13.0" />
-                          <TextField fx:id="cognome" layoutX="303.0" layoutY="79.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                          <Label alignment="CENTER_RIGHT" layoutX="12.0" layoutY="119.0" text="Cod. Fiscale" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="375.0" AnchorPane.topAnchor="48.0" />
-                          <TextField fx:id="codFiscale" layoutX="100.0" layoutY="114.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="45.0" />
-                          <Label layoutX="17.0" layoutY="229.0" text="**Tutti i campi sono obbligatori" textFill="#dc0000" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="220.0" />
-                        <Label alignment="CENTER_RIGHT" layoutX="12.0" layoutY="82.0" text="Username" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="375.0" AnchorPane.topAnchor="85.0" />
-                        <TextField fx:id="username" layoutX="85.0" layoutY="79.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="80.0" />
-                        <Label alignment="CENTER_RIGHT" layoutX="12.0" layoutY="116.0" text="Email" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="375.0" AnchorPane.topAnchor="120.0" />
-                        <TextField fx:id="email" layoutX="85.0" layoutY="121.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="115.0" />
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="150.0" text="Password" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="375.0" AnchorPane.topAnchor="153.0" />
-                        <PasswordField fx:id="password" layoutX="85.0" layoutY="145.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="150.0" />
-                        <Label alignment="CENTER_RIGHT" layoutX="12.0" layoutY="188.0" text="Conferma password" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="375.0" AnchorPane.topAnchor="189.0" />
-                        <PasswordField fx:id="confPassword" layoutX="135.0" layoutY="182.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="185.0" />
-                        <ButtonBar layoutX="292.0" layoutY="294.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0">
-                          <buttons>
-                            <Button id="annulla" mnemonicParsing="false" onMouseClicked="#indietro" styleClass="but" text="Annulla" />
-                              <Button id="crea" mnemonicParsing="false" onMouseClicked="#registraCittadino" styleClass="but" text="Crea" />
-                          </buttons>
-                        </ButtonBar>
-                      </children>
-                  </AnchorPane>
-               </children>
+            <Separator layoutX="200.0" layoutY="62.0" prefWidth="200.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="50.0" />
+            <AnchorPane fx:id="bottomPane" disable="true" layoutX="178.0" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                <children>
+                    <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="84.0" text="Nome" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="13.0" />
+                    <TextField fx:id="nome" layoutX="66.0" layoutY="77.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="10.0" />
+                    <Label layoutX="235.0" layoutY="83.0" text="Cognome" AnchorPane.leftAnchor="240.0" AnchorPane.topAnchor="13.0" />
+                    <TextField fx:id="cognome" layoutX="303.0" layoutY="79.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                    <Label alignment="CENTER_RIGHT" layoutX="12.0" layoutY="119.0" text="Cod. Fiscale" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="375.0" AnchorPane.topAnchor="48.0" />
+                    <TextField fx:id="codFiscale" layoutX="100.0" layoutY="114.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="45.0" />
+                    <Label layoutX="17.0" layoutY="229.0" text="**Tutti i campi sono obbligatori" textFill="#dc0000" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="220.0" />
+                  <Label alignment="CENTER_RIGHT" layoutX="12.0" layoutY="82.0" text="Username" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="375.0" AnchorPane.topAnchor="85.0" />
+                  <TextField fx:id="username" layoutX="85.0" layoutY="79.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="80.0" />
+                  <Label alignment="CENTER_RIGHT" layoutX="12.0" layoutY="116.0" text="Email" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="375.0" AnchorPane.topAnchor="120.0" />
+                  <TextField fx:id="email" layoutX="85.0" layoutY="121.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="115.0" />
+                  <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="150.0" text="Password" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="375.0" AnchorPane.topAnchor="153.0" />
+                  <PasswordField fx:id="password" layoutX="85.0" layoutY="145.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="150.0" />
+                  <Label alignment="CENTER_RIGHT" layoutX="12.0" layoutY="188.0" text="Conferma password" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="375.0" AnchorPane.topAnchor="189.0" />
+                  <PasswordField fx:id="confPassword" layoutX="135.0" layoutY="182.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="185.0" />
+                  <ButtonBar layoutX="292.0" layoutY="294.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0">
+                    <buttons>
+                      <Button id="annulla" mnemonicParsing="false" onMouseClicked="#indietro" styleClass="but" text="Annulla" />
+                        <Button id="crea" mnemonicParsing="false" onMouseClicked="#registraCittadino" styleClass="but" text="Crea" />
+                    </buttons>
+                  </ButtonBar>
+                </children>
             </AnchorPane>
-        </items>
-      </SplitPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

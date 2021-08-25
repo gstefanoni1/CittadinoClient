@@ -12,8 +12,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -40,6 +42,12 @@ public class MainController implements Initializable, PacketReceivedListener {
     private TextField username;
     @FXML
     private PasswordField password;
+    @FXML
+    private AnchorPane serverError;
+    @FXML
+    private GridPane homePane;
+    @FXML
+    private ImageView ricercaImg;
     //endregion
     /**
      * client è l'istanza del client connesso al server
@@ -57,15 +65,17 @@ public class MainController implements Initializable, PacketReceivedListener {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /*TODO ERRORE LA CONNECT VA FATTA UNA VOLTA SOLA
-          IN QUESTO MODO VIENE FATTA OGNI VOLTA CHE SI AVVIA IL CONTROLLER*/
         client = ClientHandler.getInstance();
         user = null;
         try {
-            client.connect();
-            /*TODO LA CONNECT RESTITUISCE TRUE SE LA CONNESSIONE E' ANDATA A BUON FINE
-              QUINDI GESTISCI COSA FARE QUANDO NON VA A BUON FINE, AD ESEMPIO UN ALERT DIALOG
-              E POI RIPROVI A FARE LA CONNESSIONE*/
+            if (client.connect()) {
+                serverError.setVisible(false);
+                client.addListener(UserLoginResponse.class.toString(), this);
+            } else {
+                serverError.setVisible(true);
+                ricercaImg.setOpacity(0.5);
+                homePane.setDisable(true);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -77,7 +87,25 @@ public class MainController implements Initializable, PacketReceivedListener {
             loginPane.setVisible(true);
             disconnetti.setVisible(false);
         }
-        client.addListener(UserLoginResponse.class.toString(), this);
+    }
+
+    public void retryConnect(MouseEvent mouseEvent) {
+        serverError.setDisable(true);
+        try {
+            if (client.connect()) {
+                serverError.setVisible(false);
+                ricercaImg.setOpacity(1);
+                homePane.setDisable(false);
+                client.addListener(UserLoginResponse.class.toString(), this);
+            } else {
+                serverError.setVisible(true);
+                ricercaImg.setOpacity(0.5);
+                serverError.setDisable(false);
+                homePane.setDisable(true);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**

@@ -48,3 +48,6 @@
     -fx-border-color: #d6d6d6;
     -fx-border-radius: 5px;
 }
+label-server{
+    -fx-background-color: #ffffff;
+}
