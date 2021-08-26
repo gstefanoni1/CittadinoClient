@@ -5,6 +5,7 @@ import client.PacketReceivedListener;
 import datatypes.Vaccinato;
 import datatypes.Vaccinazione;
 import datatypes.protocolmessages.*;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -83,9 +84,12 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
      * Metodo che invoca la verifica dei capi e invia le informazioni al server
      * @param mouseEvent
      */
-    public void registraCittadino(MouseEvent mouseEvent) {
+    public void controllaCittadino(MouseEvent mouseEvent) throws InterruptedException {
         client.requestUserIdCheck(username.getText());
-        client.requestEmailCheck(email.getText());
+
+    }
+
+    public void registraCittadino(){
         if(!verificaCampi()){
             return;
         }
@@ -141,6 +145,7 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
             verified = setColorBorder(username, "red");
         else {
             if (verificaUser) setColorBorder(username, "transparent");
+            else setColorBorder(username, "red");
         }
 
 
@@ -155,12 +160,14 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
                     setColorBorder(confPassword, "transparent");
                 }else {
                     verified = setColorBorder(confPassword, "red");
-                    Alert alertPassword = new Alert(Alert.AlertType.ERROR);
-                    alertPassword.setTitle("");
-                    alertPassword.setHeaderText("Errore nella compilazione dei campi");
-                    alertPassword.setContentText("Le password non corrispondono");
+                    Platform.runLater(() -> {
+                        Alert alertPassword = new Alert(Alert.AlertType.ERROR);
+                        alertPassword.setTitle("");
+                        alertPassword.setHeaderText("Errore nella compilazione dei campi");
+                        alertPassword.setContentText("Le password non corrispondono");
 
-                    alertPassword.showAndWait();
+                        alertPassword.showAndWait();
+                    });
                 }
             }
         }
@@ -180,12 +187,14 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
                 setColorBorder(codFiscale, "transparent");
             else{
                 verified = setColorBorder(codFiscale, "red");
-                Alert alertCod = new Alert(Alert.AlertType.ERROR);
-                alertCod.setTitle("");
-                alertCod.setHeaderText("Errore nella compilazione dei campi");
-                alertCod.setContentText("Codice fiscale non valido");
+                Platform.runLater(() -> {
+                    Alert alertCod = new Alert(Alert.AlertType.ERROR);
+                    alertCod.setTitle("");
+                    alertCod.setHeaderText("Errore nella compilazione dei campi");
+                    alertCod.setContentText("Codice fiscale non valido");
 
-                alertCod.showAndWait();
+                    alertCod.showAndWait();
+                });
             }
         }
 
@@ -196,12 +205,14 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
                 setColorBorder(email, "transparent");
             else {
                 verified = setColorBorder(email, "red");
-                Alert alertEmail = new Alert(Alert.AlertType.ERROR);
-                alertEmail.setTitle("");
-                alertEmail.setHeaderText("Errore nella compilazione dei campi");
-                alertEmail.setContentText("Email non valida");
+                Platform.runLater(() -> {
+                    Alert alertEmail = new Alert(Alert.AlertType.ERROR);
+                    alertEmail.setTitle("");
+                    alertEmail.setHeaderText("Errore nella compilazione dei campi");
+                    alertEmail.setContentText("Email non valida");
 
-                alertEmail.showAndWait();
+                    alertEmail.showAndWait();
+                });
             }
         }
 
@@ -244,23 +255,29 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
      * @param res
      */
     private void risultatoRegistrazione(UserRegistrationResponse res){
-        Alert alert;
+
         if (res.isEsito()) {
             //Alert con id da dare al cittadino
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Informazioni cittadino: " + codFiscale.getText());
-            alert.setHeaderText(null);
-            alert.setContentText("ID vaccinazione: " + id.getText() + ". Registrazione completata");
-            alert.showAndWait();
+            Platform.runLater(() -> {
+                Alert alert;
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Informazioni cittadino: " + codFiscale.getText());
+                alert.setHeaderText(null);
+                alert.setContentText("ID vaccinazione: " + id.getText() + ". Registrazione completata");
+                alert.showAndWait();
 
-            chiudi();
+                chiudi();
+            });
         }else{
-            //Alert con id da dare al cittadino
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Informazioni cittadino: " + codFiscale.getText());
-            alert.setHeaderText(null);
-            alert.setContentText("Registrazione fallita, riprovare");
-            alert.showAndWait();
+            Platform.runLater(() -> {
+                Alert alert;
+                //Alert con id da dare al cittadino
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Informazioni cittadino: " + codFiscale.getText());
+                alert.setHeaderText(null);
+                alert.setContentText("Registrazione fallita, riprovare");
+                alert.showAndWait();
+            });
         }
     }
     /**
@@ -305,10 +322,12 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
         if(packet instanceof CheckUserIdResponse){
             System.out.println("Esiste userId? " + ((CheckUserIdResponse)packet).isEsito());
             verificaUser = !((CheckUserIdResponse)packet).isEsito();
+            client.requestEmailCheck(email.getText());
         }
         if(packet instanceof CheckEmailResponse){
             System.out.println("Esiste email? " + ((CheckEmailResponse)packet).isEsito());
             verificaEmailDB = !((CheckEmailResponse)packet).isEsito();
+            registraCittadino();
         }
 
     }

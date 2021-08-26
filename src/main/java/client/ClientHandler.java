@@ -148,7 +148,7 @@ public class ClientHandler {
      * @return true se la richiesta va a buon fine, false altrimenti
      */
     public boolean requestUserRegistration(Vaccinato vaccinato, String key){
-        if(session == null) return false;
+        if(!isConnected()) return false;
         session.write(new UserRegistrationRequest(vaccinato, key));
         return true;
     }
@@ -160,7 +160,7 @@ public class ClientHandler {
      * @return true se la richiesta va a buon fine, false altrimenti
      */
     public boolean requestUserLogin(String username, String password) {
-        if(session == null) return false;
+        if(!isConnected()) return false;
         session.write(new UserLoginRequest(username, password));
         return true;
     }
@@ -171,7 +171,7 @@ public class ClientHandler {
      * @return true se la richiesta va a buon fine, false altrimenti
      */
     public boolean insertCV(CentroVaccinale cv){
-        if(session == null) return false;
+        if(!isConnected()) return false;
         session.write(new RegistrationCVRequest(cv));
         return true;
     }
@@ -182,7 +182,7 @@ public class ClientHandler {
      * @return true se la richiesta va a buon fine, false altrimenti
      */
     public boolean insertVaccination(Vaccinazione v){
-        if(session == null) return false;
+        if(!isConnected()) return false;
         session.write(new RegistrationVaccinatedRequest(v));
         return true;
     }
@@ -193,7 +193,7 @@ public class ClientHandler {
      * @return true se la richiesta va a buon fine, false altrimenti
      */
     public boolean insertEV(EventoAvverso ev){
-        if(session == null) return false;
+        if(!isConnected()) return false;
         session.write(new RegistrationEVRequest(ev));
         return true;
     }
@@ -203,7 +203,7 @@ public class ClientHandler {
      * @return true se la richiesta va a buon fine, false altrimenti
      */
     public boolean getAllCV(){
-        if(session == null) return false;
+        if(!isConnected()) return false;
         session.write(new GetAllCVRequest());
         return true;
     }
@@ -214,7 +214,7 @@ public class ClientHandler {
      * @return true se la richiesta va a buon fine, false altrimenti
      */
     public boolean getCVByName(String name){
-        if(session == null) return false;
+        if(!isConnected()) return false;
         session.write(new GetCVByNameRequest(name));
         return true;
     }
@@ -226,7 +226,7 @@ public class ClientHandler {
      * @return true se la richiesta va a buon fine, false altrimenti
      */
     public boolean getCVByMunicipalityTypology(String municipality, String typology){
-        if(session == null) return false;
+        if(!isConnected()) return false;
         session.write(new GetCVByMunicipalityTypologyRequest(municipality, typology));
         return true;
     }
@@ -237,7 +237,7 @@ public class ClientHandler {
      * @return true se la richiesta va a buon fine, false altrimenti
      */
     public boolean getVaccinationByKey(String key){
-        if(session == null) return false;
+        if(!isConnected()) return false;
         session.write(new GetVaccinationByKeyRequest(key));
         return true;
     }
@@ -247,7 +247,7 @@ public class ClientHandler {
      * @return true se la richiesta va a buon fine, false altrimenti
      */
     public boolean getEvTypologies(){
-        if(session == null) return false;
+        if(!isConnected()) return false;
         session.write(new GetEVTypologiesRequest());
         return true;
     }
@@ -257,7 +257,7 @@ public class ClientHandler {
      * @return true se la richiesta va a buon fine, false altrimenti
      */
     public boolean getVaccines(){
-        if(session == null) return false;
+        if(!isConnected()) return false;
         session.write(new GetVaccinesRequest());
         return true;
     }
@@ -268,7 +268,7 @@ public class ClientHandler {
      * @return true se la richiesta va a buon fine, false altrimenti
      */
     public boolean getReport(CentroVaccinale cv){
-        if(session == null) return false;
+        if(!isConnected()) return false;
         session.write(new GetReportRequest(cv));
         return true;
     }
@@ -279,7 +279,7 @@ public class ClientHandler {
      * @return true se la richiesta va a buon fine, false altrimenti
      */
     public boolean requestUserIdCheck(String userId){
-        if(session == null) return false;
+        if(!isConnected()) return false;
         session.write(new CheckUserIdRequest(userId));
         return true;
     }
@@ -289,8 +289,14 @@ public class ClientHandler {
      * @return true se la richiesta va a buon fine, false altrimenti
      */
     public boolean requestEmailCheck(String email){
-        if(session == null) return false;
+        if(!isConnected()) return false;
         session.write(new CheckEmailRequest(email));
+        return true;
+    }
+
+    public boolean requestVaccinatedCvCheck(CentroVaccinale cv){
+        if(!isConnected()) return false;
+        session.write(new CheckVaccinatedCVRequest(cv));
         return true;
     }
 

@@ -62,7 +62,7 @@
                   <ButtonBar layoutX="292.0" layoutY="294.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0">
                     <buttons>
                       <Button id="annulla" mnemonicParsing="false" onMouseClicked="#indietro" styleClass="but" text="Annulla" />
-                        <Button id="crea" mnemonicParsing="false" onMouseClicked="#registraCittadino" styleClass="but" text="Crea" />
+                        <Button id="crea" mnemonicParsing="false" onMouseClicked="#controllaCittadino" styleClass="but" text="Crea" />
                     </buttons>
                   </ButtonBar>
                 </children>

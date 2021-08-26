@@ -73,9 +73,7 @@ public class MainController implements Initializable, PacketReceivedListener {
                     serverError.setVisible(false);
                     client.addListener(UserLoginResponse.class.toString(), this);
                 } else {
-                    serverError.setVisible(true);
-                    ricercaImg.setOpacity(0.5);
-                    homePane.setDisable(true);
+                    visualizzaPannelloRiconnessione();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -89,6 +87,12 @@ public class MainController implements Initializable, PacketReceivedListener {
             loginPane.setVisible(true);
             disconnetti.setVisible(false);
         }
+    }
+
+    private void visualizzaPannelloRiconnessione() {
+        serverError.setVisible(true);
+        ricercaImg.setOpacity(0.5);
+        homePane.setDisable(true);
     }
 
     /**
@@ -191,7 +195,8 @@ public class MainController implements Initializable, PacketReceivedListener {
     public void loginRequest(MouseEvent mouseEvent) {
         if(!verificaCampi()) return;
 
-        client.requestUserLogin(username.getText(), password.getText());
+        if(!client.requestUserLogin(username.getText(), password.getText()))
+            visualizzaPannelloRiconnessione();
 
     }
 
