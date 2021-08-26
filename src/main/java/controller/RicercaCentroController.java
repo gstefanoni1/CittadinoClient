@@ -5,9 +5,13 @@ import client.PacketReceivedListener;
 import datatypes.CentroVaccinale;
 import datatypes.protocolmessages.GetCVResponse;
 import datatypes.protocolmessages.Packet;
+import javafx.beans.InvalidationListener;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -26,8 +30,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Classe per controllare gli eventi e visualizzazione info nella finestra Ricerca centro vaccinale
@@ -51,7 +54,7 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
     /**
      * Lista dei centri richiesti al server
      */
-    private ObservableList<CentroVaccinale> data;
+    private ListProperty<CentroVaccinale> data;
     /**
      * Centro di cui si vogliono visualizzare le informazioni
      */
@@ -94,6 +97,7 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        data = new SimpleListProperty<>(FXCollections.observableArrayList());
         client = ClientHandler.getInstance();
         this.client.addListener(GetCVResponse.class.toString(), this);
         client.getAllCV();

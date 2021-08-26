@@ -115,6 +115,13 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
             setColorBorder(id, "transparent");
             bottomPane.setDisable(false);
             topPane.setDisable(true);
+            Vaccinato vaccinato = res.getVaccination().getVaccinato();
+            nome.setText(vaccinato.getNome());
+            cognome.setText(vaccinato.getCognome());
+            codFiscale.setText(vaccinato.getCodiceFiscale());
+            nome.setEditable(false);
+            cognome.setEditable(false);
+            codFiscale.setEditable(false);
         }else{
             setColorBorder(id, "red");
             Alert alertLogin = new Alert(Alert.AlertType.ERROR);
@@ -297,11 +304,11 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
         }
         if(packet instanceof CheckUserIdResponse){
             System.out.println("Esiste userId? " + ((CheckUserIdResponse)packet).isEsito());
-            verificaUser = ((CheckUserIdResponse)packet).isEsito();
+            verificaUser = !((CheckUserIdResponse)packet).isEsito();
         }
         if(packet instanceof CheckEmailResponse){
             System.out.println("Esiste email? " + ((CheckEmailResponse)packet).isEsito());
-            verificaEmailDB = ((CheckEmailResponse)packet).isEsito();
+            verificaEmailDB = !((CheckEmailResponse)packet).isEsito();
         }
 
     }

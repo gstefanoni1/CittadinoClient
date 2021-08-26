@@ -8,6 +8,9 @@ import datatypes.TipologiaEventoAvverso;
 import datatypes.protocolmessages.GetEvTypologiesResponse;
 import datatypes.protocolmessages.Packet;
 import datatypes.protocolmessages.RegistrationEVResponse;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -78,7 +81,7 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
      */
     private CentroVaccinale centro;
 
-    private ObservableList<TipologiaEventoAvverso> tipoeventi;
+    private ListProperty<TipologiaEventoAvverso> tipoeventi;
 
     /**
      * Metodo invocato per tornare alla schermata di visualizazione delle info
@@ -302,6 +305,7 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        tipoeventi = new SimpleListProperty<>(FXCollections.observableArrayList());
         client = ClientHandler.getInstance();
         this.client.addListener(GetEvTypologiesResponse.class.toString(), this);
         this.client.addListener(RegistrationEVResponse.class.toString(), this);
