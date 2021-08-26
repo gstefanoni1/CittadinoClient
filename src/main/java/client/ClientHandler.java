@@ -293,7 +293,12 @@ public class ClientHandler {
         session.write(new CheckEmailRequest(email));
         return true;
     }
-
+    /**
+     * Invia al server una richiesta per verificare se il centro vaccinale
+     * corrisponde a quello dell'ultima vaccinazione del cittadino
+     * @param cv centro vaccinale da ricercare
+     * @return true se la richiesta va a buon fine, false altrimenti
+     */
     public boolean requestVaccinatedCvCheck(CentroVaccinale cv){
         if(!isConnected()) return false;
         session.write(new CheckVaccinatedCVRequest(cv));
