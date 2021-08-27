@@ -4,6 +4,8 @@ import client.PacketReceivedListener;
 import datatypes.Vaccinato;
 import datatypes.protocolmessages.Packet;
 import datatypes.protocolmessages.UserLoginResponse;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,6 +19,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -56,7 +60,7 @@ public class MainController implements Initializable, PacketReceivedListener {
     /**
      * Variabile utilizzata per riconoscere l'utente dopo la login
      */
-    private static Vaccinato user;
+    private static Vaccinato user = null;
     /**
      * Metodo invocato durante l'inizializzazione della finestra per: settare il client e gestire la visualizzazione del
      * form di login
@@ -66,7 +70,6 @@ public class MainController implements Initializable, PacketReceivedListener {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         client = ClientHandler.getInstance();
-        user = null;
         if(!client.isConnected()){
             try {
                 if (client.connect()) {
@@ -135,6 +138,13 @@ public class MainController implements Initializable, PacketReceivedListener {
             stage.setMinWidth(610);
             stage.setScene(scene);
             //stage.setResizable(false);
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+            });
             stage.show();
 
             Node source = (Node) mouseEvent.getSource();
@@ -215,6 +225,13 @@ public class MainController implements Initializable, PacketReceivedListener {
             stage.setTitle("Registrazione");
             stage.setScene(scene);
             stage.setResizable(false);
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+            });
             stage.show();
 
             Node source = (Node) mouseEvent.getSource();

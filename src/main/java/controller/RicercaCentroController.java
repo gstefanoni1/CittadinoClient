@@ -5,6 +5,7 @@ import client.PacketReceivedListener;
 import datatypes.CentroVaccinale;
 import datatypes.protocolmessages.GetCVResponse;
 import datatypes.protocolmessages.Packet;
+import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -26,6 +27,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -79,6 +81,13 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
             stage.setTitle("Vaccinazioni Cittadini");
             stage.setScene(scene);
             stage.setResizable(false);
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+            });
             stage.show();
 
             Node source = (Node) mouseEvent.getSource();
@@ -246,6 +255,13 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
                                     stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
                                     stage.setTitle("Info " + item.getId());
                                     stage.setScene(scene);
+                                    stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                                        @Override
+                                        public void handle(WindowEvent event) {
+                                            Platform.exit();
+                                            System.exit(0);
+                                        }
+                                    });
                                     stage.show();
 
                                     Node source = (Node) e.getSource();
@@ -264,7 +280,7 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
                 switch (item.getTipologia()) {
                     case "Ospedaliero":icon.setImage(new Image(String.valueOf(getClass().getResource("../img/ospedale.png")))); break;
                     case "Aziendale":icon.setImage(new Image(String.valueOf(getClass().getResource("../img/azienda.png")))); break;
-                    case "Hub":icon.setImage(new Image(String.valueOf(getClass().getResource("../img/hub.png")))); break;
+                    case "HUB":icon.setImage(new Image(String.valueOf(getClass().getResource("../img/hub.png")))); break;
                 }
                 comuneCentro.setText(
                         item.getQualificatore() + " " +
