@@ -1,0 +1,439 @@
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckUserIdRequest@71a07a3d
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckUserIdResponse@4a5aef9
+WARN NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - EXCEPTION :
+java.lang.IllegalMonitorStateException
+	at java.base/java.lang.Object.notify(Native Method)
+	at controller.RegistrazioneController.onPacketReceived(RegistrazioneController.java:317)
+	at client.ClientConnectionHandler.messageReceived(ClientConnectionHandler.java:70)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:208)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.ssl.SslHandler.flushScheduledEvents(SslHandler.java:322)
+	at org.apache.mina.filter.ssl.SslFilter.messageReceived(SslFilter.java:497)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckUserIdRequest@3ca01439
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckUserIdResponse@3a397dc4
+WARN NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - EXCEPTION :
+java.lang.IllegalMonitorStateException
+	at java.base/java.lang.Object.notify(Native Method)
+	at controller.RegistrazioneController.onPacketReceived(RegistrazioneController.java:317)
+	at client.ClientConnectionHandler.messageReceived(ClientConnectionHandler.java:70)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:208)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.ssl.SslHandler.flushScheduledEvents(SslHandler.java:322)
+	at org.apache.mina.filter.ssl.SslFilter.messageReceived(SslFilter.java:497)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckUserIdRequest@1a2af01e
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckUserIdResponse@d453eaa
+WARN NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - EXCEPTION :
+java.lang.IllegalMonitorStateException
+	at java.base/java.lang.Object.notify(Native Method)
+	at controller.RegistrazioneController.onPacketReceived(RegistrazioneController.java:317)
+	at client.ClientConnectionHandler.messageReceived(ClientConnectionHandler.java:70)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:208)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.ssl.SslHandler.flushScheduledEvents(SslHandler.java:322)
+	at org.apache.mina.filter.ssl.SslFilter.messageReceived(SslFilter.java:497)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckUserIdRequest@68b6c14
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckUserIdResponse@7caad69a
+WARN NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - EXCEPTION :
+java.lang.IllegalMonitorStateException
+	at java.base/java.lang.Object.notify(Native Method)
+	at controller.RegistrazioneController.onPacketReceived(RegistrazioneController.java:317)
+	at client.ClientConnectionHandler.messageReceived(ClientConnectionHandler.java:70)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:208)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.ssl.SslHandler.flushScheduledEvents(SslHandler.java:322)
+	at org.apache.mina.filter.ssl.SslFilter.messageReceived(SslFilter.java:497)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckUserIdRequest@45e64abe
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckUserIdResponse@8a5c7f1
+WARN NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - EXCEPTION :
+java.lang.IllegalMonitorStateException
+	at java.base/java.lang.Object.notify(Native Method)
+	at controller.RegistrazioneController.onPacketReceived(RegistrazioneController.java:317)
+	at client.ClientConnectionHandler.messageReceived(ClientConnectionHandler.java:70)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:208)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.ssl.SslHandler.flushScheduledEvents(SslHandler.java:322)
+	at org.apache.mina.filter.ssl.SslFilter.messageReceived(SslFilter.java:497)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckUserIdRequest@511e554c
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckUserIdResponse@4d1f7ef3
+WARN NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - EXCEPTION :
+java.lang.IllegalMonitorStateException
+	at java.base/java.lang.Object.notify(Native Method)
+	at controller.RegistrazioneController.onPacketReceived(RegistrazioneController.java:317)
+	at client.ClientConnectionHandler.messageReceived(ClientConnectionHandler.java:70)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:208)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.ssl.SslHandler.flushScheduledEvents(SslHandler.java:322)
+	at org.apache.mina.filter.ssl.SslFilter.messageReceived(SslFilter.java:497)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetVaccinationByKeyRequest@15cac15b
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetVaccinationByKeyResponse@19039b8b
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckUserIdRequest@11415a16
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckUserIdResponse@17fbaf07
+WARN NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - EXCEPTION :
+java.lang.IllegalMonitorStateException
+	at java.base/java.lang.Object.notifyAll(Native Method)
+	at controller.RegistrazioneController.onPacketReceived(RegistrazioneController.java:317)
+	at client.ClientConnectionHandler.messageReceived(ClientConnectionHandler.java:70)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:208)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.ssl.SslHandler.flushScheduledEvents(SslHandler.java:322)
+	at org.apache.mina.filter.ssl.SslFilter.messageReceived(SslFilter.java:497)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetVaccinationByKeyRequest@65c9e045
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetVaccinationByKeyResponse@6039637c
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckUserIdRequest@3fe6f68
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckUserIdResponse@48d5b6d8
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckEmailRequest@1ee3b394
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckEmailResponse@4f42bbde
+WARN NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - EXCEPTION :
+java.lang.IllegalStateException: Not on FX application thread; currentThread = NioProcessor-2
+	at com.sun.javafx.tk.Toolkit.checkFxUserThread(Toolkit.java:292)
+	at com.sun.javafx.tk.quantum.QuantumToolkit.checkFxUserThread(QuantumToolkit.java:446)
+	at javafx.stage.Stage.<init>(Stage.java:254)
+	at javafx.stage.Stage.<init>(Stage.java:240)
+	at javafx.scene.control.HeavyweightDialog$1.<init>(HeavyweightDialog.java:52)
+	at javafx.scene.control.HeavyweightDialog.<init>(HeavyweightDialog.java:52)
+	at javafx.scene.control.Dialog.<init>(Dialog.java:268)
+	at javafx.scene.control.Alert.<init>(Alert.java:247)
+	at javafx.scene.control.Alert.<init>(Alert.java:222)
+	at controller.RegistrazioneController.verificaCampi(RegistrazioneController.java:203)
+	at controller.RegistrazioneController.registraCittadino(RegistrazioneController.java:93)
+	at controller.RegistrazioneController.onPacketReceived(RegistrazioneController.java:323)
+	at client.ClientConnectionHandler.messageReceived(ClientConnectionHandler.java:70)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:208)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.ssl.SslHandler.flushScheduledEvents(SslHandler.java:322)
+	at org.apache.mina.filter.ssl.SslFilter.messageReceived(SslFilter.java:497)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckUserIdRequest@265b4bbd
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckUserIdResponse@3921e7f7
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckEmailRequest@5ffef661
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckEmailResponse@3c7f8859
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.UserRegistrationRequest@772b3ee3
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.UserRegistrationResponse@4b4a3510
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckUserIdRequest@59bf620b
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckUserIdResponse@b606475
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckEmailRequest@43843798
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckEmailResponse@6dea83c3
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.UserRegistrationRequest@65a101c7
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.UserRegistrationResponse@4d63865
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetVaccinationByKeyRequest@2805b4b
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetVaccinationByKeyResponse@616247c1
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckUserIdRequest@184ff576
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckUserIdResponse@74ba4155
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckEmailRequest@3efdd19c
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckEmailResponse@714d3080
+WARN NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - EXCEPTION :
+java.lang.IllegalStateException: Not on FX application thread; currentThread = NioProcessor-2
+	at com.sun.javafx.tk.Toolkit.checkFxUserThread(Toolkit.java:292)
+	at com.sun.javafx.tk.quantum.QuantumToolkit.checkFxUserThread(QuantumToolkit.java:446)
+	at javafx.stage.Stage.<init>(Stage.java:254)
+	at javafx.stage.Stage.<init>(Stage.java:240)
+	at javafx.scene.control.HeavyweightDialog$1.<init>(HeavyweightDialog.java:52)
+	at javafx.scene.control.HeavyweightDialog.<init>(HeavyweightDialog.java:52)
+	at javafx.scene.control.Dialog.<init>(Dialog.java:268)
+	at javafx.scene.control.Alert.<init>(Alert.java:247)
+	at javafx.scene.control.Alert.<init>(Alert.java:222)
+	at controller.RegistrazioneController.verificaCampi(RegistrazioneController.java:204)
+	at controller.RegistrazioneController.registraCittadino(RegistrazioneController.java:93)
+	at controller.RegistrazioneController.onPacketReceived(RegistrazioneController.java:324)
+	at client.ClientConnectionHandler.messageReceived(ClientConnectionHandler.java:70)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:208)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.ssl.SslHandler.flushScheduledEvents(SslHandler.java:322)
+	at org.apache.mina.filter.ssl.SslFilter.messageReceived(SslFilter.java:497)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetVaccinationByKeyRequest@1b4164c7
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetVaccinationByKeyResponse@ce831e8
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckUserIdRequest@32c569ef
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckUserIdResponse@2f29c162
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckEmailRequest@6f685699
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckEmailResponse@513f1038
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckUserIdRequest@69f7a7ca
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckUserIdResponse@4d650e8
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckEmailRequest@16828afd
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckEmailResponse@7974a31c
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckUserIdRequest@5f2857e9
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckUserIdResponse@4f93edca
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckEmailRequest@4dc443a7
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckEmailResponse@5eb8dd5a
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckUserIdRequest@31a4bf0a
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckUserIdResponse@4cb9d1fa
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckEmailRequest@4bdb9e25
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckEmailResponse@5ede8764
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.UserRegistrationRequest@74fcca82
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.UserRegistrationResponse@e68463c
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.UserLoginRequest@1d2dd9ae
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.UserLoginResponse@4db5b442
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetVaccinationByKeyRequest@53c1ca05
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetVaccinationByKeyResponse@3569ac16
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@4ca5e720
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@3ae8226c
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CLOSED
+INFO NioProcessor-17 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-17 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-17 org.apache.mina.filter.logging.LoggingFilter - CLOSED
+INFO NioProcessor-7 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-7 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-7 org.apache.mina.filter.logging.LoggingFilter - CLOSED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CLOSED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@1cb7b850
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@4b916e21
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@3e140683
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@783eeb17
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetReportRequest@3e016fb6
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetReportResponse@36bc5045
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@5ebe29ad
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@5b631b65
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetReportRequest@1cdf7f54
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetReportResponse@5c5bb2b0
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@c3ec5a5
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@eb3e6b2
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetReportRequest@4a245931
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetReportResponse@5a59b159
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@54e57319
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@3540436d
