@@ -4,6 +4,7 @@ import client.ClientHandler;
 import client.PacketReceivedListener;
 import datatypes.CentroVaccinale;
 import datatypes.ReportCV;
+import datatypes.protocolmessages.CheckVaccinatedCVResponse;
 import datatypes.protocolmessages.GetCVResponse;
 import datatypes.protocolmessages.GetReportResponse;
 import datatypes.protocolmessages.Packet;
@@ -99,11 +100,11 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        visualizzaBottoneEventiAvversi();
-
         client = ClientHandler.getInstance();
         this.client.addListener(GetCVResponse.class.toString(), this);
+        this.client.addListener(CheckVaccinatedCVResponse.class.toString(), this);
         client.getReport(RicercaCentroController.centoVis);
+        client.requestVaccinatedCvCheck(RicercaCentroController.centoVis);
 
         nomeCentro.setText(RicercaCentroController.centoVis.getNome());
         tipologia.setText(RicercaCentroController.centoVis.getTipologia());
@@ -130,16 +131,6 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
         series1.setName("1");
 
 
-    }
-
-    /**
-     * Metodo invocato dal initialize, per mostrare il bottone di inserimento evento avverso
-     */
-    private void visualizzaBottoneEventiAvversi() {
-        //TODO getCentro da username oppure inserire variabile in vaccinato
-        if(Objects.isNull(MainController.getUser()) ){
-            eventoAvverso.setVisible(true);
-        }
     }
 
     /**
@@ -213,6 +204,12 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
             ReportCV report = ((GetReportResponse)packet).getReport();
             System.out.println(report.getReportList());
             popolaGrafico(report.getReportList());
+        }
+
+        if (packet instanceof CheckVaccinatedCVResponse){
+            CheckVaccinatedCVResponse res = (CheckVaccinatedCVResponse) packet;
+            if (res.isEsito())
+                eventoAvverso.setVisible(true);
         }
     }
 }

@@ -56,7 +56,7 @@ public class MainController implements Initializable, PacketReceivedListener {
     /**
      * Variabile utilizzata per riconoscere l'utente dopo la login
      */
-    private static Vaccinato user;
+    private static Vaccinato user = null;
     /**
      * Metodo invocato durante l'inizializzazione della finestra per: settare il client e gestire la visualizzazione del
      * form di login
@@ -66,7 +66,6 @@ public class MainController implements Initializable, PacketReceivedListener {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         client = ClientHandler.getInstance();
-        user = null;
         if(!client.isConnected()){
             try {
                 if (client.connect()) {
