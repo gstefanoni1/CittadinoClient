@@ -120,7 +120,7 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
         switch (RicercaCentroController.centoVis.getTipologia()) {
             case "Ospedaliero": icon.setImage(new Image(String.valueOf(getClass().getResource("../img/ospedale.png")))); break;
             case "Aziendale": icon.setImage(new Image(String.valueOf(getClass().getResource("../img/azienda.png")))); break;
-            case "Hub": icon.setImage(new Image(String.valueOf(getClass().getResource("../img/hub.png")))); break;
+            case "HUB": icon.setImage(new Image(String.valueOf(getClass().getResource("../img/hub.png")))); break;
         }
 
         series5.setName("5");

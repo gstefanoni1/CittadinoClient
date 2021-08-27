@@ -264,7 +264,7 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
                 switch (item.getTipologia()) {
                     case "Ospedaliero":icon.setImage(new Image(String.valueOf(getClass().getResource("../img/ospedale.png")))); break;
                     case "Aziendale":icon.setImage(new Image(String.valueOf(getClass().getResource("../img/azienda.png")))); break;
-                    case "Hub":icon.setImage(new Image(String.valueOf(getClass().getResource("../img/hub.png")))); break;
+                    case "HUB":icon.setImage(new Image(String.valueOf(getClass().getResource("../img/hub.png")))); break;
                 }
                 comuneCentro.setText(
                         item.getQualificatore() + " " +

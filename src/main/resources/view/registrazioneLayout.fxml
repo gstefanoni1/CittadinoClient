@@ -37,8 +37,8 @@
             <AnchorPane fx:id="topPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="333.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" text="Inserire ID vaccinazione" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="13.0" />
-                  <TextField fx:id="id" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="170.0" promptText="ID" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="10.0" />
-                  <Button layoutX="335.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#verificaId" prefWidth="160.0" styleClass="but" text="Verifica" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <TextField fx:id="id" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="170.0" promptText="ID" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="10.0" />
+                  <Button layoutX="335.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#verificaId" prefWidth="160.0" styleClass="but" text="Verifica" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                </children>
             </AnchorPane>
             <Separator layoutX="200.0" layoutY="62.0" prefWidth="200.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="50.0" />
@@ -47,7 +47,7 @@
                     <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="84.0" text="Nome" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="13.0" />
                     <TextField fx:id="nome" layoutX="66.0" layoutY="77.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="10.0" />
                     <Label layoutX="235.0" layoutY="83.0" text="Cognome" AnchorPane.leftAnchor="240.0" AnchorPane.topAnchor="13.0" />
-                    <TextField fx:id="cognome" layoutX="303.0" layoutY="79.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                    <TextField fx:id="cognome" layoutX="303.0" layoutY="79.0" AnchorPane.leftAnchor="307.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                     <Label alignment="CENTER_RIGHT" layoutX="12.0" layoutY="119.0" text="Cod. Fiscale" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="375.0" AnchorPane.topAnchor="48.0" />
                     <TextField fx:id="codFiscale" layoutX="100.0" layoutY="114.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="45.0" />
                     <Label layoutX="17.0" layoutY="229.0" text="**Tutti i campi sono obbligatori" textFill="#dc0000" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="220.0" />
