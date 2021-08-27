@@ -8,10 +8,12 @@ import datatypes.TipologiaEventoAvverso;
 import datatypes.protocolmessages.GetEvTypologiesResponse;
 import datatypes.protocolmessages.Packet;
 import datatypes.protocolmessages.RegistrationEVResponse;
+import javafx.application.Platform;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,6 +23,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -288,6 +291,13 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
             stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
             stage.setTitle("Info " + RicercaCentroController.centoVis.getId());
             stage.setScene(scene);
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+            });
             stage.show();
 
             Stage thisStage = (Stage) checkMalDiTesta.getScene().getWindow();

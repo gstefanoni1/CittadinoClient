@@ -8,6 +8,8 @@ import datatypes.protocolmessages.CheckVaccinatedCVResponse;
 import datatypes.protocolmessages.GetCVResponse;
 import datatypes.protocolmessages.GetReportResponse;
 import datatypes.protocolmessages.Packet;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,6 +24,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -79,6 +82,13 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
             stage.setTitle("Visualizza Centro Vaccinale");
             stage.setScene(scene);
             stage.setResizable(false);
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+            });
             stage.show();
 
             RicercaCentroController.centoVis = new CentroVaccinale();

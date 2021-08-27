@@ -6,6 +6,7 @@ import datatypes.Vaccinato;
 import datatypes.Vaccinazione;
 import datatypes.protocolmessages.*;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,6 +21,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -293,6 +295,13 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
             stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
             stage.setScene(scene);
             stage.setResizable(false);
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+            });
             stage.show();
 
             Stage thisStage = (Stage) username.getScene().getWindow();
