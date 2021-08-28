@@ -250,14 +250,11 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
                                     Scene scene = new Scene(fxmlLoader.load(), 600, 400);
                                     Stage stage = new Stage();
                                     stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
-                                    stage.setTitle("Info " + item.getId());
+                                    stage.setTitle("Info " + item.getNome());
                                     stage.setScene(scene);
-                                    stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                                        @Override
-                                        public void handle(WindowEvent event) {
-                                            Platform.exit();
-                                            System.exit(0);
-                                        }
+                                    stage.setOnCloseRequest(event -> {
+                                        Platform.exit();
+                                        System.exit(0);
                                     });
                                     stage.show();
 

@@ -49,7 +49,7 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
     @FXML
     private ImageView icon;
     @FXML
-    private BarChart barChart;
+    private BarChart<String, Number> barChart;
     @FXML
     private Button eventoAvverso;
     //endregion
@@ -61,11 +61,11 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
     /**
      * Variabili per la creaione delle colonne del grafico
      */
-    private XYChart.Series series5 = new XYChart.Series();
-    private XYChart.Series series4 = new XYChart.Series();
-    private XYChart.Series series3 = new XYChart.Series();
-    private XYChart.Series series2 = new XYChart.Series();
-    private XYChart.Series series1 = new XYChart.Series();
+    private final XYChart.Series<String, Number> series5 = new XYChart.Series<>();
+    private final XYChart.Series<String, Number> series4 = new XYChart.Series<>();
+    private final XYChart.Series<String, Number> series3 = new XYChart.Series<>();
+    private final XYChart.Series<String, Number> series2 = new XYChart.Series<>();
+    private final XYChart.Series<String, Number> series1 = new XYChart.Series<>();
 
     /**
      * Metodo invocato per tornare alla schermata di ricerca centri
@@ -138,8 +138,6 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
         series3.setName("3");
         series2.setName("2");
         series1.setName("1");
-
-
     }
 
     /**
@@ -153,7 +151,7 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
         }
         Platform.runLater(() -> {
                     barChart.getData().addAll(series5, series4, series3, series2, series1);
-                });
+        });
         System.out.println(series1.getData().toString());
         System.out.println(series2.getData().toString());
         System.out.println(series3.getData().toString());
@@ -193,6 +191,26 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
             stage.setMinHeight(300);
             stage.setMinWidth(500);
             stage.setScene(scene);
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        fxmlLoader.setLocation(getClass().getResource("../view/visualizzaCentroLayout.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+                        Stage stage = new Stage();
+                        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
+                        stage.setTitle("Info " + nomeCentro.getText());
+                        stage.setScene(scene);
+                        stage.setOnCloseRequest(event1 -> {
+                            Platform.exit();
+                            System.exit(0);
+                        });
+                        stage.show();
+                    }
+                    catch(Exception ignored){}
+                }
+            });
             //stage.setResizable(false);
             stage.show();
 
@@ -214,15 +232,17 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
             ReportCV report = ((GetReportResponse)packet).getReport();
             System.out.println(report.getReportList());
             popolaGrafico(report.getReportList());
+            //ARANCIO SCURO #f0602c
+            //ARANCIO #f8a31a
+            //VERDE #56b656
+            //AZZURRO CHIARO #40a7c7
+            //BLU #4157c7
+
         }
 
         if (packet instanceof CheckVaccinatedCVResponse){
             CheckVaccinatedCVResponse res = (CheckVaccinatedCVResponse) packet;
-
-            if (res.isEsito())
-                eventoAvverso.setVisible(true);
-            else
-                eventoAvverso.setVisible(false);
+            eventoAvverso.setVisible(res.isEsito());
         }
 
     }
