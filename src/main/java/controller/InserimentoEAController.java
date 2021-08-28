@@ -12,7 +12,6 @@ import javafx.application.Platform;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -83,8 +82,19 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
      * centro è il centro di riferimento a cui si vuole aggiungere gli eventi avversi
      */
     private CentroVaccinale centro;
-
+    /**
+     * tipologie di eventi
+     */
     private ListProperty<TipologiaEventoAvverso> tipoeventi;
+
+    /**
+     * Contatore delle richieste inviate
+     */
+    private int contEVSelezionati = 0;
+    /**
+     * Contatore eventi avversi registrati
+     */
+    private int contEVRegistrati = 0;
 
     /**
      * Metodo invocato per tornare alla schermata di visualizazione delle info
@@ -99,38 +109,51 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
      * @param mouseEvent
      */
     public void inserisciEA(MouseEvent mouseEvent) {
-        int i = 0;
+        int i = 1;
         if (checkMalDiTesta.isSelected()){
+            contEVSelezionati++;
            setEvento(tipoeventi.get(0).getNome(), Integer.parseInt(severitaMalDiTesta.getValue()),
-                   noteMalDiTesta.getText());
+                   noteMalDiTesta.getText(), i);
         }
-
+        i++;
         if (checkFebbre.isSelected()){
+            contEVSelezionati++;
             setEvento(tipoeventi.get(1).getNome(), Integer.parseInt(severitaFebbre.getValue()),
-                    noteFebbre.getText());
+                    noteFebbre.getText(), i);
         }
-
+        i++;
         if (checkDMA.isSelected()){
+            contEVSelezionati++;
             setEvento(tipoeventi.get(2).getNome(), Integer.parseInt(severitaDMA.getValue()),
-                    noteDMA.getText());
+                    noteDMA.getText(), i);
         }
-
+        i++;
         if (checkLinfo.isSelected()){
+            contEVSelezionati++;
             setEvento(tipoeventi.get(3).getNome(), Integer.parseInt(severitaLinfo.getValue()),
-                    noteLinfo.getText());
+                    noteLinfo.getText(), i);
         }
-
+        i++;
         if (checkTachicardia.isSelected()){
+            contEVSelezionati++;
             setEvento(tipoeventi.get(4).getNome(), Integer.parseInt(severitaTachicardia.getValue()),
-                    noteTachicardia.getText());
+                    noteTachicardia.getText(), i);
         }
-
+        i++;
         if (checkCrisiIper.isSelected()){
+            contEVSelezionati++;
             setEvento(tipoeventi.get(5).getNome(), Integer.parseInt(severitaCrisiIper.getValue()),
-                    noteCrisiIper.getText());
+                    noteCrisiIper.getText(), i);
         }
-
-       indietro(mouseEvent);
+       if(contEVSelezionati == 0)
+       {
+           Alert alert;
+           alert = new Alert(Alert.AlertType.ERROR);
+           alert.setTitle("Errore registrazione");
+           alert.setHeaderText(null);
+           alert.setContentText("Selezionare almeno una tipologia");
+           alert.showAndWait();
+       }
     }
 
     /**
@@ -139,9 +162,12 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
      * @param severita Severità dell'evento
      * @param note Note opzionali aggiuntive riguardo l'evento
      */
-    private void setEvento(String tipo, int severita, String note){
+    private void setEvento(String tipo, int severita, String note, int id){
         EventoAvverso evento = new EventoAvverso();
-        evento.setTipologia(new TipologiaEventoAvverso(tipo));
+        evento.setCentroVaccinale(centro);
+        TipologiaEventoAvverso tipologia = new TipologiaEventoAvverso(tipo);
+        tipologia.setId(id);
+        evento.setTipologia(tipologia);
         evento.setSeverita(severita);
         evento.setNote(note);
         client.insertEV(evento);
@@ -247,21 +273,29 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
     public void onPacketReceived(Packet packet) {
         if (packet instanceof RegistrationEVResponse){
             RegistrationEVResponse res = (RegistrationEVResponse) packet;
-            Alert alert;
+            contEVRegistrati++;
             if (res.isEsito()) {
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Informazioni registrate");
-                alert.setHeaderText(null);
-                alert.setContentText("Registrazione completata");
-                alert.showAndWait();
+                if(contEVSelezionati == contEVRegistrati) {
+                    Platform.runLater(() -> {
+                        Alert alert;
+                        alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Informazioni registrate");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Registrazione completata");
+                        alert.showAndWait();
+                        chiudi();
+                    });
 
-                chiudi();
+                }
             }else{
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Errore registrazione");
-                alert.setHeaderText(null);
-                alert.setContentText("Registrazione fallita, riprovare");
-                alert.showAndWait();
+                Platform.runLater(() -> {
+                    Alert alert;
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Errore registrazione");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Registrazione fallita, riprovare");
+                    alert.showAndWait();
+                });
             }
         }
 
@@ -270,26 +304,31 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
             if (res.isEsito()){
                tipoeventi.addAll(res.getTypologies());
             }else{
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Errore");
-                alert.setHeaderText(null);
-                alert.setContentText("Impossibile recuperare tiopologia Eventi");
-                alert.showAndWait();
-                chiudi();
+                Platform.runLater(() -> {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Errore");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Impossibile recuperare tiopologia Eventi");
+                    alert.showAndWait();
+                    chiudi();
+                });
             }
         }
     }
     /**
      * Metodo invocato per tornare alla schermata di visualizazione delle info
      */
-    private void chiudi() {Parent root;
+    private void chiudi() {
+        System.out.println("CHIUDI CHIAMATA");
+        Parent root;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("../view/visualizzaCentroLayout.fxml"));
+
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             Stage stage = new Stage();
             stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
-            stage.setTitle("Info " + RicercaCentroController.centoVis.getId());
+            stage.setTitle("Info " + centro.getId());
             stage.setScene(scene);
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
@@ -316,6 +355,7 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tipoeventi = new SimpleListProperty<>(FXCollections.observableArrayList());
+        centro = RicercaCentroController.centroVis;
         client = ClientHandler.getInstance();
         this.client.addListener(GetEvTypologiesResponse.class.toString(), this);
         this.client.addListener(RegistrationEVResponse.class.toString(), this);

@@ -91,7 +91,7 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
             });
             stage.show();
 
-            RicercaCentroController.centoVis = new CentroVaccinale();
+            RicercaCentroController.centroVis = new CentroVaccinale();
 
             Node source = (Node) mouseEvent.getSource();
             Stage thisStage = (Stage) source.getScene().getWindow();
@@ -109,26 +109,25 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         client = ClientHandler.getInstance();
         this.client.addListener(GetCVResponse.class.toString(), this);
+        this.client.addListener(GetReportResponse.class.toString(), this);
         this.client.addListener(CheckVaccinatedCVResponse.class.toString(), this);
-        client.getReport(RicercaCentroController.centoVis);
-        client.requestVaccinatedCvCheck(RicercaCentroController.centoVis);
-
-        nomeCentro.setText(RicercaCentroController.centoVis.getNome());
-        tipologia.setText(RicercaCentroController.centoVis.getTipologia());
-
+        client.getReport(RicercaCentroController.centroVis);
+        client.requestVaccinatedCvCheck(RicercaCentroController.centroVis);
+        nomeCentro.setText(RicercaCentroController.centroVis.getNome());
+        tipologia.setText(RicercaCentroController.centroVis.getTipologia());
+        eventoAvverso.setVisible(false);
         //Ricostruisco indirizzo
         indirizzo.setText(
-                RicercaCentroController.centoVis.getQualificatore() + " " +
-                RicercaCentroController.centoVis.getNomeIndirizzo() + ", " +
-                RicercaCentroController.centoVis.getNumero() + ", " +
-                RicercaCentroController.centoVis.getComune() + " (" +
-                RicercaCentroController.centoVis.getSiglaProvincia() + "), " +
-                RicercaCentroController.centoVis.getCap());
+                RicercaCentroController.centroVis.getQualificatore() + " " +
+                RicercaCentroController.centroVis.getNomeIndirizzo() + ", " +
+                RicercaCentroController.centroVis.getNumero() + ", " +
+                RicercaCentroController.centroVis.getComune() + " (" +
+                RicercaCentroController.centroVis.getSiglaProvincia() + "), " +
+                RicercaCentroController.centroVis.getCap());
 
-        switch (RicercaCentroController.centoVis.getTipologia()) {
+        switch (RicercaCentroController.centroVis.getTipologia()) {
             case "Ospedaliero": icon.setImage(new Image(String.valueOf(getClass().getResource("../img/ospedale.png")))); break;
             case "Aziendale": icon.setImage(new Image(String.valueOf(getClass().getResource("../img/azienda.png")))); break;
             case "HUB": icon.setImage(new Image(String.valueOf(getClass().getResource("../img/hub.png")))); break;
@@ -152,8 +151,9 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
             inserisciColonna(eventiAvversi.get(i++), Integer.parseInt(eventiAvversi.get(i++)),
                     Math.round(Float.parseFloat(eventiAvversi.get(i++))));
         }
-
-        barChart.getData().addAll(series5, series4, series3, series2, series1);
+        Platform.runLater(() -> {
+                    barChart.getData().addAll(series5, series4, series3, series2, series1);
+                });
         System.out.println(series1.getData().toString());
         System.out.println(series2.getData().toString());
         System.out.println(series3.getData().toString());
@@ -218,8 +218,12 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
 
         if (packet instanceof CheckVaccinatedCVResponse){
             CheckVaccinatedCVResponse res = (CheckVaccinatedCVResponse) packet;
+
             if (res.isEsito())
                 eventoAvverso.setVisible(true);
+            else
+                eventoAvverso.setVisible(false);
         }
+
     }
 }

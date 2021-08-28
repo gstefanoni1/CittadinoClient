@@ -42,8 +42,8 @@
       </Label>
       <GridPane layoutY="124.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="26.6" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="77.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.39998779296874" minWidth="-Infinity" prefWidth="70.39998779296874" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="224.80001220703124" minWidth="-Infinity" prefWidth="224.80001220703124" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.19998779296876" minWidth="-Infinity" prefWidth="91.19998779296876" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="224.80001220703124" minWidth="-Infinity" prefWidth="204.80001220703124" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="148.79998779296875" />
         </columnConstraints>

@@ -6,13 +6,10 @@ import datatypes.CentroVaccinale;
 import datatypes.protocolmessages.GetCVResponse;
 import datatypes.protocolmessages.Packet;
 import javafx.application.Platform;
-import javafx.beans.InvalidationListener;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -60,7 +57,7 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
     /**
      * Centro di cui si vogliono visualizzare le informazioni
      */
-    public static CentroVaccinale centoVis;
+    public static CentroVaccinale centroVis;
     /**
      * client è l'istanza del client connesso al server
      */
@@ -149,7 +146,7 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
     public void ricercaPerNome(){
         ObservableList<CentroVaccinale> dataFiltered = FXCollections.observableArrayList();
         for(CentroVaccinale centro : data) {
-            if (centro.getNome().contains(textFilter.getText())){
+            if (centro.getNome().toUpperCase(Locale.ROOT).contains(textFilter.getText().toUpperCase(Locale.ROOT))){
                 dataFiltered.add(centro);
             }
         }
@@ -165,7 +162,7 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
     public void ricercaPerComuneTipo(){
         ObservableList<CentroVaccinale> dataFiltered = FXCollections.observableArrayList();
         for(CentroVaccinale centro : data) {
-            if (centro.getComune().contains(textFilter.getText()) && centro.getTipologia().equals(tipologia.getValue())){
+            if (centro.getComune().toUpperCase(Locale.ROOT).contains(textFilter.getText().toUpperCase(Locale.ROOT)) && centro.getTipologia().toUpperCase(Locale.ROOT).equals(tipologia.getValue().toUpperCase(Locale.ROOT))){
                 dataFiltered.add(centro);
             }
         }
@@ -246,7 +243,7 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
                              * @param e
                              */
                             public void handle(MouseEvent e) {
-                                RicercaCentroController.centoVis = item;
+                                RicercaCentroController.centroVis = item;
                                 try {
                                     FXMLLoader fxmlLoader = new FXMLLoader();
                                     fxmlLoader.setLocation(getClass().getResource("../view/visualizzaCentroLayout.fxml"));

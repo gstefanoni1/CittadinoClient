@@ -74,7 +74,7 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
      * Variabili per memorizzare se il controllo è andato a buon fine
      */
     private boolean verificaEmailDB = false, verificaUser = false, verficaIDVac = false;
-
+    private String emailDBRegistrata;
     /**
      * Metodo invocato per tornare alla schermata principale dell'applicazione
      * @param mouseEvent
@@ -125,6 +125,8 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
             nome.setText(vaccinato.getNome());
             cognome.setText(vaccinato.getCognome());
             codFiscale.setText(vaccinato.getCodiceFiscale());
+            email.setText(vaccinato.getEmail());
+            emailDBRegistrata = vaccinato.getEmail();
             nome.setEditable(false);
             cognome.setEditable(false);
             codFiscale.setEditable(false);
@@ -331,7 +333,12 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
         if(packet instanceof CheckUserIdResponse){
             System.out.println("Esiste userId? " + ((CheckUserIdResponse)packet).isEsito());
             verificaUser = !((CheckUserIdResponse)packet).isEsito();
-            client.requestEmailCheck(email.getText());
+            if(!email.getText().equals("") && !email.getText().equals(emailDBRegistrata))
+                client.requestEmailCheck(email.getText());
+            else {
+                verificaEmailDB = true;
+                registraCittadino();
+            }
         }
         if(packet instanceof CheckEmailResponse){
             System.out.println("Esiste email? " + ((CheckEmailResponse)packet).isEsito());

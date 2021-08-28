@@ -165,6 +165,12 @@ public class ClientHandler {
         return true;
     }
 
+    public boolean requestUserDisconnect(){
+        if(!isConnected()) return false;
+        session.write(new UserDisconnectRequest());
+        return true;
+    }
+
     /**
      * Invia al server una richiesta di inserimento di un nuovo centro vaccinale
      * @param cv centro vaccinale da inserire
