@@ -38,15 +38,15 @@
          <image>
             <Image url="@../img/ospedale.png" />
          </image></ImageView>
-      <BarChart fx:id="barChart" barGap="2.0" categoryGap="3.0" layoutX="250.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="240.0" title="Report eventi avversi" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <BarChart fx:id="barChart" barGap="0.0" categoryGap="0.0" layoutX="250.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="240.0" title="Report eventi avversi" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <xAxis>
-          <CategoryAxis label="Severità Media" side="BOTTOM" />
+          <CategoryAxis animated="false" label="Severità Media" side="BOTTOM" />
         </xAxis>
         <yAxis>
           <NumberAxis label="Numero casi" side="LEFT" />
         </yAxis>
       </BarChart>
-      <Button fx:id="eventoAvverso" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#inserisciEA" prefHeight="30.0" prefWidth="290.0" styleClass="but" text="Inserisci evento avverso" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="260.0" />
+      <Button fx:id="eventoAvverso" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#inserisciEA" prefHeight="30.0" prefWidth="290.0" styleClass="but" text="Inserisci evento avverso" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="315.0" />
       <Label layoutX="20.0" layoutY="191.0" text="Indirizzo:" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="190.0">
          <font>
             <Font size="14.0" />
@@ -57,5 +57,15 @@
             <Image url="@../img/maps.png" />
          </image>
       </ImageView>
+      <Separator layoutX="10.0" layoutY="232.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="290.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="232.0" />
+      <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="-45.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="255.0">
+         <image>
+            <Image url="@../img/eventiAvversi.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="34.0" layoutY="256.0" text="Eventi avversi segnalati: " AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="256.0" />
+      <Label fx:id="totEA" layoutX="236.0" layoutY="256.0" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="256.0" />
+      <Label layoutX="24.0" layoutY="283.0" text="Severità media:" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="280.0" />
+      <Label fx:id="severitaMedia" layoutX="166.0" layoutY="280.0" maxWidth="100.0" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="280.0" />
     </children>
 </AnchorPane>
