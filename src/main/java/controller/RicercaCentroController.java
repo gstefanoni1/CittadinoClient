@@ -106,12 +106,41 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
         data = new SimpleListProperty<>(FXCollections.observableArrayList());
         client = ClientHandler.getInstance();
         this.client.addListener(GetCVResponse.class.toString(), this);
-        client.getAllCV();
+        if(!client.getAllCV())
+            Platform.runLater(this::connessionePersa);
         typeSearch.getSelectionModel()
                 .selectedItemProperty()
                 .addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue)
                         -> choiceEnable(newValue) );
     }
+
+    private void connessionePersa() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 700, 500);
+            Stage stage = new Stage();
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
+            stage.setTitle("Vaccinazioni Cittadini");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+            });
+            stage.show();
+
+            Stage thisStage = (Stage) tipologia.getScene().getWindow();
+            thisStage.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Metodo per cambiare il tipo di ricerca (nome centro || comune + tipologia)
      * @param value

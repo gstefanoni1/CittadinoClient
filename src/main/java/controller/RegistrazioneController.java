@@ -87,7 +87,8 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
      * @param mouseEvent
      */
     public void controllaCittadino(MouseEvent mouseEvent) throws InterruptedException {
-        client.requestUserIdCheck(username.getText());
+       if(!client.requestUserIdCheck(username.getText()))
+           Platform.runLater(this::connessionePersa);
 
     }
 
@@ -102,14 +103,16 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
         v.setEmail(email.getText());
         v.setPassword(password.getText());
         v.setUserId(username.getText());
-        client.requestUserRegistration(v, id.getText());
+        if(!client.requestUserRegistration(v, id.getText()))
+            Platform.runLater(this::connessionePersa);
     }
     /**
      * Metodo che chiede al server di verificare se l'id della vaccinazione è registrato a DB
      * @param mouseEvent
      */
     public void verificaId(MouseEvent mouseEvent) {
-        client.getVaccinationByKey(id.getText());
+        if(!client.getVaccinationByKey(id.getText()))
+            Platform.runLater(this::connessionePersa);
     }
     /**
      * Metodo invocato dopo aver ricevuto la risposta dal server per la verifica dell'id della vaccinazione, in caso
@@ -334,7 +337,8 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
             System.out.println("Esiste userId? " + ((CheckUserIdResponse)packet).isEsito());
             verificaUser = !((CheckUserIdResponse)packet).isEsito();
             if(!email.getText().equals("") && !email.getText().equals(emailDBRegistrata))
-                client.requestEmailCheck(email.getText());
+                if(!client.requestEmailCheck(email.getText()))
+                    Platform.runLater(this::connessionePersa);
             else {
                 verificaEmailDB = true;
                 registraCittadino();
@@ -347,6 +351,11 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
         }
 
     }
+
+    private void connessionePersa() {
+        chiudi();
+    }
+
     /**
      * Metodo invocato durante l'inizializzazione della finestra per: settare il client
      * @param url

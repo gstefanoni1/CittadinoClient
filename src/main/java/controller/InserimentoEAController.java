@@ -170,7 +170,35 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
         evento.setTipologia(tipologia);
         evento.setSeverita(severita);
         evento.setNote(note);
-        client.insertEV(evento);
+        if(!client.insertEV(evento))
+            Platform.runLater(this::connessionePersa);
+    }
+
+    private void connessionePersa() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 700, 500);
+            Stage stage = new Stage();
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
+            stage.setTitle("Vaccinazioni Cittadini");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+            });
+            stage.show();
+
+            Stage thisStage = (Stage) checkCrisiIper.getScene().getWindow();
+            thisStage.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //region Metodi per abilitazione e disabilitazione dei campi di sevreirà e note opzionali dei singoli eventi avversi
@@ -358,6 +386,7 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
         client = ClientHandler.getInstance();
         this.client.addListener(GetEvTypologiesResponse.class.toString(), this);
         this.client.addListener(RegistrationEVResponse.class.toString(), this);
-        client.getEvTypologies();
+        if(!client.getEvTypologies())
+            Platform.runLater(this::connessionePersa);
     }
 }
