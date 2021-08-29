@@ -56,13 +56,6 @@
                      </children>
                   </AnchorPane>
                </center>
-               <bottom>
-                  <Button fx:id="disconnetti" alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#disconnect" prefWidth="220.0" styleClass="but" text="Disconnetti" visible="false" BorderPane.alignment="TOP_CENTER">
-                     <BorderPane.margin>
-                        <Insets bottom="60.0" />
-                     </BorderPane.margin>
-                  </Button>
-               </bottom>
                <GridPane.margin>
                   <Insets bottom="10.0" left="5.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -111,6 +104,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <Button fx:id="disconnetti" alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#disconnect" prefWidth="220.0" styleClass="but" text="Disconnetti" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="56.0" AnchorPane.rightAnchor="56.0" />
                </children>
                <GridPane.margin>
                   <Insets bottom="10.0" left="5.0" right="10.0" top="10.0" />
