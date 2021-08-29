@@ -33,7 +33,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="border-login" GridPane.columnIndex="1">
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.8" prefWidth="335.2" styleClass="border-login" GridPane.columnIndex="1">
                <center>
                   <AnchorPane fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@Style.css" BorderPane.alignment="CENTER">
                      <children>
@@ -99,6 +99,23 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </BorderPane>
+            <AnchorPane fx:id="benvenuto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.8" prefWidth="335.2" styleClass="border-login" visible="false" GridPane.columnIndex="1">
+               <children>
+                  <Label alignment="TOP_CENTER" text="Benvenuto" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                     <font>
+                        <Font name="Segoe UI Light" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nome" alignment="TOP_CENTER" text="Nome Cognome" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="5.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </AnchorPane>
          </children>
       </GridPane>
       <AnchorPane fx:id="serverError" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
