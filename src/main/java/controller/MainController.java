@@ -55,6 +55,10 @@ public class MainController implements Initializable, PacketReceivedListener {
     private GridPane homePane;
     @FXML
     private ImageView ricercaImg;
+    @FXML
+    private Label nome;
+    @FXML
+    private AnchorPane benvenuto;
     //endregion
     /**
      * client è l'istanza del client connesso al server
@@ -96,9 +100,11 @@ public class MainController implements Initializable, PacketReceivedListener {
         if (!(Objects.isNull(user))) {
             loginPane.setVisible(false);
             disconnetti.setVisible(true);
+            benvenuto.setVisible(true);
         } else {
             loginPane.setVisible(true);
             disconnetti.setVisible(false);
+            benvenuto.setVisible(false);
         }
     }
 
@@ -192,6 +198,8 @@ public class MainController implements Initializable, PacketReceivedListener {
                 MainController.setUser(res.getVaccinato());
                 //Utente loggato
                 visualizzaPannelloUtenteLoggato();
+                // do your GUI stuff here
+                Platform.runLater(() -> nome.setText(user.getNome() + " " + user.getCognome()));
             } else {
                 Platform.runLater(() -> {
                     Alert alertLogin = new Alert(Alert.AlertType.ERROR);
@@ -207,8 +215,7 @@ public class MainController implements Initializable, PacketReceivedListener {
             UserDisconnectResponse res = (UserDisconnectResponse) packet;
             if (res.isEsito()) {
                 user = null;
-                loginPane.setVisible(true);
-                disconnetti.setVisible(false);
+                visualizzaPannelloUtenteLoggato();
             }
         }
     }

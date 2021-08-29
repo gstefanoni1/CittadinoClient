@@ -23,11 +23,13 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.*;
 
 /**
@@ -52,6 +54,10 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
     private BarChart<String, Number> barChart;
     @FXML
     private Button eventoAvverso;
+    @FXML
+    private Label totEA;
+    @FXML
+    private Label severitaMedia;
     //endregion
     /**
      * client è l'istanza del client connesso al server
@@ -232,12 +238,27 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
             ReportCV report = ((GetReportResponse)packet).getReport();
             System.out.println(report.getReportList());
             popolaGrafico(report.getReportList());
-            //ARANCIO SCURO #f0602c
-            //ARANCIO #f8a31a
-            //VERDE #56b656
-            //AZZURRO CHIARO #40a7c7
-            //BLU #4157c7
-
+            Platform.runLater(()->{
+            totEA.setText(report.getNumEventiAvversi() + "");
+            severitaMedia.setText("⚫ " + (new DecimalFormat("#.##").format(report.getSeveritaMediaComplessiva())));
+                switch ((int) Math.round(report.getSeveritaMediaComplessiva())){
+                    case 1:
+                        severitaMedia.setTextFill(Paint.valueOf("#4157c7"));
+                        break;
+                    case 2:
+                        severitaMedia.setTextFill(Paint.valueOf("#40a7c7"));
+                        break;
+                    case 3:
+                        severitaMedia.setTextFill(Paint.valueOf("#56b656"));
+                        break;
+                    case 4:
+                        severitaMedia.setTextFill(Paint.valueOf("#f8a31a"));
+                        break;
+                    case 5:
+                        severitaMedia.setTextFill(Paint.valueOf("#f0602c"));
+                        break;
+                }
+            });
         }
 
         if (packet instanceof CheckVaccinatedCVResponse){
