@@ -38,9 +38,9 @@
          <image>
             <Image url="@../img/ospedale.png" />
          </image></ImageView>
-      <BarChart fx:id="barChart" barGap="2.0" categoryGap="3.0" layoutX="250.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="240.0" title="Report eventi avversi" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <BarChart fx:id="barChart" barGap="0.0" categoryGap="0.0" layoutX="250.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="240.0" title="Report eventi avversi" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <xAxis>
-          <CategoryAxis label="Severità Media" side="BOTTOM" />
+          <CategoryAxis label="Severità Media" animated="false" side="BOTTOM" />
         </xAxis>
         <yAxis>
           <NumberAxis label="Numero casi" side="LEFT" />

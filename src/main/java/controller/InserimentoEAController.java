@@ -319,7 +319,6 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
      * Metodo invocato per tornare alla schermata di visualizazione delle info
      */
     private void chiudi() {
-        System.out.println("CHIUDI CHIAMATA");
         Parent root;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
