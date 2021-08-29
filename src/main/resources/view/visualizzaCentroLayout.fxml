@@ -64,7 +64,7 @@
          </image>
       </ImageView>
       <Label layoutX="34.0" layoutY="256.0" text="Eventi avversi segnalati: " AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="256.0" />
-      <Label fx:id="totEA" layoutX="236.0" layoutY="256.0" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="256.0" />
+      <Label fx:id="totEA" layoutX="236.0" layoutY="256.0" AnchorPane.leftAnchor="190.0" AnchorPane.topAnchor="256.0" />
       <Label layoutX="24.0" layoutY="283.0" text="Severità media:" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="280.0" />
       <Label fx:id="severitaMedia" layoutX="166.0" layoutY="280.0" maxWidth="100.0" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="280.0" />
       <Separator layoutX="20.0" layoutY="242.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="290.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="305.0" />
