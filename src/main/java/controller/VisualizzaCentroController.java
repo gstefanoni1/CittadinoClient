@@ -148,6 +148,9 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
         series1.setName("1");
     }
 
+    /**
+     * Metodo invocato in caso di connessione persa, riporta alla home per la riconnesione
+     */
     private void connessionePersa() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();

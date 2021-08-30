@@ -113,7 +113,9 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
                 .addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue)
                         -> choiceEnable(newValue) );
     }
-
+    /**
+     * Metodo invocato in caso di connessione persa, riporta alla home per la riconnesione
+     */
     private void connessionePersa() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();

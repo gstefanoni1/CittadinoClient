@@ -174,6 +174,9 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
             Platform.runLater(this::connessionePersa);
     }
 
+    /**
+     * Metodo invocato in caso di connessione persa, riporta alla home per la riconnesione
+     */
     private void connessionePersa() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();

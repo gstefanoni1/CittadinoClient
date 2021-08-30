@@ -83,7 +83,7 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
         chiudi();
     }
     /**
-     * Metodo che invoca la verifica dei capi e invia le informazioni al server
+     * Metodo per richiedere la verifica dell'username al server
      * @param mouseEvent
      */
     public void controllaCittadino(MouseEvent mouseEvent) throws InterruptedException {
@@ -92,6 +92,9 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
 
     }
 
+    /**
+     * Metodo che invoca la verifica dei campi e invia le informazioni al server
+     */
     public void registraCittadino(){
         if(!verificaCampi()){
             return;
@@ -352,6 +355,9 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
 
     }
 
+    /**
+     * Metodo invocato in caso di connessione persa, riporta alla home per la riconnesione
+     */
     private void connessionePersa() {
         chiudi();
     }
