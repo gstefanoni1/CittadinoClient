@@ -119,8 +119,10 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
         this.client.addListener(GetCVResponse.class.toString(), this);
         this.client.addListener(GetReportResponse.class.toString(), this);
         this.client.addListener(CheckVaccinatedCVResponse.class.toString(), this);
-        if(!client.getReport(RicercaCentroController.centroVis))
+        if(!client.getReport(RicercaCentroController.centroVis)) {
             Platform.runLater(this::connessionePersa);
+            return;
+        }
         if(!client.requestVaccinatedCvCheck(RicercaCentroController.centroVis))
             Platform.runLater(this::connessionePersa);
         nomeCentro.setText(RicercaCentroController.centroVis.getNome());
