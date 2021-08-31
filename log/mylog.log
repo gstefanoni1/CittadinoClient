@@ -343,3 +343,10 @@ INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: dat
 INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetEVTypologiesRequest@3a438527
 INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetEvTypologiesResponse@77f9bd61
 INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CLOSED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.UserLoginRequest@11e8771c
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.UserLoginResponse@29078774
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CLOSED
+INFO NioProcessor-8 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-8 org.apache.mina.filter.logging.LoggingFilter - OPENED
