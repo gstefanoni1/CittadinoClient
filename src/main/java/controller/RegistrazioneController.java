@@ -132,7 +132,7 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
             cognome.setText(vaccinato.getCognome());
             codFiscale.setText(vaccinato.getCodiceFiscale());
             email.setText(vaccinato.getEmail());
-            emailDBRegistrata = vaccinato.getEmail();
+            emailDBRegistrata = vaccinato.getEmail() == null ? "" : vaccinato.getEmail();
             nome.setEditable(false);
             cognome.setEditable(false);
             codFiscale.setEditable(false);
@@ -208,7 +208,7 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
             }
         }
 
-        if (email.getText().equals(""))
+        if (email.getText() == null || email.getText().equals(""))
             verified = setColorBorder(email, "red");
         else {
             if (verificaEmail(email.getText()) && verificaEmailDB)
@@ -256,8 +256,11 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
      * @return
      */
     private boolean setColorBorder(Control component, String color){
-        component.setStyle("-fx-border-color: " + color + ";");
-        return false;
+        try {
+            component.setStyle("-fx-border-color: " + color + ";");
+            return false;
+        }
+        catch(Exception ex) {return false;}
     }
     /**
      * Metodo invocato dopo aver riceuto la risposta dal server riguardo la registrazione dell'utente, viene comunicato
@@ -339,9 +342,10 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
         if(packet instanceof CheckUserIdResponse){
             System.out.println("Esiste userId? " + ((CheckUserIdResponse)packet).isEsito());
             verificaUser = !((CheckUserIdResponse)packet).isEsito();
-            if(!email.getText().equals("") && !email.getText().equals(emailDBRegistrata))
-                if(!client.requestEmailCheck(email.getText()))
+            if(email.getText() != null && !email.getText().equals("") && !email.getText().equals(emailDBRegistrata)) {
+                if (!client.requestEmailCheck(email.getText()))
                     Platform.runLater(this::connessionePersa);
+            }
             else {
                 verificaEmailDB = true;
                 registraCittadino();
