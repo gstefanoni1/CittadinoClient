@@ -59,6 +59,10 @@ public class ClientHandler {
         listeners = new ConcurrentHashMap<>();
     }
 
+    /**
+     * Setta l'indirizzo ip a cui connettersi
+     * @param ipAddress indirizzo a cui connettersi
+     */
     public void setIpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
     }
@@ -174,6 +178,10 @@ public class ClientHandler {
         return true;
     }
 
+    /**
+     * Invia al server una richiesta di disconnessione
+     * @return true se la richiesta va a buon fine, false altrimenti
+     */
     public boolean requestUserDisconnect(){
         if(!isConnected()) return false;
         session.write(new UserDisconnectRequest());
