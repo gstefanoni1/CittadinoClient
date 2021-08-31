@@ -96,6 +96,9 @@ public class MainController implements Initializable, PacketReceivedListener {
         visualizzaPannelloUtenteLoggato();
     }
 
+    /**
+     * Metodo invocato per la visualizzazione dei pannelli di login e benvenuto
+     */
     private void visualizzaPannelloUtenteLoggato() {
         if (!(Objects.isNull(user))) {
             loginPane.setVisible(false);
@@ -108,7 +111,12 @@ public class MainController implements Initializable, PacketReceivedListener {
         }
     }
 
+    /**
+     * Metodo invocato per la visualizzazione del banner per la riconnessione al server
+     */
     private void visualizzaPannelloRiconnessione() {
+        user = null;
+        visualizzaPannelloUtenteLoggato();
         serverError.setVisible(true);
         ricercaImg.setOpacity(0.5);
         homePane.setDisable(true);
@@ -120,7 +128,6 @@ public class MainController implements Initializable, PacketReceivedListener {
      * @param mouseEvent
      */
     public void retryConnect(MouseEvent mouseEvent) {
-        serverError.setDisable(true);
         try {
             if (client.connect()) {
                 serverError.setVisible(false);

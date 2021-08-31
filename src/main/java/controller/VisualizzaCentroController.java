@@ -119,8 +119,12 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
         this.client.addListener(GetCVResponse.class.toString(), this);
         this.client.addListener(GetReportResponse.class.toString(), this);
         this.client.addListener(CheckVaccinatedCVResponse.class.toString(), this);
-        client.getReport(RicercaCentroController.centroVis);
-        client.requestVaccinatedCvCheck(RicercaCentroController.centroVis);
+        if(!client.getReport(RicercaCentroController.centroVis)) {
+            Platform.runLater(this::connessionePersa);
+            return;
+        }
+        if(!client.requestVaccinatedCvCheck(RicercaCentroController.centroVis))
+            Platform.runLater(this::connessionePersa);
         nomeCentro.setText(RicercaCentroController.centroVis.getNome());
         tipologia.setText(RicercaCentroController.centroVis.getTipologia());
         eventoAvverso.setVisible(false);
@@ -144,6 +148,36 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
         series3.setName("3");
         series2.setName("2");
         series1.setName("1");
+    }
+
+    /**
+     * Metodo invocato in caso di connessione persa, riporta alla home per la riconnesione
+     */
+    private void connessionePersa() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 700, 500);
+            Stage stage = new Stage();
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
+            stage.setTitle("Vaccinazioni Cittadini");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+            });
+            stage.show();
+
+            Stage thisStage = (Stage) tipologia.getScene().getWindow();
+            thisStage.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
