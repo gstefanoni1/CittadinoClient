@@ -137,11 +137,13 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
             cognome.setEditable(false);
             codFiscale.setEditable(false);
         }else{
-            setColorBorder(id, "red");
-            Alert alertLogin = new Alert(Alert.AlertType.ERROR);
-            alertLogin.setTitle("");
-            alertLogin.setHeaderText("ID non trovato");
-            alertLogin.showAndWait();
+            Platform.runLater( () -> {
+                setColorBorder(id, "red");
+                Alert alertLogin = new Alert(Alert.AlertType.ERROR);
+                alertLogin.setTitle("");
+                alertLogin.setHeaderText("ID non trovato");
+                alertLogin.showAndWait();
+            });
             id.setText("");
         }
     }
