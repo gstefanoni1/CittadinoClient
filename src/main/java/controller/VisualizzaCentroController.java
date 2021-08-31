@@ -81,10 +81,10 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
         Parent root;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/ricercaCentroLayout.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/view/ricercaCentroLayout.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             Stage stage = new Stage();
-            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/img/icon.png"))));
             stage.setTitle("Visualizza Centro Vaccinale");
             stage.setScene(scene);
             stage.setResizable(false);
@@ -138,9 +138,9 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
                 RicercaCentroController.centroVis.getCap());
 
         switch (RicercaCentroController.centroVis.getTipologia()) {
-            case "Ospedaliero": icon.setImage(new Image(String.valueOf(getClass().getResource("../img/ospedale.png")))); break;
-            case "Aziendale": icon.setImage(new Image(String.valueOf(getClass().getResource("../img/azienda.png")))); break;
-            case "HUB": icon.setImage(new Image(String.valueOf(getClass().getResource("../img/hub.png")))); break;
+            case "Ospedaliero": icon.setImage(new Image(String.valueOf(getClass().getResource("/img/ospedale.png")))); break;
+            case "Aziendale": icon.setImage(new Image(String.valueOf(getClass().getResource("/img/azienda.png")))); break;
+            case "HUB": icon.setImage(new Image(String.valueOf(getClass().getResource("/img/hub.png")))); break;
         }
 
         series5.setName("5");
@@ -156,10 +156,10 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
     private void connessionePersa() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/view/mainLayout.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 700, 500);
             Stage stage = new Stage();
-            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/img/icon.png"))));
             stage.setTitle("Vaccinazioni Cittadini");
             stage.setScene(scene);
             stage.setResizable(false);
@@ -223,10 +223,10 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
         Parent root;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/inserimentoEALayout.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/view/inserimentoEALayout.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 500, 300);
             Stage stage = new Stage();
-            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/img/icon.png"))));
             stage.setTitle("Inserimento evento avverso");
             stage.setMinHeight(300);
             stage.setMinWidth(500);
@@ -236,10 +236,10 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
                 public void handle(WindowEvent event) {
                     try {
                         FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("../view/visualizzaCentroLayout.fxml"));
+                        fxmlLoader.setLocation(getClass().getResource("/view/visualizzaCentroLayout.fxml"));
                         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
                         Stage stage = new Stage();
-                        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
+                        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/img/icon.png"))));
                         stage.setTitle("Info " + nomeCentro.getText());
                         stage.setScene(scene);
                         stage.setOnCloseRequest(event1 -> {

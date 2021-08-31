@@ -154,10 +154,10 @@ public class MainController implements Initializable, PacketReceivedListener {
         Parent root;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/ricercaCentroLayout.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/view/ricercaCentroLayout.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             Stage stage = new Stage();
-            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/img/icon.png"))));
             stage.setTitle("Ricerca Centro Vaccinale");
             stage.setMinHeight(400);
             stage.setMinWidth(610);
@@ -258,10 +258,10 @@ public class MainController implements Initializable, PacketReceivedListener {
         Parent root;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/registrazioneLayout.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/view/registrazioneLayout.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 500, 450);
             Stage stage = new Stage();
-            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/img/icon.png"))));
             stage.setTitle("Registrazione");
             stage.setScene(scene);
             stage.setResizable(false);

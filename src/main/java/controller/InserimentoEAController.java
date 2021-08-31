@@ -183,10 +183,10 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
     private void connessionePersa() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/mainLayout.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/view/mainLayout.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 700, 500);
             Stage stage = new Stage();
-            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/img/icon.png"))));
             stage.setTitle("Vaccinazioni Cittadini");
             stage.setScene(scene);
             stage.setResizable(false);
@@ -356,11 +356,11 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
         Parent root;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/visualizzaCentroLayout.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/view/visualizzaCentroLayout.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             Stage stage = new Stage();
-            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("../img/icon.png"))));
+            stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/img/icon.png"))));
             stage.setTitle("Info " + centro.getId());
             stage.setScene(scene);
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
