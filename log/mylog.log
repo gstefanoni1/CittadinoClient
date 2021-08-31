@@ -249,3 +249,97 @@ INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - CREATED
 INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - OPENED
 INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CREATED
 INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CLOSED
+INFO NioProcessor-28 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-28 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-28 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@73b7bd0a
+INFO NioProcessor-28 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@6f741904
+INFO NioProcessor-28 org.apache.mina.filter.logging.LoggingFilter - CLOSED
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@26cc0942
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@5d2cdf4d
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetReportRequest@3f7c9721
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckVaccinatedCVRequest@5687f879
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetReportResponse@66617925
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckVaccinatedCVResponse@17c23ab7
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@53394f0c
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@44985c04
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.UserLoginRequest@75934f3
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.UserLoginResponse@5477a8b7
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@355cab2d
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@164f20eb
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetReportRequest@4b5f3beb
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckVaccinatedCVRequest@67a7e01
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetReportResponse@2c2a321c
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckVaccinatedCVResponse@45f1153e
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@4efbccf
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@6f325013
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetReportRequest@6b178952
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckVaccinatedCVRequest@7daa74a4
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetReportResponse@956d66
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckVaccinatedCVResponse@7d5215ba
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@3bf38cf7
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@3047b7cb
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetReportRequest@1a9e5d6f
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckVaccinatedCVRequest@1d94965a
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetReportResponse@63b506b
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckVaccinatedCVResponse@33c5bf37
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetEVTypologiesRequest@45b64b53
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetEvTypologiesResponse@1fa0815b
+INFO NioProcessor-44 org.apache.mina.filter.logging.LoggingFilter - CLOSED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.UserLoginRequest@7140cbdb
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.UserLoginResponse@19f84d2c
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@3e8d0702
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@157ac0d1
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetReportRequest@7a4531c1
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckVaccinatedCVRequest@4dc30f10
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetReportResponse@5f8c370e
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckVaccinatedCVResponse@d08f3d5
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@3779d584
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@1d014ca4
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetReportRequest@702d7bec
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckVaccinatedCVRequest@3442f5b9
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetReportResponse@60f53a5a
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckVaccinatedCVResponse@1379437d
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@7f64fe91
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@4014d973
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetReportRequest@1b71f842
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckVaccinatedCVRequest@19362c80
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetReportResponse@33c7ac6b
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckVaccinatedCVResponse@39d07793
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetEVTypologiesRequest@236250ff
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetEvTypologiesResponse@61863eb9
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CLOSED
+INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.UserLoginRequest@43e1af46
+INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.UserLoginResponse@1193bec3
+INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.UserLoginRequest@47ec346d
+INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.UserLoginResponse@1112b3f9
+INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@5a9a070b
+INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@650f102d
+INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetReportRequest@abe5fb4
+INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckVaccinatedCVRequest@2e45a061
+INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetReportResponse@6966dfe9
+INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckVaccinatedCVResponse@30f085cd
+INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetEVTypologiesRequest@7fc0898a
+INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetEvTypologiesResponse@39209f49
+INFO NioProcessor-13 org.apache.mina.filter.logging.LoggingFilter - CLOSED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CREATED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - OPENED
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.UserLoginRequest@4ee73a60
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.UserLoginResponse@4fce2890
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetAllCVRequest@20e195f4
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetCVResponse@a0ff1ed
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetReportRequest@370de5b3
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.CheckVaccinatedCVRequest@23dfd1cc
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetReportResponse@21dcd784
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.CheckVaccinatedCVResponse@2b5b584c
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: datatypes.protocolmessages.GetEVTypologiesRequest@3a438527
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: datatypes.protocolmessages.GetEvTypologiesResponse@77f9bd61
+INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CLOSED

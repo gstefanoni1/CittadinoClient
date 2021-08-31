@@ -112,38 +112,38 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
         int i = 1;
         if (checkMalDiTesta.isSelected()){
             contEVSelezionati++;
-           setEvento(tipoeventi.get(0).getNome(), Integer.parseInt(severitaMalDiTesta.getValue()),
-                   noteMalDiTesta.getText(), i);
+           if(!setEvento(tipoeventi.get(0).getNome(), Integer.parseInt(severitaMalDiTesta.getValue()),
+                   noteMalDiTesta.getText(), i)) return;
         }
         i++;
         if (checkFebbre.isSelected()){
             contEVSelezionati++;
-            setEvento(tipoeventi.get(1).getNome(), Integer.parseInt(severitaFebbre.getValue()),
-                    noteFebbre.getText(), i);
+            if(!setEvento(tipoeventi.get(1).getNome(), Integer.parseInt(severitaFebbre.getValue()),
+                    noteFebbre.getText(), i)) return;
         }
         i++;
         if (checkDMA.isSelected()){
             contEVSelezionati++;
-            setEvento(tipoeventi.get(2).getNome(), Integer.parseInt(severitaDMA.getValue()),
-                    noteDMA.getText(), i);
+            if(!setEvento(tipoeventi.get(2).getNome(), Integer.parseInt(severitaDMA.getValue()),
+                    noteDMA.getText(), i)) return;
         }
         i++;
         if (checkLinfo.isSelected()){
             contEVSelezionati++;
-            setEvento(tipoeventi.get(3).getNome(), Integer.parseInt(severitaLinfo.getValue()),
-                    noteLinfo.getText(), i);
+            if(!setEvento(tipoeventi.get(3).getNome(), Integer.parseInt(severitaLinfo.getValue()),
+                    noteLinfo.getText(), i)) return;
         }
         i++;
         if (checkTachicardia.isSelected()){
             contEVSelezionati++;
-            setEvento(tipoeventi.get(4).getNome(), Integer.parseInt(severitaTachicardia.getValue()),
-                    noteTachicardia.getText(), i);
+            if(!setEvento(tipoeventi.get(4).getNome(), Integer.parseInt(severitaTachicardia.getValue()),
+                    noteTachicardia.getText(), i)) return;
         }
         i++;
         if (checkCrisiIper.isSelected()){
             contEVSelezionati++;
-            setEvento(tipoeventi.get(5).getNome(), Integer.parseInt(severitaCrisiIper.getValue()),
-                    noteCrisiIper.getText(), i);
+            if(!setEvento(tipoeventi.get(5).getNome(), Integer.parseInt(severitaCrisiIper.getValue()),
+                    noteCrisiIper.getText(), i)) return;
         }
        if(contEVSelezionati == 0)
        {
@@ -162,7 +162,7 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
      * @param severita Severità dell'evento
      * @param note Note opzionali aggiuntive riguardo l'evento
      */
-    private void setEvento(String tipo, int severita, String note, int id){
+    private boolean setEvento(String tipo, int severita, String note, int id){
         EventoAvverso evento = new EventoAvverso();
         evento.setCentroVaccinale(centro);
         TipologiaEventoAvverso tipologia = new TipologiaEventoAvverso(tipo);
@@ -170,8 +170,11 @@ public class InserimentoEAController implements Initializable, PacketReceivedLis
         evento.setTipologia(tipologia);
         evento.setSeverita(severita);
         evento.setNote(note);
-        if(!client.insertEV(evento))
+        if(!client.insertEV(evento)) {
             Platform.runLater(this::connessionePersa);
+            return false;
+        }
+        return true;
     }
 
     /**
