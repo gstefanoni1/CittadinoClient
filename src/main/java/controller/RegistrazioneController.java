@@ -333,7 +333,6 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
     public void onPacketReceived(Packet packet) {
         if(packet instanceof UserRegistrationResponse){
             UserRegistrationResponse res = (UserRegistrationResponse) packet;
-            System.out.println("Registrazione: " + res.isEsito());
             risultatoRegistrazione(res);
 
         }
@@ -342,7 +341,6 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
             accediRegistrazione(res);
         }
         if(packet instanceof CheckUserIdResponse){
-            System.out.println("Esiste userId? " + ((CheckUserIdResponse)packet).isEsito());
             verificaUser = !((CheckUserIdResponse)packet).isEsito();
             if(email.getText() != null && !email.getText().equals("") && !email.getText().equals(emailDBRegistrata)) {
                 if (!client.requestEmailCheck(email.getText()))
@@ -354,7 +352,6 @@ public class RegistrazioneController implements Initializable, PacketReceivedLis
             }
         }
         if(packet instanceof CheckEmailResponse){
-            System.out.println("Esiste email? " + ((CheckEmailResponse)packet).isEsito());
             verificaEmailDB = !((CheckEmailResponse)packet).isEsito();
             registraCittadino();
         }

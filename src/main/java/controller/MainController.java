@@ -200,7 +200,6 @@ public class MainController implements Initializable, PacketReceivedListener {
     public void onPacketReceived(Packet packet) {
         if (packet instanceof UserLoginResponse) {
             UserLoginResponse res = (UserLoginResponse) packet;
-            System.out.println("Login: " + res.isEsito());
             if (res.isEsito()) {
                 MainController.setUser(res.getVaccinato());
                 //Utente loggato

@@ -192,11 +192,6 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
         Platform.runLater(() -> {
                     barChart.getData().addAll(series5, series4, series3, series2, series1);
         });
-        System.out.println(series1.getData().toString());
-        System.out.println(series2.getData().toString());
-        System.out.println(series3.getData().toString());
-        System.out.println(series4.getData().toString());
-        System.out.println(series5.getData().toString());
     }
     /**
      * Metodo per l'inserimento delle singole colonne in base alla severità del singolo evento
@@ -270,7 +265,6 @@ public class VisualizzaCentroController implements Initializable, PacketReceived
     public void onPacketReceived(Packet packet) {
         if(packet instanceof GetReportResponse){
             ReportCV report = ((GetReportResponse)packet).getReport();
-            System.out.println(report.getReportList());
             popolaGrafico(report.getReportList());
             Platform.runLater(()->{
             totEA.setText(report.getNumEventiAvversi() + "");

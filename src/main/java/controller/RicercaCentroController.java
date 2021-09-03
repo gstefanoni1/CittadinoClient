@@ -185,7 +185,6 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
 
         CentriList.setCellFactory(studentListView -> new CustomListCell());
         CentriList.refresh();
-        System.out.println(dataFiltered.toString());
     }
     /**
      * Metodo incato dal metodo ricerca se il tipo di ricerca selezionato è Comune + Tipologia
@@ -201,7 +200,6 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
 
         CentriList.setCellFactory(studentListView -> new CustomListCell());
         CentriList.refresh();
-        System.out.println(dataFiltered.toString());
     }
     /**
      * Metodo per gestire la ricezione del pacchetto GetCVResponse e inserire i dati di tutti i centri nella List data
@@ -212,9 +210,6 @@ public class RicercaCentroController implements Initializable, PacketReceivedLis
         if(packet instanceof GetCVResponse){
             GetCVResponse res = (GetCVResponse) packet;
             List<CentroVaccinale> list = res.getCvList();
-            for(CentroVaccinale cv : list){
-                System.out.println(cv);
-            }
             if (res.isEsito()) {
                 data.addAll(list);
                 CentriList.setItems(data);
