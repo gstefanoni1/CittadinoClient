@@ -104,6 +104,7 @@ public class MainController implements Initializable, PacketReceivedListener {
             loginPane.setVisible(false);
             disconnetti.setVisible(true);
             benvenuto.setVisible(true);
+            Platform.runLater(() -> nome.setText(user.getNome() + " " + user.getCognome()));
         } else {
             loginPane.setVisible(true);
             disconnetti.setVisible(false);
